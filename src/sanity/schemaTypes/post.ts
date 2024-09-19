@@ -17,6 +17,8 @@ export default defineType({
       options: {
         source: "title",
         maxLength: 96,
+        slugify: (input) =>
+          input.toLowerCase().replace(/\s+/g, "-").slice(0, 200),
       },
     }),
     defineField({
@@ -43,6 +45,11 @@ export default defineType({
       name: "publishedAt",
       title: "Published at",
       type: "datetime",
+      options: {
+        dateFormat: "YYYY-MM-DD",
+        timeFormat: "HH:mm",
+        timeStep: 15,
+      },
     }),
     defineField({
       name: "body",

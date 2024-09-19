@@ -1,9 +1,10 @@
 ---
 import type { SanityDocument } from "@sanity/client";
-import { loadQuery } from "../../sanity/lib/load-query";
+import { useLoadQuery } from "../../sanity/lib/useLoadQuery";
+import { useUrlForImage } from "../../sanity/lib/useUrlForImage";
 
 export async function getStaticPaths() {
-  const { data: posts } = await loadQuery<SanityDocument[]>({
+  const { data: posts } = await useLoadQuery<SanityDocument[]>({
     query: `*[_type == "post"]`,
   });
 
@@ -18,10 +19,15 @@ export async function getStaticPaths() {
 
 const { params } = Astro;
 
-const { data: post } = await loadQuery({
+const { data: post } = await useLoadQuery<SanityDocument>({
   query: `*[_type == "post" && slug.current == $slug][0]`,
   params,
 });
 ---
 
 <h1>A post about {post.title}</h1>
+{
+  post.mainImage && (
+    <img src={useUrlForImage(post.mainImage).width(400).url()} />
+  )
+}
