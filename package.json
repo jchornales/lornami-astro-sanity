@@ -8,7 +8,8 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "dev:en": "cross-env SITE_LANG=en astro dev"
+    "dev:en": "cross-env SITE_LANG=en astro dev",
+    "generate:schema": "cd ./src/generated/ && sanity typegen generate"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.3",
