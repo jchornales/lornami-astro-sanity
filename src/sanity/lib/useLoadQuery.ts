@@ -1,7 +1,7 @@
 import { type QueryParams } from "sanity";
 import { sanityClient } from "sanity:client";
 
-export async function loadQuery<QueryResponse>({
+export async function useLoadQuery<QueryResponse>({
   query,
   params,
 }: {

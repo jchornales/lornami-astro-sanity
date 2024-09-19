@@ -1,6 +1,9 @@
 {
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
-    "types": []
+    "types": [],
+    "paths": {
+      "@public/*": ["./public"]
+    }
   }
 }
