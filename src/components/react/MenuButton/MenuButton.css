@@ -1,0 +1,50 @@
+.menu-button {
+  @apply flex w-hamburger flex-col justify-center gap-hamburger align-middle hover:scale-105;
+}
+
+.line {
+  @apply bg-cream block h-line w-full transition duration-700 ease-in-out;
+}
+
+.closed > .--first {
+  @apply group-hover:-translate-y-1/2;
+}
+
+.closed > .--third {
+  @apply group-hover:translate-y-1/2;
+}
+
+.--second::before,
+.--second::after {
+  @apply transition duration-700 ease-in-out;
+}
+
+.--second {
+  @apply flex flex-row bg-transparent;
+}
+
+.--second::before {
+  @apply bg-cream h-line w-1/2;
+  content: "";
+}
+
+.--second::after {
+  @apply bg-cream h-line w-1/2;
+  content: "";
+}
+
+.opened > .--second:before {
+  @apply -translate-x-full bg-black opacity-0;
+}
+
+.opened > .--second:after {
+  @apply translate-x-full bg-black opacity-0;
+}
+
+.opened > .--first {
+  @apply translate-y-[8px] rotate-[135deg] bg-black;
+}
+
+.opened > .--third {
+  @apply translate-y-[-8px] rotate-[45deg] bg-black;
+}

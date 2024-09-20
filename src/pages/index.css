@@ -1,0 +1,15 @@
+.cover-photo-wrapper {
+  @apply h-full max-h-screen w-full overflow-hidden;
+}
+
+.cover-photo {
+  @apply fixed left-0 top-0 -z-10 min-h-fit min-w-fit;
+}
+
+.cover-photo-overlay {
+  @apply z-0 h-screen w-full bg-black opacity-65 mix-blend-multiply;
+}
+
+body {
+  height: 200vh;
+}

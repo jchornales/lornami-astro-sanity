@@ -1,5 +1,5 @@
 ---
-import Navigation from "../components/Navigation/Navigation.astro";
+import Navigation from "../components/react/Navigation/Navigation.tsx";
 import "./PageLayout.css";
 
 interface Props {
@@ -15,10 +15,10 @@ const { title } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+    <title>{title} || Lornami</title>
   </head>
-  <body class="w-full">
-    <Navigation />
+  <body class="relative w-full">
+    <Navigation client:load />
     <slot />
   </body>
 </html>

@@ -9,12 +9,14 @@
     "preview": "astro preview",
     "astro": "astro",
     "dev:en": "cross-env SITE_LANG=en astro dev",
+    "prettier": "prettier --write src/*",
     "generate:schema": "cd ./src/generated/ && sanity typegen generate"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.3",
     "@astrojs/react": "^3.6.2",
     "@astrojs/tailwind": "^5.1.1",
+    "@nanostores/react": "^0.7.3",
     "@sanity/astro": "^3.1.6",
     "@sanity/client": "^6.21.3",
     "@sanity/image-url": "^1.0.2",
@@ -23,6 +25,7 @@
     "@types/react": "^18.3.7",
     "@types/react-dom": "^18.3.0",
     "astro": "^4.15.7",
+    "nanostores": "^0.11.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "sanity": "^3.57.4",

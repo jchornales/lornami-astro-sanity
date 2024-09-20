@@ -1,0 +1,11 @@
+.navigation-bar {
+  @apply absolute left-0 top-0 z-10 flex w-full justify-between p-8 align-middle;
+}
+
+.brand-label {
+  @apply text-cream cursor-pointer font-sans text-3xl font-black tracking-widest transition-all duration-700 ease-in-out;
+}
+
+.brand-label.opened {
+  @apply text-black;
+}
