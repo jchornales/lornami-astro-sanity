@@ -1,0 +1,22 @@
+---
+import MenuButton from "../../react/MenuButton/MenuButton";
+import "./Navigation.css";
+import Menu from "../../react/Menu/Menu";
+import BrandLogo from "../../react/BrandLogo/BrandLogo";
+import { useLoadQuery } from "../../../sanity/lib/useLoadQuery";
+import type { SanityDocument } from "@sanity/client";
+
+const { data: images } = await useLoadQuery<SanityDocument[]>({
+  query: `*[_type == "images" && slug.current == "menu-overlay-photo"]`,
+});
+---
+
+<nav class="navigation-bar">
+  <div class="z-20 w-1/2">
+    <BrandLogo client:load />
+  </div>
+  <div class="z-20 flex w-1/2 justify-end align-middle">
+    <MenuButton client:load />
+  </div>
+  <Menu client:load cover={images[0]} />
+</nav>

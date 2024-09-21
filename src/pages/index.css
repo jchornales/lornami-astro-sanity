@@ -3,11 +3,11 @@
 }
 
 .cover-photo {
-  @apply fixed left-0 top-0 -z-10 min-h-fit min-w-fit;
+  @apply fixed left-0 top-0 -z-10 min-h-fit w-fit min-w-full;
 }
 
 .cover-photo-overlay {
-  @apply z-0 h-screen w-full bg-black opacity-65 mix-blend-multiply;
+  @apply z-0 h-screen w-full bg-black opacity-75 mix-blend-multiply;
 }
 
 body {

@@ -22,6 +22,10 @@ export default {
         white: "#FFFFFF",
         transparent: "transparent",
       },
+      transitionDelay: {
+        600: "600ms",
+        400: "400ms",
+      },
       gap: {
         hamburger: "5px",
       },

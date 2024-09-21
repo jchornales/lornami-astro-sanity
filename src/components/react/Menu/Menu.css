@@ -1,0 +1,63 @@
+.menu-wrapper {
+  @apply absolute left-0 top-0 z-0 h-screen min-w-full overflow-hidden;
+}
+
+.menu-overlay {
+  @apply fixed left-full top-0 h-screen min-w-full transition-all duration-700 ease-out;
+}
+
+.menu-overlay.--first {
+  @apply bg-cream;
+}
+
+.menu-overlay.--second {
+  @apply bg-secondary;
+}
+
+.menu-overlay.--third {
+  @apply grid place-items-center bg-primary bg-opacity-75;
+}
+
+.overlay-image {
+  @apply min-w-full;
+}
+
+.visible > .menu-overlay {
+  @apply left-0;
+}
+
+.visible > .menu-overlay.--first {
+  @apply delay-0;
+}
+
+.visible > .menu-overlay.--second {
+  @apply delay-200;
+}
+
+.visible > .menu-overlay.--third {
+  @apply delay-500;
+}
+
+.invisible > .menu-overlay.--first {
+  @apply delay-500;
+}
+
+.invisible > .menu-overlay.--second {
+  @apply delay-200;
+}
+
+.invisible > .menu-overlay.--third {
+  @apply delay-0;
+}
+
+.menu-list {
+  @apply flex flex-col gap-8 md:gap-10;
+}
+
+.menu-link > .link {
+  @apply text-2xl font-semibold md:text-3xl;
+}
+
+.menu-link > .link:hover {
+  @apply underline underline-offset-4;
+}

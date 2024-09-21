@@ -1,0 +1,7 @@
+.brand-label {
+  @apply cursor-pointer font-sans text-2xl font-black tracking-widest text-cream transition-all delay-600 duration-700 ease-out md:text-3xl;
+}
+
+.brand-label.opened {
+  @apply text-black delay-300;
+}

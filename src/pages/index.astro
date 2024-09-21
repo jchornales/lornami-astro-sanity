@@ -5,18 +5,15 @@ import { useLoadQuery } from "../sanity/lib/useLoadQuery";
 import { useUrlForImage } from "../sanity/lib/useUrlForImage";
 import "./index.css";
 
-const { data: coverPhotos } = await useLoadQuery<SanityDocument[]>({
-  query: `*[_type == "coverPhoto"]`,
+const { data: images } = await useLoadQuery<SanityDocument[]>({
+  query: `*[_type == "images" && slug.current == "hero-section-photo"]`,
 });
 ---
 
 <PageLayout title="Home Page">
   <div class="cover-photo-wrapper">
     <div class="cover-photo-overlay"></div>
-    <img
-      class="cover-photo"
-      src={useUrlForImage(coverPhotos[0].image).width(2000).url()}
-    />
+    <img class="cover-photo" src={useUrlForImage(images[0].image).url()} />
   </div>
   <div class="z-10 h-screen w-full bg-white"></div>
 </PageLayout>

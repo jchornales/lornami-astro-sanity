@@ -1,9 +1,9 @@
 .menu-button {
-  @apply flex w-hamburger flex-col justify-center gap-hamburger align-middle hover:scale-105;
+  @apply flex w-6 flex-col justify-center gap-hamburger align-middle hover:scale-105 md:w-hamburger;
 }
 
 .line {
-  @apply bg-cream block h-line w-full transition duration-700 ease-in-out;
+  @apply block h-line w-full bg-cream transition duration-700 ease-in-out;
 }
 
 .closed > .--first {
@@ -24,12 +24,12 @@
 }
 
 .--second::before {
-  @apply bg-cream h-line w-1/2;
+  @apply h-line w-1/2 bg-cream;
   content: "";
 }
 
 .--second::after {
-  @apply bg-cream h-line w-1/2;
+  @apply h-line w-1/2 bg-cream;
   content: "";
 }
 
