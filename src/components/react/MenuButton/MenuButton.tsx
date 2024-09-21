@@ -2,13 +2,14 @@ import React, { useEffect } from "react";
 import { useStore } from "@nanostores/react";
 import { isMenuOpen } from "../../../sanity/lib/useStateStore";
 import "./MenuButton.css";
+import clsx from "clsx";
 
 function MenuButton() {
   const isOpen = useStore(isMenuOpen);
 
   return (
     <button
-      className={`menu-button group ${isOpen ? "opened" : "closed"}`}
+      className={clsx("menu-button group", isOpen ? "opened" : "closed")}
       onClick={() => isMenuOpen.set(!isOpen)}
     >
       <span className="line --first"></span>
