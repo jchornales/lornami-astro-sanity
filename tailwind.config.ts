@@ -35,6 +35,9 @@ export default {
       letterSpacing: {
         widest: "0.2em",
       },
+      maxWidth: {
+        unset: "unset",
+      },
       width: {
         hamburger: "30px",
       },

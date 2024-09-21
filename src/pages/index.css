@@ -3,7 +3,7 @@
 }
 
 .cover-photo {
-  @apply fixed left-0 top-0 -z-10 min-h-fit w-fit min-w-full;
+  @apply max-w-unset fixed left-0 top-0 -z-10 h-full w-auto md:min-w-full;
 }
 
 .cover-photo-overlay {
