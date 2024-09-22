@@ -1,7 +1,7 @@
 import { useStore } from "@nanostores/react";
 import React from "react";
-import { isMenuOpen } from "../../../sanity/lib/useStateStore";
-import "./BrandLogo.css";
+import { isMenuOpen } from "../../sanity/lib/useStateStore";
+import "@styles/BrandLogo.css";
 import clsx from "clsx";
 
 function BrandLogo() {

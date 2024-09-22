@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useStore } from "@nanostores/react";
-import "./Menu.css";
-import { isMenuOpen } from "../../../sanity/lib/useStateStore";
+import "@styles/Menu.css";
+import { isMenuOpen } from "../../sanity/lib/useStateStore";
 import type { SanityDocument } from "@sanity/client";
-import { useUrlForImage } from "../../../sanity/lib/useUrlForImage";
+import { useUrlForImage } from "../../sanity/lib/useUrlForImage";
 import { clsx } from "clsx";
 
 interface Props {
@@ -12,16 +12,6 @@ interface Props {
 
 function Menu({ cover }: Props) {
   const isOpen = useStore(isMenuOpen);
-
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflowY = "hidden";
-    } else {
-      setTimeout(() => {
-        document.body.style.overflowY = "scroll";
-      }, 800);
-    }
-  }, [isOpen]);
 
   return (
     <div className={clsx("menu-wrapper", isOpen ? "visible" : "invisible")}>

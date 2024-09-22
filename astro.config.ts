@@ -18,4 +18,9 @@ export default defineConfig({
     react(),
     tailwind(),
   ],
+  vite: {
+    ssr: {
+      noExternal: ["astro", "@astrojs/image", "react-effect-typewriter"],
+    },
+  },
 });

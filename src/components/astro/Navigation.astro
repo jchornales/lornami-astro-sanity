@@ -1,13 +1,13 @@
 ---
-import MenuButton from "../../react/MenuButton/MenuButton";
-import "./Navigation.css";
-import Menu from "../../react/Menu/Menu";
-import BrandLogo from "../../react/BrandLogo/BrandLogo";
-import { useLoadQuery } from "../../../sanity/lib/useLoadQuery";
+import MenuButton from "../react/MenuButton";
+import "@styles/Navigation.css";
+import Menu from "../react/Menu";
+import BrandLogo from "../react/BrandLogo";
+import { useLoadQuery } from "../../sanity/lib/useLoadQuery";
 import type { SanityDocument } from "@sanity/client";
 
 const { data: images } = await useLoadQuery<SanityDocument[]>({
-  query: `*[_type == "images" && slug.current == "menu-overlay-photo"]`,
+  query: `*[_type == "images" && slug.current == "menu-overlay"]`,
 });
 ---
 

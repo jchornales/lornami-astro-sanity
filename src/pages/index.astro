@@ -3,17 +3,26 @@ import type { SanityDocument } from "@sanity/client";
 import PageLayout from "../layouts/PageLayout.astro";
 import { useLoadQuery } from "../sanity/lib/useLoadQuery";
 import { useUrlForImage } from "../sanity/lib/useUrlForImage";
-import "./index.css";
+import "@styles/index.css";
+import { Image } from "astro:assets";
 
 const { data: images } = await useLoadQuery<SanityDocument[]>({
-  query: `*[_type == "images" && slug.current == "hero-section-photo"]`,
+  query: `*[_type == "images" && slug.current == "hero-section"]`,
 });
 ---
 
 <PageLayout title="Home Page">
   <div class="cover-photo-wrapper">
-    <div class="cover-photo-overlay"></div>
-    <img class="cover-photo" src={useUrlForImage(images[0].image).url()} />
+    <div class="cover-photo-overlay">
+      <!-- <StaggeredText text="Testing Bros" client:visible /> -->
+    </div>
+    <Image
+      class="cover-photo"
+      src={useUrlForImage(images[0].image).url()}
+      alt={images[0].title}
+      width={5000}
+      height={5000}
+    />
   </div>
   <div class="z-10 h-screen w-full bg-white"></div>
 </PageLayout>
