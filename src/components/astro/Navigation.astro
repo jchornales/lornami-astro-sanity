@@ -5,9 +5,17 @@ import Menu from "../react/Menu";
 import BrandLogo from "../react/BrandLogo";
 import { useLoadQuery } from "../../sanity/lib/useLoadQuery";
 import type { SanityDocument } from "@sanity/client";
+import { getImage } from "astro:assets";
+import { useUrlForImage } from "../../sanity/lib/useUrlForImage";
 
 const { data: images } = await useLoadQuery<SanityDocument[]>({
   query: `*[_type == "images" && slug.current == "menu-overlay"]`,
+});
+
+const optimizedBackground = await getImage({
+  src: useUrlForImage(images[0].image).url(),
+  format: "webp",
+  inferSize: true,
 });
 ---
 
@@ -18,5 +26,5 @@ const { data: images } = await useLoadQuery<SanityDocument[]>({
   <div class="z-20 flex w-1/2 justify-end align-middle">
     <MenuButton client:load />
   </div>
-  <Menu client:load cover={images[0]} />
+  <Menu client:load cover={optimizedBackground} />
 </nav>

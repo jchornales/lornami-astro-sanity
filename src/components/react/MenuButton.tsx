@@ -1,18 +1,19 @@
 import React, { useEffect } from "react";
 import { useStore } from "@nanostores/react";
-import { isMenuOpen } from "../../sanity/lib/useStateStore";
+import { isMenuOpen } from "../../utils/useStateStore";
 import "@styles/MenuButton.css";
 import clsx from "clsx";
+import { disableBodyScroll, clearAllBodyScrollLocks } from "body-scroll-lock";
 
 function MenuButton() {
   const isOpen = useStore(isMenuOpen);
 
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflowY = "hidden";
+      disableBodyScroll(document.body);
     } else {
       setTimeout(() => {
-        document.body.style.overflowY = "scroll";
+        clearAllBodyScrollLocks();
       }, 800);
     }
   }, [isOpen]);
