@@ -3,13 +3,18 @@
 }
 
 .cover-photo {
-  @apply fixed left-0 top-0 -z-10 h-full w-auto max-w-unset md:min-w-full;
+  @apply fixed left-0 top-0 -z-10 h-full w-auto min-w-full max-w-unset bg-cover bg-center bg-blend-overlay md:bg-top;
 }
 
 .cover-photo-overlay {
-  @apply z-0 flex h-screen w-full bg-black bg-opacity-90 p-12 align-middle mix-blend-multiply;
+  @apply z-0 flex h-screen w-full bg-black bg-opacity-70 p-12 align-middle mix-blend-multiply;
 }
 
 body {
   height: 200vh;
+}
+
+body,
+html {
+  @apply scrollbar-thin scrollbar-thumb-primary scrollbar-track-cream;
 }
