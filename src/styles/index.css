@@ -15,11 +15,11 @@
 }
 
 .section-title {
-  @apply text-3xl font-black tracking-wider;
+  @apply text-2xl font-black tracking-wider md:text-3xl;
 }
 
 .section-sub-title {
-  @apply my-4 font-serif text-2xl;
+  @apply my-4 font-serif text-xl md:text-2xl;
 }
 
 body,

@@ -11,7 +11,7 @@ const { data: posts } = await useLoadQuery<SanityDocument[]>({
 ---
 
 <section class="highlights-section section">
-  <div class="highlight-wrapper">
+  <div class="highlight-wrapper max-h-screen">
     <h1 class="section-title">Highlights</h1>
     <p class="section-sub-title">
       <q class="quotes">
@@ -28,15 +28,27 @@ const { data: posts } = await useLoadQuery<SanityDocument[]>({
             <Image
               src={useUrlForImage(post.mainImage).url()}
               alt={post.title}
-              width={1000}
-              height={1000}
               class="highlights-gallery-image"
+              inferSize
             />
           </div>
         ))
       }
     </div>
+    <div class="highlights-see-more">
+      <button data-button="see-more">See More</button>
+    </div>
   </div>
 </section>
 
-<script></script>
+<script>
+  const moreButton = document.querySelector("[data-button='see-more']");
+  const galleryWrapper = document.querySelector(".highlight-wrapper");
+  const seeMoreWrapper = document.querySelector(".highlights-see-more");
+
+  moreButton?.addEventListener("click", () => {
+    console.log("test");
+    galleryWrapper?.classList.toggle("max-h-screen");
+    seeMoreWrapper?.classList.toggle("invisible");
+  });
+</script>
