@@ -21,3 +21,7 @@
 .highlights-gallery-item {
   @apply py-4;
 }
+
+.highlights-gallery-image {
+  @apply border-spacing-0 border;
+}

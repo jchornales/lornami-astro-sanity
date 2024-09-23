@@ -6,7 +6,7 @@ import { Image } from "astro:assets";
 import { useUrlForImage } from "../../sanity/lib/useUrlForImage";
 
 const { data: posts } = await useLoadQuery<SanityDocument[]>({
-  query: `*[_type == "post"][0..12] | order(publishedAt desc)`,
+  query: `*[_type == "post"][0..15] | order(publishedAt desc)`,
 });
 ---
 
@@ -30,6 +30,7 @@ const { data: posts } = await useLoadQuery<SanityDocument[]>({
               alt={post.title}
               width={1000}
               height={1000}
+              class="highlights-gallery-image"
             />
           </div>
         ))
