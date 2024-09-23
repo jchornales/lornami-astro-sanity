@@ -5,6 +5,8 @@ import { useLoadQuery } from "../sanity/lib/useLoadQuery";
 import { useUrlForImage } from "../sanity/lib/useUrlForImage";
 import "@styles/index.css";
 import { getImage, Image } from "astro:assets";
+import Highlights from "components/astro/Highlights.astro";
+import type { only } from "node:test";
 
 const { data: images } = await useLoadQuery<SanityDocument[]>({
   query: `*[_type == "images" && slug.current == "hero-section"]`,
@@ -23,5 +25,5 @@ const cover = await getImage({
     <div class="cover-photo" style={{ backgroundImage: `url(${cover.src})` }}>
     </div>
   </div>
-  <div class="z-10 h-screen w-full bg-white"></div>
+  <Highlights clien:only />
 </PageLayout>

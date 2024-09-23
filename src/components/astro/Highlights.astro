@@ -1,0 +1,41 @@
+---
+import type { SanityDocument } from "@sanity/client";
+import "@styles/Highlights.css";
+import { useLoadQuery } from "../../sanity/lib/useLoadQuery";
+import { Image } from "astro:assets";
+import { useUrlForImage } from "../../sanity/lib/useUrlForImage";
+
+const { data: posts } = await useLoadQuery<SanityDocument[]>({
+  query: `*[_type == "post"][0..12] | order(publishedAt desc)`,
+});
+---
+
+<section class="highlights-section section">
+  <div class="highlight-wrapper">
+    <h1 class="section-title">Highlights</h1>
+    <p class="section-sub-title">
+      <q class="quotes">
+        If you don&#39;t think photos are important, wait until they&#39;re all
+        you have left.
+      </q>
+      <span class="author"> &#45; Missy Mwac </span>
+    </p>
+
+    <div class="highlights-gallery">
+      {
+        posts.map((post) => (
+          <div class="highlights-gallery-item">
+            <Image
+              src={useUrlForImage(post.mainImage).url()}
+              alt={post.title}
+              width={1000}
+              height={1000}
+            />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<script></script>

@@ -63,7 +63,9 @@ export default defineType({
       of: [{ type: "image" }],
     }),
   ],
-
+  initialValue: () => ({
+    publishedAt: new Date().toISOString(),
+  }),
   preview: {
     select: {
       title: "title",

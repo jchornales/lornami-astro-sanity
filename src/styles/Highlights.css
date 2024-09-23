@@ -1,0 +1,23 @@
+.highlights-section {
+  @apply bg-white;
+}
+
+.highlights-section .author {
+  @apply font-semibold;
+}
+
+.highlights-section .quotes {
+  @apply italic;
+}
+
+.highlight-wrapper {
+  @apply mx-auto max-w-7xl;
+}
+
+.highlights-gallery {
+  @apply my-8 columns-1 gap-8 md:columns-2 lg:columns-3;
+}
+
+.highlights-gallery-item {
+  @apply py-4;
+}
