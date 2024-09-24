@@ -19,7 +19,6 @@ export default {
         secondary: "#f7c6ba",
         black: "#262626",
         cream: "#F4F1F0",
-        white: "#FFFFFF",
         transparent: "transparent",
       },
       transitionDelay: {

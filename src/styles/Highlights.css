@@ -22,10 +22,14 @@
   @apply border-spacing-0 border;
 }
 
+.highlights-gallery-item {
+  @apply block hover:scale-110;
+}
+
 .highlights-see-more {
-  @apply absolute bottom-0 left-0 flex w-full justify-center bg-gradient-to-b from-transparent from-10% via-white via-70% to-white to-100% pt-24 align-baseline;
+  @apply pointer-events-none absolute bottom-0 left-0 flex w-full justify-center bg-gradient-to-b from-transparent from-10% via-white via-70% to-white to-100% pt-24 align-baseline;
 }
 
 .highlights-see-more button {
-  @apply px-8 py-2 hover:text-primary;
+  @apply pointer-events-auto px-8 py-2 hover:text-primary;
 }

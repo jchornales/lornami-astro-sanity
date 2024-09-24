@@ -24,14 +24,14 @@ const { data: posts } = await useLoadQuery<SanityDocument[]>({
     <div class="highlights-gallery">
       {
         posts.map((post) => (
-          <div class="highlights-gallery-item">
+          <a href={`post/${post.slug.current}`} class="highlights-gallery-item">
             <Image
               src={useUrlForImage(post.mainImage).url()}
               alt={post.title}
               class="highlights-gallery-image"
               inferSize
             />
-          </div>
+          </a>
         ))
       }
     </div>
