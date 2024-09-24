@@ -4,6 +4,7 @@ import "@styles/Highlights.css";
 import { useLoadQuery } from "../../sanity/lib/useLoadQuery";
 import { Image } from "astro:assets";
 import { useUrlForImage } from "../../sanity/lib/useUrlForImage";
+import ChevronDoubleDown from "../../assets/icons/ChevronDoubleDown.astro";
 
 const { data: posts } = await useLoadQuery<SanityDocument[]>({
   query: `*[_type == "post"][0..15] | order(publishedAt desc)`,
@@ -12,7 +13,6 @@ const { data: posts } = await useLoadQuery<SanityDocument[]>({
 
 <section class="highlights-section section">
   <div class="highlight-wrapper max-h-screen">
-    <h1 class="section-title">Highlights</h1>
     <p class="section-sub-title">
       <q class="quotes">
         If you don&#39;t think photos are important, wait until they&#39;re all
@@ -36,7 +36,9 @@ const { data: posts } = await useLoadQuery<SanityDocument[]>({
       }
     </div>
     <div class="highlights-see-more">
-      <button data-button="see-more">See More</button>
+      <button class="group flex gap-2" data-button="see-more">
+        <ChevronDoubleDown className="fill-black group-hover:fill-primary" />
+      </button>
     </div>
   </div>
 </section>

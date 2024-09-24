@@ -24,5 +24,5 @@
 
 body,
 html {
-  @apply bg-white scrollbar-thin scrollbar-track-cream scrollbar-thumb-primary;
+  @apply scrollbar-thumb-primaryDark bg-white scrollbar-thin scrollbar-track-cream;
 }
