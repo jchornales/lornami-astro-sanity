@@ -23,7 +23,7 @@
 }
 
 .highlights-gallery-item {
-  @apply block hover:scale-110;
+  @apply block transition-all duration-300 hover:scale-110;
 }
 
 .highlights-see-more {
