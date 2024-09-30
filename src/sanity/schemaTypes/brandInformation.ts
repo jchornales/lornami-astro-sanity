@@ -6,14 +6,47 @@ export default defineType({
   type: "document",
   fields: [
     defineField({
-      name: "title",
-      title: "Title",
+      name: "emailAddress",
+      title: "Email Address",
       type: "string",
     }),
     defineField({
-      name: "description",
-      title: "Description",
-      type: "text",
+      name: "phoneNumber",
+      title: "Phone Number",
+      type: "string",
+    }),
+    defineField({
+      name: "address",
+      title: "Address",
+      type: "string",
+    }),
+    defineField({
+      name: "disclaimer",
+      title: "Disclaimer",
+      type: "string",
+    }),
+    defineField({
+      name: "facebook",
+      title: "Facebook",
+      type: "string",
+    }),
+    defineField({
+      name: "instagram",
+      title: "Instagram",
+      type: "string",
+    }),
+    defineField({
+      name: "publishedAt",
+      title: "Published at",
+      type: "datetime",
+      options: {
+        dateFormat: "YYYY-MM-DD",
+        timeFormat: "HH:mm",
+        timeStep: 15,
+      },
     }),
   ],
+  initialValue: () => ({
+    publishedAt: new Date().toISOString(),
+  }),
 });

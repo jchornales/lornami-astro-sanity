@@ -2,34 +2,42 @@
 import Envelope from "../../assets/icons/Envelope.astro";
 import Phone from "../../assets/icons/Phone.astro";
 import MapPin from "../../assets/icons/MapPin.astro";
+import { useLoadQuery } from "../../sanity/lib/useLoadQuery";
+import type { SanityDocument } from "@sanity/client";
+
+const { data: information } = await useLoadQuery<SanityDocument[]>({
+  query: `*[_type == "brandInformation"]`,
+});
+
+const { emailAddress, address, phoneNumber, instagram, facebook, disclaimer } =
+  information[0];
 ---
 
 <footer class="footer relative z-20 bg-white">
   <div class="contact-me">
     <h3>Contact Information</h3>
-    <p><Envelope />&#58; lornami@gmail.com</p>
-    <p><Phone />&#58;+63 977 123 7892</p>
+    <p><Envelope />&#58; {emailAddress}</p>
+    <p><Phone />&#58;{phoneNumber}</p>
 
     <p>
-      <MapPin />&#58; Block 9 Lot 7 San Isidro Resettlement, Magalang, Pampanga
+      <MapPin />&#58; {address}
     </p>
   </div>
   <div class="blank-space"></div>
   <div class="services">
     <h3>Current availability</h3>
     <p>
-      We usually work on several projects but we&apos;ll be happy to discuss new
-      opportunities. Let&apos;s get in touch!
+      {disclaimer}
     </p>
   </div>
   <div class="follow-me">
     <h3>Follow us on</h3>
     <ul class="link-list">
       <li>
-        <a href="#">Facebook</a>
+        <a href={facebook}>Facebook</a>
       </li>
       <li>
-        <a href="#">Instagram</a>
+        <a href={instagram}>Instagram</a>
       </li>
     </ul>
   </div>
