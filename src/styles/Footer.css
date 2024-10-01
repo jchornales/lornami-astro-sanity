@@ -1,0 +1,27 @@
+.footer {
+  @apply relative z-10 grid grid-cols-3 gap-20 bg-cream p-10 text-sm;
+}
+
+.footer h3 {
+  @apply mb-6 text-base font-bold;
+}
+
+.contact-me {
+  @apply flex flex-col;
+}
+
+.detail {
+  @apply flex items-center justify-start gap-2 py-1;
+}
+
+.information-icon {
+  @apply min-w-5;
+}
+
+.developer-brand {
+  @apply col-span-3 mt-8 text-xs text-gray-400;
+}
+
+.soc-list {
+  @apply flex flex-col gap-2;
+}

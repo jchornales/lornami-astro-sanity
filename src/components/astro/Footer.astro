@@ -4,6 +4,7 @@ import Phone from "../../assets/icons/Phone.astro";
 import MapPin from "../../assets/icons/MapPin.astro";
 import { useLoadQuery } from "../../sanity/lib/useLoadQuery";
 import type { SanityDocument } from "@sanity/client";
+import "@styles/Footer.css";
 
 const { data: information } = await useLoadQuery<SanityDocument[]>({
   query: `*[_type == "brandInformation"]`,
@@ -11,19 +12,44 @@ const { data: information } = await useLoadQuery<SanityDocument[]>({
 
 const { emailAddress, address, phoneNumber, instagram, facebook, disclaimer } =
   information[0];
+
+const details = [
+  {
+    key: "email",
+    value: emailAddress,
+    icon: Envelope,
+    iconClass: "information-icon size-5",
+  },
+  {
+    key: "phone-number",
+    value: phoneNumber,
+    icon: Phone,
+    iconClass: "information-icon size-5",
+  },
+  {
+    key: "address",
+    value: address,
+    icon: MapPin,
+    iconClass: "information-icon size-5",
+  },
+];
+
+console.log(details);
 ---
 
-<footer class="footer relative z-20 bg-white">
+<footer class="footer">
   <div class="contact-me">
     <h3>Contact Information</h3>
-    <p><Envelope />&#58; {emailAddress}</p>
-    <p><Phone />&#58;{phoneNumber}</p>
-
-    <p>
-      <MapPin />&#58; {address}
-    </p>
+    {
+      details?.map((detail) => (
+        <p class="detail">
+          <detail.icon className={detail.iconClass} />
+          <span> &#58; </span>
+          <span>{detail.value}</span>
+        </p>
+      ))
+    }
   </div>
-  <div class="blank-space"></div>
   <div class="services">
     <h3>Current availability</h3>
     <p>
@@ -32,7 +58,7 @@ const { emailAddress, address, phoneNumber, instagram, facebook, disclaimer } =
   </div>
   <div class="follow-me">
     <h3>Follow us on</h3>
-    <ul class="link-list">
+    <ul class="soc-list">
       <li>
         <a href={facebook}>Facebook</a>
       </li>
