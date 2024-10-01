@@ -36,6 +36,21 @@ export default defineType({
       type: "string",
     }),
     defineField({
+      name: "twitter",
+      title: "Twitter",
+      type: "string",
+    }),
+    defineField({
+      name: "tiktok",
+      title: "Tiktok",
+      type: "string",
+    }),
+    defineField({
+      name: "youtube",
+      title: "Youtube",
+      type: "string",
+    }),
+    defineField({
       name: "publishedAt",
       title: "Published at",
       type: "datetime",

@@ -10,8 +10,17 @@ const { data: information } = await useLoadQuery<SanityDocument[]>({
   query: `*[_type == "brandInformation"]`,
 });
 
-const { emailAddress, address, phoneNumber, instagram, facebook, disclaimer } =
-  information[0];
+const {
+  emailAddress,
+  address,
+  phoneNumber,
+  instagram,
+  facebook,
+  disclaimer,
+  youtube,
+  twitter,
+  tiktok,
+} = information[0];
 
 const details = [
   {
@@ -34,7 +43,29 @@ const details = [
   },
 ];
 
-console.log(details);
+const socList = [
+  {
+    key: "facebook",
+    value: facebook,
+  },
+  {
+    key: "instagram",
+    value: instagram,
+  },
+  {
+    key: "tiktok",
+    value: tiktok,
+  },
+  {
+    key: "twitter",
+    value: twitter,
+  },
+
+  {
+    key: "youtube",
+    value: youtube,
+  },
+];
 ---
 
 <footer class="footer">
@@ -59,16 +90,21 @@ console.log(details);
   <div class="follow-me">
     <h3>Follow us on</h3>
     <ul class="soc-list">
-      <li>
-        <a href={facebook}>Facebook</a>
-      </li>
-      <li>
-        <a href={instagram}>Instagram</a>
-      </li>
+      {
+        socList.map(
+          (link) =>
+            link.value && (
+              <li>
+                <a class="capitalize tracking-wider" href={link.value}>
+                  {link.key}
+                </a>
+              </li>
+            ),
+        )
+      }
     </ul>
   </div>
   <div class="developer-brand">
-    <p><i class="fa fa-copyright"></i>Justine Hornales</p>
-    <p>Made with ♥ in Pampanga, Philippines</p>
+    <p>&copy; 2021 Lornami Studio. All rights reserved.</p>
   </div>
 </footer>
