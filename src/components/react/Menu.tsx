@@ -1,9 +1,16 @@
 import React from "react";
 import { useStore } from "@nanostores/react";
 import "@styles/Menu.css";
-import { isMenuOpen } from "../../utils/useStateStore";
+import { isMenuOpen } from "@/lib/utils/useStateStore";
 import { clsx } from "clsx";
 import type { GetImageResult } from "astro";
+
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/lib/ui/accordion";
 
 interface Props {
   cover: GetImageResult;

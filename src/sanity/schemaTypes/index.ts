@@ -4,8 +4,9 @@ import post from "./post";
 import author from "./author";
 import images from "./images";
 import brandInformation from "./brandInformation";
+import faqs from "./faqs";
 import type { SchemaTypeDefinition } from "sanity";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [post, author, category, blockContent, images, brandInformation],
+  types: [post, author, category, blockContent, images, brandInformation, faqs],
 };

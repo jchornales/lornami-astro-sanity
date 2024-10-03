@@ -1,7 +1,7 @@
 ---
-import Envelope from "../../assets/icons/Envelope.astro";
-import Phone from "../../assets/icons/Phone.astro";
-import MapPin from "../../assets/icons/MapPin.astro";
+import Envelope from "../../lib/icons/Envelope.astro";
+import Phone from "../../lib/icons/Phone.astro";
+import MapPin from "../../lib/icons/MapPin.astro";
 import { useLoadQuery } from "../../sanity/lib/useLoadQuery";
 import type { SanityDocument } from "@sanity/client";
 import "@styles/Footer.css";
@@ -95,7 +95,10 @@ const socList = [
           (link) =>
             link.value && (
               <li>
-                <a class="capitalize tracking-wider" href={link.value}>
+                <a
+                  class="capitalize tracking-wider hover:text-primary"
+                  href={link.value}
+                >
                   {link.key}
                 </a>
               </li>

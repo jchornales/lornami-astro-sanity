@@ -1,0 +1,27 @@
+.faqs {
+  @apply font-montserrat relative grid w-full place-items-center bg-white p-12 text-sm font-normal text-gray-600 md:text-base;
+}
+
+.questions-wrapper {
+  @apply m-auto flex w-full max-w-5xl flex-col gap-5;
+}
+
+.faqs-header {
+  @apply flex w-full flex-col gap-3;
+}
+
+.faqs-header > .title {
+  @apply font-serif text-2xl font-bold tracking-wider text-black lg:text-4xl;
+}
+
+.contact-us-link {
+  @apply font-semibold text-primaryDark hover:text-primary;
+}
+
+.questions .item .trigger {
+  @apply font-serif text-lg font-semibold tracking-wider lg:text-xl;
+}
+
+.questions .item .content {
+  @apply text-sm text-gray-500 md:text-base;
+}

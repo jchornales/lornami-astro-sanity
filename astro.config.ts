@@ -16,7 +16,9 @@ export default defineConfig({
       studioBasePath: "/studio",
     }),
     react(),
-    tailwind(),
+    tailwind({
+      applyBaseStyles: false,
+    }),
   ],
   vite: {
     ssr: {

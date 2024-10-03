@@ -4,7 +4,7 @@ import "@styles/Highlights.css";
 import { useLoadQuery } from "../../sanity/lib/useLoadQuery";
 import { Image } from "astro:assets";
 import { useUrlForImage } from "../../sanity/lib/useUrlForImage";
-import ChevronDoubleDown from "../../assets/icons/ChevronDoubleDown.astro";
+import ChevronDoubleDown from "../../lib/icons/ChevronDoubleDown.astro";
 
 const { data: posts } = await useLoadQuery<SanityDocument[]>({
   query: `*[_type == "post"][0..15] | order(publishedAt desc)`,

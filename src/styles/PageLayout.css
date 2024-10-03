@@ -22,4 +22,15 @@
     font-weight: normal;
     font-style: normal;
   }
+
+  @font-face {
+    font-family: "Montserrat";
+    src: url("/fonts/Montserrat-Italic-VariableFont_wght") format("ttf");
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  :root {
+    --radius: 0.5rem;
+  }
 }

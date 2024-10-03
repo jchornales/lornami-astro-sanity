@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useStore } from "@nanostores/react";
-import { isMenuOpen } from "../../utils/useStateStore";
+import { isMenuOpen } from "../../lib/utils/useStateStore";
 import "@styles/MenuButton.css";
 import clsx from "clsx";
 import { disableBodyScroll, clearAllBodyScrollLocks } from "body-scroll-lock";
