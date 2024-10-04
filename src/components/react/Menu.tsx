@@ -5,13 +5,6 @@ import { isMenuOpen } from "@/lib/utils/useStateStore";
 import { clsx } from "clsx";
 import type { GetImageResult } from "astro";
 
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/lib/ui/accordion";
-
 interface Props {
   cover: GetImageResult;
 }

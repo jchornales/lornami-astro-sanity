@@ -36,6 +36,7 @@ export default {
       },
       letterSpacing: {
         widest: "0.2em",
+        banner: "0.8em",
       },
       maxWidth: {
         unset: "unset",

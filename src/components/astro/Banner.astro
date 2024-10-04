@@ -1,0 +1,23 @@
+---
+import { useLoadQuery } from "@/sanity/lib/useLoadQuery";
+import { useUrlForImage } from "@/sanity/lib/useUrlForImage";
+import type { SanityDocument } from "@sanity/client";
+import { getImage } from "astro:assets";
+import "@styles/Banner.css";
+
+const { data: images } = await useLoadQuery<SanityDocument[]>({
+  query: `*[_type == "images" && slug.current == "need-a-photographer-banner"]`,
+});
+
+const banner = await getImage({
+  src: useUrlForImage(images[0].image).url(),
+  format: "webp",
+  inferSize: true,
+});
+---
+
+<div class="banner-wrapper" style={{ backgroundImage: `url(${banner.src})` }}>
+  <p class="text --small">Need a photographer?</p>
+  <a href="#" class="text --large">Let's work together</a>
+  <div class="banner-overlay"></div>
+</div>

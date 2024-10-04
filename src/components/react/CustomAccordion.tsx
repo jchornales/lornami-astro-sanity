@@ -24,7 +24,11 @@ function CustomAccordion({
   return (
     <Accordion type="single" collapsible className={accordionClass}>
       {accordionItems.map((item, index) => (
-        <AccordionItem value={`item-${index}`} className={itemClass}>
+        <AccordionItem
+          key={index}
+          value={`item-${index}`}
+          className={itemClass}
+        >
           <AccordionTrigger className={triggerClass}>
             {item.question}
           </AccordionTrigger>
