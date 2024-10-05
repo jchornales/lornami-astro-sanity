@@ -31,5 +31,5 @@
 }
 
 .highlights-see-more button {
-  @apply pointer-events-auto px-8 py-2 tracking-wider hover:text-primary;
+  @apply pointer-events-auto px-8 py-2;
 }

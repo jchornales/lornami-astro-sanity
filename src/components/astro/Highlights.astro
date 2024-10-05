@@ -1,10 +1,10 @@
 ---
 import type { SanityDocument } from "@sanity/client";
 import "@styles/Highlights.css";
-import { useLoadQuery } from "../../sanity/lib/useLoadQuery";
 import { Image } from "astro:assets";
-import { useUrlForImage } from "../../sanity/lib/useUrlForImage";
-import ChevronDoubleDown from "../../lib/icons/ChevronDoubleDown.astro";
+import { useLoadQuery } from "@/sanity/lib/useLoadQuery";
+import { useUrlForImage } from "@/sanity/lib/useUrlForImage";
+import ChevronDown from "@/lib/icons/ChevronDown.astro";
 
 const { data: posts } = await useLoadQuery<SanityDocument[]>({
   query: `*[_type == "post"][0..15] | order(publishedAt desc)`,
@@ -37,8 +37,8 @@ const { data: posts } = await useLoadQuery<SanityDocument[]>({
     </div>
     <div class="highlights-see-more">
       <button class="group flex gap-2" data-button="see-more">
-        <ChevronDoubleDown
-          className="size-10 fill-black group-hover:fill-primary"
+        <ChevronDown
+          className="size-10 stroke-black group-hover:stroke-primary"
         />
       </button>
     </div>
@@ -51,7 +51,6 @@ const { data: posts } = await useLoadQuery<SanityDocument[]>({
   const seeMoreWrapper = document.querySelector(".highlights-see-more");
 
   moreButton?.addEventListener("click", () => {
-    console.log("test");
     galleryWrapper?.classList.toggle("max-h-screen");
     seeMoreWrapper?.classList.toggle("invisible");
   });

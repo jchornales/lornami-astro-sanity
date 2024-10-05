@@ -1,8 +1,8 @@
 ---
 import type { SanityDocument } from "@sanity/client";
-import { useLoadQuery } from "../../sanity/lib/useLoadQuery";
 import "@styles/Questions.css";
 import CustomAccordion from "../react/CustomAccordion";
+import { useLoadQuery } from "@/sanity/lib/useLoadQuery";
 
 const { data: questions } = await useLoadQuery<SanityDocument[]>({
   query: `*[_type == "faqs"][0..5] | order(publishedAt desc)`,

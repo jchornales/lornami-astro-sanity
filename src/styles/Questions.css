@@ -1,5 +1,5 @@
 .faqs {
-  @apply relative grid w-full place-items-center bg-white p-16 font-montserrat text-sm font-normal text-gray-600 md:text-base;
+  @apply relative z-30 grid w-full place-items-center bg-white p-16 font-montserrat text-sm font-normal text-gray-600 md:text-base;
 }
 
 .questions-wrapper {
@@ -19,7 +19,7 @@
 }
 
 .questions .item .trigger {
-  @apply font-serif text-lg font-semibold tracking-wider lg:text-xl;
+  @apply text-left font-serif text-lg font-semibold tracking-wider lg:text-xl;
 }
 
 .questions .item .content {

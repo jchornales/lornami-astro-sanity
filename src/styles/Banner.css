@@ -1,9 +1,9 @@
 .banner-overlay {
-  @apply absolute left-0 top-0 z-10 h-full min-h-[500px] w-full bg-black opacity-75 bg-blend-overlay;
+  @apply absolute left-0 top-0 z-10 h-full w-full bg-black opacity-75 bg-blend-overlay;
 }
 
 .banner-wrapper {
-  @apply relative z-20 flex min-h-[500px] w-full flex-col items-center justify-center gap-6 bg-cover bg-center bg-no-repeat;
+  @apply relative z-30 flex h-[300px] w-full flex-col items-center justify-center gap-6 bg-cover bg-center bg-no-repeat lg:h-[500px];
 }
 
 .banner-wrapper > .text {
@@ -11,9 +11,9 @@
 }
 
 .banner-wrapper > .text.--small {
-  @apply tracking-banner font-optitomaso font-bold uppercase;
+  @apply font-optitomaso text-xs font-bold uppercase tracking-banner md:text-base;
 }
 
 .banner-wrapper > .text.--large {
-  @apply font-serif text-7xl font-bold tracking-wider underline-offset-8 hover:underline;
+  @apply font-serif text-5xl font-bold tracking-wider underline-offset-8 hover:underline lg:text-7xl;
 }

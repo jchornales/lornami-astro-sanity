@@ -1,0 +1,45 @@
+---
+import ChevronDoubleDown from "@/lib/icons/ChevronDoubleDown.astro";
+import { useLoadQuery } from "@/sanity/lib/useLoadQuery";
+import { useUrlForImage } from "@/sanity/lib/useUrlForImage";
+import type { SanityDocument } from "@sanity/client";
+import { getImage } from "astro:assets";
+import "@styles/Hero.css";
+
+const { data: images } = await useLoadQuery<SanityDocument[]>({
+  query: `*[_type == "images" && slug.current == "hero-section"]`,
+});
+
+const cover = await getImage({
+  src: useUrlForImage(images[0].image).url(),
+  format: "webp",
+  inferSize: true,
+});
+---
+
+<section class="hero-section">
+  <div class="text-wrapper">
+    <h1 class="title">Obsess with details</h1>
+    <p class="subtitle">
+      We compel audience. Capture the moment. Light with purpose.
+    </p>
+  </div>
+  <div class="overlay"></div>
+  <div class="photo" style={{ backgroundImage: `url(${cover.src})` }}></div>
+  <div class="next-section">
+    <button class="group" data-button="next-section">
+      <ChevronDoubleDown
+        className="size-10 fill-cream group-hover:fill-primary"
+      />
+    </button>
+  </div>
+</section>
+
+<script>
+  const nextSection = document.querySelector("[data-button='next-section']");
+  const highlightSection = document.querySelector(".highlight-wrapper");
+
+  nextSection?.addEventListener("click", () => {
+    highlightSection?.scrollIntoView({ block: "start", behavior: "smooth" });
+  });
+</script>

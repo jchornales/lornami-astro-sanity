@@ -1,8 +1,8 @@
 import { useStore } from "@nanostores/react";
 import React from "react";
-import { isMenuOpen } from "../../lib/utils/useStateStore";
 import "@styles/BrandLogo.css";
 import clsx from "clsx";
+import { isMenuOpen } from "@/lib/utils/useStateStore";
 
 function BrandLogo() {
   const isOpen = useStore(isMenuOpen);

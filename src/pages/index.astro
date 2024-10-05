@@ -1,32 +1,15 @@
 ---
-import type { SanityDocument } from "@sanity/client";
 import PageLayout from "../layouts/PageLayout.astro";
-import { useLoadQuery } from "../sanity/lib/useLoadQuery";
-import { useUrlForImage } from "../sanity/lib/useUrlForImage";
 import "@styles/index.css";
-import { getImage } from "astro:assets";
 import Highlights from "components/astro/Highlights.astro";
 import Footer from "components/astro/Footer.astro";
 import Questions from "components/astro/Questions.astro";
 import Banner from "@/components/astro/Banner.astro";
-
-const { data: images } = await useLoadQuery<SanityDocument[]>({
-  query: `*[_type == "images" && slug.current == "hero-section"]`,
-});
-
-const cover = await getImage({
-  src: useUrlForImage(images[0].image).url(),
-  format: "webp",
-  inferSize: true,
-});
+import Hero from "@/components/astro/Hero.astro";
 ---
 
 <PageLayout title="Home Page">
-  <div class="cover-photo-wrapper">
-    <div class="cover-photo-overlay"></div>
-    <div class="cover-photo" style={{ backgroundImage: `url(${cover.src})` }}>
-    </div>
-  </div>
+  <Hero />
   <Highlights />
   <Banner />
   <Questions />
