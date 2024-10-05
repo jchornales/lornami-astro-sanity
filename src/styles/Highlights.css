@@ -31,5 +31,5 @@
 }
 
 .highlights-see-more button {
-  @apply pointer-events-auto px-8 py-2;
+  @apply pointer-events-auto px-8 py-2 transition-all hover:scale-125;
 }
