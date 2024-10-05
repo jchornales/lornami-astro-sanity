@@ -10,7 +10,10 @@
   @apply my-4 font-serif text-xl md:text-2xl;
 }
 
-body,
 html {
-  @apply bg-white scrollbar-thin scrollbar-track-cream scrollbar-thumb-primaryDark;
+  @apply scrollbar-thin scrollbar-track-cream scrollbar-thumb-primaryDark;
+}
+
+body {
+  @apply bg-white;
 }

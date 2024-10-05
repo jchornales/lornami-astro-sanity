@@ -10,6 +10,7 @@ interface StaggeredTextProps {
   easing?: string;
   staggerDelay?: number;
   className?: string;
+  shouldStart?: boolean;
 }
 
 function StaggeredText({
@@ -20,15 +21,17 @@ function StaggeredText({
   easing,
   staggerDelay,
   className,
+  shouldStart,
 }: StaggeredTextProps) {
   return (
     <span className={clsx(className, "text-white")}>
       <StaggerText
-        staggerDuration={duration}
+        staggerDuration={duration || 100}
         staggerType={type || "letter"}
-        startDelay={delay}
-        staggerDelay={staggerDelay}
-        staggerEasing={easing}
+        startDelay={delay || 0}
+        staggerDelay={staggerDelay || 0.04}
+        staggerEasing={easing || "ease-in"}
+        shouldStart={shouldStart || true}
       >
         {text}
       </StaggerText>

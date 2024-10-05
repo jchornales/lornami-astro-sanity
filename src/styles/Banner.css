@@ -11,7 +11,7 @@
 }
 
 .banner-wrapper > .text.--small {
-  @apply font-optitomaso text-xs font-bold uppercase tracking-banner md:text-base;
+  @apply pointer-events-none font-optitomaso text-xs font-bold uppercase tracking-banner md:text-base;
 }
 
 .banner-wrapper > .text.--large {

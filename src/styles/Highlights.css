@@ -1,5 +1,5 @@
 .highlights-section {
-  @apply bg-white pb-16;
+  @apply snap-center bg-white pb-16;
 }
 
 .highlights-section .author {
