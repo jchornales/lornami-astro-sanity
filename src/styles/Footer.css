@@ -3,7 +3,7 @@
 }
 
 .footer h3 {
-  @apply mb-6 font-optitomaso text-lg font-bold tracking-wider;
+  @apply pointer-events-none mb-6 font-optitomaso text-lg font-bold tracking-wider;
 }
 
 .contact-me {
@@ -12,6 +12,10 @@
 
 .detail {
   @apply flex items-center justify-start gap-2 py-1;
+}
+
+.services p {
+  @apply pointer-events-none;
 }
 
 .information-icon {
