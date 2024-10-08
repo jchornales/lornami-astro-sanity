@@ -1,7 +1,7 @@
 ---
 import type { SanityDocument } from "@sanity/client";
-import { useLoadQuery } from "../../sanity/lib/useLoadQuery";
-import { useUrlForImage } from "../../sanity/lib/useUrlForImage";
+import { useLoadQuery } from "@/sanity/lib/useLoadQuery";
+import { useUrlForImage } from "@/sanity/lib/useUrlForImage";
 
 export async function getStaticPaths() {
   const { data: posts } = await useLoadQuery<SanityDocument[]>({

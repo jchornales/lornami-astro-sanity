@@ -1,12 +1,12 @@
 ---
-import MenuButton from "../react/MenuButton";
+import MenuButton from "@components/react/MenuButton";
 import "@styles/Navigation.css";
-import Menu from "../react/Menu";
-import BrandLogo from "../react/BrandLogo";
-import { useLoadQuery } from "../../sanity/lib/useLoadQuery";
+import Menu from "@components/react/Menu";
+import BrandLogo from "@components/react/BrandLogo";
+import { useLoadQuery } from "@/sanity/lib/useLoadQuery";
 import type { SanityDocument } from "@sanity/client";
 import { getImage } from "astro:assets";
-import { useUrlForImage } from "../../sanity/lib/useUrlForImage";
+import { useUrlForImage } from "@/sanity/lib/useUrlForImage";
 
 const { data: images } = await useLoadQuery<SanityDocument[]>({
   query: `*[_type == "images" && slug.current == "menu-overlay"]`,

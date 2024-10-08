@@ -1,7 +1,7 @@
 ---
 import type { SanityDocument } from "@sanity/client";
 import "@styles/Questions.css";
-import CustomAccordion from "../react/CustomAccordion";
+import CustomAccordion from "@components/react/CustomAccordion";
 import { useLoadQuery } from "@/sanity/lib/useLoadQuery";
 
 const { data: questions } = await useLoadQuery<SanityDocument[]>({
