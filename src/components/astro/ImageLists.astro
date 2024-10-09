@@ -9,21 +9,19 @@ import useCompilePosts from "@/sanity/lib/useCompilePosts";
 import _ from "lodash";
 
 interface Props {
-  query?: string;
+  posts: SanityDocument[];
   displayAlbum?: boolean;
 }
 
-const { query, displayAlbum = false } = Astro.props;
+const { posts, displayAlbum = false } = Astro.props;
 
-const { data: posts } = await useLoadQuery<SanityDocument[]>({
-  query: query || `*[_type == "post"]`,
-});
 const compiledPost = useCompilePosts(posts, displayAlbum);
 let imageLists = _.shuffle(compiledPost);
 ---
 
 <div class="gallery-wrapper max-h-screen">
   <slot />
+
   <div class="image-lists">
     {
       imageLists.map((image) => (
@@ -34,6 +32,7 @@ let imageLists = _.shuffle(compiledPost);
               alt={image.alt}
               class="gallery-image"
               inferSize
+              loading={displayAlbum ? "eager" : "lazy"}
             />
           </a>
         </>

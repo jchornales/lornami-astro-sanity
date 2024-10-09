@@ -1,0 +1,14 @@
+---
+import { useLoadQuery } from "@/sanity/lib/useLoadQuery";
+import type { SanityDocument } from "@sanity/client";
+
+const { data: categories } = await useLoadQuery<SanityDocument[]>({
+  query: `*[_type == "category"]`,
+});
+---
+
+{
+  categories.map((category) => (
+    <a href={`${category.slug.current}`}>{category.title}</a>
+  ))
+}

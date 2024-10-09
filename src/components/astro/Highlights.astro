@@ -1,11 +1,15 @@
 ---
+import type { SanityDocument } from "@sanity/client";
 import ImageLists from "./ImageLists.astro";
+import { useLoadQuery } from "@/sanity/lib/useLoadQuery";
 
-const query = `*[_type == "post"][0..15] | order(publishedAt desc)`;
+const { data: posts } = await useLoadQuery<SanityDocument[]>({
+  query: `*[_type == "post"][0..15] | order(publishedAt desc)`,
+});
 ---
 
 <section class="section bg-white pb-16">
-  <ImageLists query={query}>
+  <ImageLists posts={posts}>
     <p class="section-sub-title">
       <q class="italic">
         If you don&#39;t think photos are important, wait until they&#39;re all

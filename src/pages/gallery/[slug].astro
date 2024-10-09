@@ -1,0 +1,55 @@
+---
+import CategoryFilter from "@/components/astro/CategoryFilter.astro";
+import GalleryBanner from "@/components/astro/GalleryBanner.astro";
+import ImageLists from "@/components/astro/ImageLists.astro";
+import PageLayout from "@/layouts/PageLayout.astro";
+import type { Slug } from "@/lib/generated/sanity.types";
+import { useLoadQuery } from "@/sanity/lib/useLoadQuery";
+import type { SanityDocument } from "@sanity/client";
+import { undefined } from "astro:schema";
+
+interface Pages {
+  slug?: Slug;
+  title: string;
+}
+
+export async function getStaticPaths() {
+  const { data: categories } = await useLoadQuery<SanityDocument[]>({
+    query: `*[_type == "category"]`,
+  });
+
+  return categories.map(({ slug }) => {
+    return {
+      params: {
+        slug: slug.current,
+      },
+    };
+  });
+}
+
+const { params } = Astro;
+
+const { data: posts } = await useLoadQuery<SanityDocument[]>({
+  query: `*[_type == "post" && $slug in categories[]->slug.current]{
+  title,
+  slug,
+  mainImage,
+  album,
+  categories[]-> {
+    title,
+    slug,
+  }
+}`,
+  params,
+});
+---
+
+<PageLayout title="Gallery">
+  <main class="min-h-screen">
+    <GalleryBanner posts={posts} />
+
+    <ImageLists posts={posts} displayAlbum>
+      <CategoryFilter />
+    </ImageLists>
+  </main>
+</PageLayout>
