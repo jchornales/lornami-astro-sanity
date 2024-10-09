@@ -5,6 +5,10 @@ import type { SanityDocument } from "@sanity/client";
 import { getImage } from "astro:assets";
 import SearchPhoto from "@components/react/SearchPhoto";
 
+interface Props {
+  posts: SanityDocument[];
+}
+
 const { data: images } = await useLoadQuery<SanityDocument[]>({
   query: `*[_type == "images" && slug.current == "gallery-banner"]`,
 });
@@ -14,6 +18,8 @@ const cover = await getImage({
   format: "webp",
   inferSize: true,
 });
+
+const { posts } = Astro.props;
 ---
 
 <div
@@ -28,7 +34,5 @@ const cover = await getImage({
     >
       {images[0].description}
     </h1>
-
-    <SearchPhoto />
   </div>
 </div>

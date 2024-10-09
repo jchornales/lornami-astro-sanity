@@ -1,0 +1,19 @@
+---
+import GalleryBanner from "@/components/astro/GalleryBanner.astro";
+import ImageLists from "@/components/astro/ImageLists.astro";
+import PageLayout from "@/layouts/PageLayout.astro";
+import { useLoadQuery } from "@/sanity/lib/useLoadQuery";
+import type { SanityDocument } from "@sanity/client";
+
+const { data: posts } = await useLoadQuery<SanityDocument[]>({
+  query: `*[_type == "post"]`,
+});
+---
+
+<PageLayout title="Gallery">
+  <main class="min-h-screen">
+    <GalleryBanner posts={posts} />
+
+    <ImageLists displayAlbum />
+  </main>
+</PageLayout>

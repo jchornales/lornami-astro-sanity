@@ -1,0 +1,61 @@
+---
+import ChevronDown from "@/lib/icons/ChevronDown.astro";
+import { useLoadQuery } from "@/sanity/lib/useLoadQuery";
+import { useUrlForImage } from "@/sanity/lib/useUrlForImage";
+import type { SanityDocument } from "@sanity/client";
+import { Image } from "astro:assets";
+import "@styles/ImageLists.css";
+import useCompilePosts from "@/sanity/lib/useCompilePosts";
+import _ from "lodash";
+
+interface Props {
+  query?: string;
+  displayAlbum?: boolean;
+}
+
+const { query, displayAlbum = false } = Astro.props;
+
+const { data: posts } = await useLoadQuery<SanityDocument[]>({
+  query: query || `*[_type == "post"]`,
+});
+const compiledPost = useCompilePosts(posts, displayAlbum);
+let imageLists = _.shuffle(compiledPost);
+---
+
+<div class="gallery-wrapper max-h-screen">
+  <slot />
+  <div class="image-lists">
+    {
+      imageLists.map((image) => (
+        <>
+          <a href={`post/${image.href}`} class="gallery-item">
+            <Image
+              src={useUrlForImage(image.url).url()}
+              alt={image.alt}
+              class="gallery-image"
+              inferSize
+            />
+          </a>
+        </>
+      ))
+    }
+  </div>
+  <div class="gallery-see-more">
+    <button class="group flex gap-2" data-button="see-more">
+      <ChevronDown
+        className="size-10 stroke-black group-hover:stroke-primary"
+      />
+    </button>
+  </div>
+</div>
+
+<script>
+  const moreButton = document.querySelector("[data-button='see-more']");
+  const galleryWrapper = document.querySelector(".gallery-wrapper");
+  const seeMoreWrapper = document.querySelector(".gallery-see-more");
+
+  moreButton?.addEventListener("click", () => {
+    galleryWrapper?.classList.toggle("max-h-screen");
+    seeMoreWrapper?.classList.toggle("invisible");
+  });
+</script>

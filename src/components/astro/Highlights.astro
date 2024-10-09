@@ -1,57 +1,17 @@
 ---
-import type { SanityDocument } from "@sanity/client";
-import "@styles/Highlights.css";
-import { Image } from "astro:assets";
-import { useLoadQuery } from "@/sanity/lib/useLoadQuery";
-import { useUrlForImage } from "@/sanity/lib/useUrlForImage";
-import ChevronDown from "@/lib/icons/ChevronDown.astro";
+import ImageLists from "./ImageLists.astro";
 
-const { data: posts } = await useLoadQuery<SanityDocument[]>({
-  query: `*[_type == "post"][0..15] | order(publishedAt desc)`,
-});
+const query = `*[_type == "post"][0..15] | order(publishedAt desc)`;
 ---
 
-<section class="highlights-section section">
-  <div class="highlight-wrapper max-h-screen">
+<section class="section bg-white pb-16">
+  <ImageLists query={query}>
     <p class="section-sub-title">
-      <q class="quotes">
+      <q class="italic">
         If you don&#39;t think photos are important, wait until they&#39;re all
         you have left.
       </q>
-      <span class="author"> &#45; Missy Mwac </span>
+      <span class="font-semibold"> &#45; Missy Mwac </span>
     </p>
-
-    <div class="highlights-gallery">
-      {
-        posts.map((post) => (
-          <a href={`post/${post.slug.current}`} class="highlights-gallery-item">
-            <Image
-              src={useUrlForImage(post.mainImage).url()}
-              alt={post.title}
-              class="highlights-gallery-image"
-              inferSize
-            />
-          </a>
-        ))
-      }
-    </div>
-    <div class="highlights-see-more">
-      <button class="group flex gap-2" data-button="see-more">
-        <ChevronDown
-          className="size-10 stroke-black group-hover:stroke-primary"
-        />
-      </button>
-    </div>
-  </div>
+  </ImageLists>
 </section>
-
-<script>
-  const moreButton = document.querySelector("[data-button='see-more']");
-  const galleryWrapper = document.querySelector(".highlight-wrapper");
-  const seeMoreWrapper = document.querySelector(".highlights-see-more");
-
-  moreButton?.addEventListener("click", () => {
-    galleryWrapper?.classList.toggle("max-h-screen");
-    seeMoreWrapper?.classList.toggle("invisible");
-  });
-</script>
