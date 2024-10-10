@@ -7,7 +7,7 @@ export interface List {
   url: SanityAsset;
 }
 
-function useCompilePosts(posts: SanityDocument[], includeAlbum: boolean) {
+function useCompilePosts(posts: SanityDocument[], includeAlbum?: boolean) {
   const list: List[] = [];
   posts.map((post) => {
     list.push({

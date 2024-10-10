@@ -9,7 +9,7 @@ const { data: posts } = await useLoadQuery<SanityDocument[]>({
 ---
 
 <section class="section bg-white pb-16">
-  <ImageLists posts={posts}>
+  <ImageLists posts={posts} displaySeeMore={true}>
     <p class="section-sub-title">
       <q class="italic">
         If you don&#39;t think photos are important, wait until they&#39;re all

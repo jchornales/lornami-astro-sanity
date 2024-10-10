@@ -11,15 +11,18 @@ import _ from "lodash";
 interface Props {
   posts: SanityDocument[];
   displayAlbum?: boolean;
+  displaySeeMore?: boolean;
 }
 
-const { posts, displayAlbum = false } = Astro.props;
+const { posts, displayAlbum, displaySeeMore } = Astro.props;
 
 const compiledPost = useCompilePosts(posts, displayAlbum);
 let imageLists = _.shuffle(compiledPost);
 ---
 
-<div class="gallery-wrapper max-h-screen">
+<div
+  class:list={["gallery-wrapper", displaySeeMore ? "max-h-screen" : "h-auto"]}
+>
   <slot />
 
   <div class="image-lists">
@@ -32,20 +35,21 @@ let imageLists = _.shuffle(compiledPost);
               alt={image.alt}
               class="gallery-image"
               inferSize
-              loading={displayAlbum ? "eager" : "lazy"}
             />
           </a>
         </>
       ))
     }
   </div>
-  <div class="gallery-see-more">
-    <button class="group flex gap-2" data-button="see-more">
-      <ChevronDown
-        className="size-10 stroke-black group-hover:stroke-primary"
-      />
-    </button>
-  </div>
+  {
+    displaySeeMore && (
+      <div class="gallery-see-more">
+        <button class="group flex gap-2" data-button="see-more">
+          <ChevronDown className="size-10 stroke-black group-hover:stroke-primary" />
+        </button>
+      </div>
+    )
+  }
 </div>
 
 <script>

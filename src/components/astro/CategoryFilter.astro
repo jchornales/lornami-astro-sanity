@@ -1,14 +1,25 @@
 ---
+import { Button } from "@/lib/ui/button";
 import { useLoadQuery } from "@/sanity/lib/useLoadQuery";
 import type { SanityDocument } from "@sanity/client";
+
+interface Props {
+  baseURL?: string;
+}
 
 const { data: categories } = await useLoadQuery<SanityDocument[]>({
   query: `*[_type == "category"]`,
 });
+
+const { baseURL = "" } = Astro.props;
 ---
 
-{
-  categories.map((category) => (
-    <a href={`${category.slug.current}`}>{category.title}</a>
-  ))
-}
+<div class="justify-left flex w-full items-center gap-5">
+  {
+    categories.map((category) => (
+      <Button variant="outline">
+        <a href={`${baseURL}${category.slug.current}`}>{category.title} </a>
+      </Button>
+    ))
+  }
+</div>
