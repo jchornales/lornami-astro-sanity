@@ -18,7 +18,12 @@ const { baseURL = "" } = Astro.props;
   {
     categories.map((category) => (
       <Button variant="outline">
-        <a href={`${baseURL}${category.slug.current}`}>{category.title} </a>
+        <a
+          class="font-montserrat font-bold"
+          href={`${baseURL}${category.slug.current}`}
+        >
+          {category.title}
+        </a>
       </Button>
     ))
   }

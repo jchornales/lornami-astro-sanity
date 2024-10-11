@@ -5,6 +5,7 @@ export interface List {
   href: string;
   alt: string;
   url: SanityAsset;
+  createdAt: string;
 }
 
 function useCompilePosts(posts: SanityDocument[], includeAlbum?: boolean) {
@@ -14,6 +15,7 @@ function useCompilePosts(posts: SanityDocument[], includeAlbum?: boolean) {
       href: post.slug.current,
       alt: post.title,
       url: post.mainImage,
+      createdAt: post._createdAt,
     });
 
     includeAlbum &&
@@ -22,6 +24,7 @@ function useCompilePosts(posts: SanityDocument[], includeAlbum?: boolean) {
           href: post.slug.current,
           alt: post.title,
           url: image,
+          createdAt: post._createdAt,
         }),
       );
   });

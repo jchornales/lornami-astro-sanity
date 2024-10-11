@@ -28,16 +28,18 @@ let imageLists = _.shuffle(compiledPost);
   <div class="image-lists">
     {
       imageLists.map((image) => (
-        <>
-          <a href={`post/${image.href}`} class="gallery-item">
-            <Image
-              src={useUrlForImage(image.url).url()}
-              alt={image.alt}
-              class="gallery-image"
-              inferSize
-            />
-          </a>
-        </>
+        <a
+          href={`post/${image.href}`}
+          class="gallery-item"
+          data-title={image.alt}
+        >
+          <Image
+            src={useUrlForImage(image.url).url()}
+            alt={image.alt}
+            class="gallery-image"
+            inferSize
+          />
+        </a>
       ))
     }
   </div>

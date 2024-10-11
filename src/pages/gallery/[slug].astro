@@ -2,6 +2,7 @@
 import CategoryFilter from "@/components/astro/CategoryFilter.astro";
 import GalleryBanner from "@/components/astro/GalleryBanner.astro";
 import ImageLists from "@/components/astro/ImageLists.astro";
+import Sort from "@/components/react/Sort";
 import PageLayout from "@/layouts/PageLayout.astro";
 import type { Slug } from "@/lib/generated/sanity.types";
 import { useLoadQuery } from "@/sanity/lib/useLoadQuery";
@@ -29,10 +30,17 @@ const { data: posts } = await useLoadQuery<SanityDocument[]>({
   slug,
   mainImage,
   album,
+  author->{
+    name,
+    slug,
+    image,
+    bio
+  },
   categories[]-> {
     title,
     slug,
-  }
+  },
+  publishedAt
 }`,
   params,
 });
@@ -43,7 +51,10 @@ const { data: posts } = await useLoadQuery<SanityDocument[]>({
     <GalleryBanner posts={posts} />
     <section class="section py-16">
       <ImageLists posts={posts} displayAlbum>
-        <CategoryFilter />
+        <div class="flex w-full justify-between">
+          <CategoryFilter />
+          <Sort client:load posts={posts} />
+        </div>
       </ImageLists>
     </section>
   </main>
