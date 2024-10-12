@@ -2,7 +2,6 @@ import { Button } from "@/lib/ui/button";
 import { filterPost } from "@/lib/utils/useStateStore";
 import { useStore } from "@nanostores/react";
 import type { SanityDocument } from "@sanity/client";
-import _ from "lodash";
 
 interface Props {
   categories: SanityDocument[];
