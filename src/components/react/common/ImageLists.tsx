@@ -26,6 +26,8 @@ function ImageLists({ posts, displaySeeMore }: Props) {
       setPostList(
         posts.filter((post) => _.some(post.categories, { title: filter })),
       );
+    } else {
+      setPostList(posts);
     }
   }, [filter]);
 
