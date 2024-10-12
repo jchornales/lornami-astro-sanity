@@ -1,4 +1,3 @@
-import type { CompiledPost } from "@/sanity/lib/useCompilePosts";
 import { atom } from "nanostores";
 
 export const isMenuOpen = atom(false);

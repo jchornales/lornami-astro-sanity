@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import "@styles/ImageLists.css";
 import { useStore } from "@nanostores/react";
 import { filterPost, shouldSeeMore, sortPost } from "@/lib/utils/useStateStore";
-import { orderBy, some } from "lodash";
+import _ from "lodash";
 import type { CompiledPost } from "@/sanity/lib/useCompilePosts";
 import { SORT_VALUE } from "@/lib/enums/sortValue";
 import SeeMore from "./SeeMore";
@@ -24,7 +24,7 @@ function ImageLists({ posts, displaySeeMore }: Props) {
   useEffect(() => {
     if (filter) {
       setPostList(
-        posts.filter((post) => some(post.categories, { title: filter })),
+        posts.filter((post) => _.some(post.categories, { title: filter })),
       );
     } else {
       setPostList(posts);
@@ -33,16 +33,16 @@ function ImageLists({ posts, displaySeeMore }: Props) {
 
   useEffect(() => {
     if (sort === SORT_VALUE.NEWEST) {
-      setPostList((posts) => orderBy(posts, "createdAt", "desc"));
+      setPostList((posts) => _.orderBy(posts, "createdAt", "desc"));
     }
     if (sort === SORT_VALUE.OLDEST) {
-      setPostList((posts) => orderBy(posts, "createdAt", "asc"));
+      setPostList((posts) => _.orderBy(posts, "createdAt", "asc"));
     }
     if (sort === SORT_VALUE.TITLE_DESC) {
-      setPostList((posts) => orderBy(posts, "href", "desc"));
+      setPostList((posts) => _.orderBy(posts, "href", "desc"));
     }
     if (sort === SORT_VALUE.TITLE_ASC) {
-      setPostList((posts) => orderBy(posts, "href", "asc"));
+      setPostList((posts) => _.orderBy(posts, "href", "asc"));
     }
   }, [sort]);
 
