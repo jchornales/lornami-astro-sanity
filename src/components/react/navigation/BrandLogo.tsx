@@ -2,19 +2,21 @@ import { useStore } from "@nanostores/react";
 import React from "react";
 import "@styles/BrandLogo.css";
 import clsx from "clsx";
-import { isMenuOpen } from "@/lib/utils/useStateStore";
+import { isBackgroundDark, isMenuOpen } from "@/lib/utils/useStateStore";
 
 function BrandLogo() {
   const isOpen = useStore(isMenuOpen);
+  const shouldTransformNav = useStore(isBackgroundDark);
   return (
-    <a href="/" className={clsx("brand-label", "group", isOpen && "opened")}>
-      <span
-        className={
-          isOpen ? "group-hover:text-cream" : "group-hover:text-primary"
-        }
-      >
-        LORNAMI
-      </span>
+    <a
+      href="/"
+      className={clsx(
+        "brand-label",
+        isOpen && "opened",
+        shouldTransformNav ? "light" : "dark",
+      )}
+    >
+      LORNAMI
     </a>
   );
 }

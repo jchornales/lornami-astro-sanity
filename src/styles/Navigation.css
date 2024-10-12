@@ -1,3 +1,19 @@
 .navigation-bar {
-  @apply absolute left-0 top-0 z-40 flex w-full justify-between p-4 align-middle md:p-8;
+  @apply fixed left-0 top-0 z-40 flex w-full justify-between p-4 align-middle md:p-8;
+}
+
+.nav.right-column {
+  @apply z-40 flex w-1/2 justify-end gap-5 align-middle;
+}
+
+.nav.book-now {
+  @apply font-montserrat text-base font-semibold leading-4 tracking-wider transition-all delay-200 duration-700 ease-out;
+}
+
+.nav .book-now.light {
+  @apply text-white;
+}
+
+.nav .book-now.dark {
+  @apply text-black delay-0 duration-100;
 }

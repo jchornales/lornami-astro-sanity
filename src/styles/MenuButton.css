@@ -3,7 +3,25 @@
 }
 
 .line {
-  @apply block h-line w-full bg-cream transition duration-700 ease-in-out;
+  @apply block h-line w-full transition duration-700 ease-in-out;
+}
+
+.menu-button.light .line {
+  @apply bg-white;
+}
+
+.menu-button.light .line.--second::before,
+.menu-button.light .line.--second::after {
+  @apply bg-white;
+}
+
+.menu-button.dark .line {
+  @apply bg-black delay-0 duration-100;
+}
+
+.menu-button.dark .line.--second::before,
+.menu-button.dark .line.--second::after {
+  @apply bg-black delay-0 duration-100;
 }
 
 .closed > .--first {
@@ -16,21 +34,12 @@
 
 .--second::before,
 .--second::after {
-  @apply transition duration-700 ease-in-out;
-}
-
-.--second {
-  @apply flex flex-row bg-transparent;
-}
-
-.--second::before {
-  @apply h-line w-1/2 bg-cream;
+  @apply h-line w-1/2 transition duration-700 ease-in-out;
   content: "";
 }
 
-.--second::after {
-  @apply h-line w-1/2 bg-cream;
-  content: "";
+.line.--second {
+  @apply flex flex-row bg-transparent !important;
 }
 
 .opened > .--second:before {

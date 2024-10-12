@@ -1,7 +1,15 @@
 .brand-label {
-  @apply cursor-pointer font-optitomaso text-2xl font-black tracking-widest text-cream transition-all delay-600 duration-700 ease-out hover:text-primary md:text-3xl;
+  @apply cursor-pointer font-optitomaso text-2xl font-black tracking-widest text-cream transition-all ease-out hover:text-primary hover:delay-0 hover:duration-100 md:text-3xl;
 }
 
 .brand-label.opened {
-  @apply text-black delay-300;
+  @apply text-black delay-600 duration-700 hover:text-white hover:delay-0 hover:duration-100;
+}
+
+.brand-label.light {
+  @apply text-white;
+}
+
+.brand-label.dark {
+  @apply text-black;
 }

@@ -3,7 +3,6 @@ import { useLoadQuery } from "@/sanity/lib/useLoadQuery";
 import { useUrlForImage } from "@/sanity/lib/useUrlForImage";
 import type { SanityDocument } from "@sanity/client";
 import { getImage } from "astro:assets";
-import SearchPhoto from "@/components/react/common/SearchPhoto";
 
 interface Props {
   posts: SanityDocument[];
@@ -18,8 +17,6 @@ const cover = await getImage({
   format: "webp",
   inferSize: true,
 });
-
-const { posts } = Astro.props;
 ---
 
 <div

@@ -3,15 +3,18 @@ import { useStore } from "@nanostores/react";
 import "@styles/MenuButton.css";
 import clsx from "clsx";
 import { disableBodyScroll, clearAllBodyScrollLocks } from "body-scroll-lock";
-import { isMenuOpen } from "@/lib/utils/useStateStore";
+import { isBackgroundDark, isMenuOpen } from "@/lib/utils/useStateStore";
 
 function MenuButton() {
   const isOpen = useStore(isMenuOpen);
+  const shouldTransformNav = useStore(isBackgroundDark);
 
   useEffect(() => {
     if (isOpen) {
       disableBodyScroll(document.body);
+      isBackgroundDark.set(false);
     } else {
+      isBackgroundDark.set(true);
       setTimeout(() => {
         clearAllBodyScrollLocks();
       }, 800);
@@ -20,7 +23,11 @@ function MenuButton() {
 
   return (
     <button
-      className={clsx("menu-button group", isOpen ? "opened" : "closed")}
+      className={clsx(
+        "menu-button group",
+        isOpen ? "opened" : "closed",
+        shouldTransformNav ? "light" : "dark",
+      )}
       onClick={() => isMenuOpen.set(!isOpen)}
     >
       <span className="line --first"></span>

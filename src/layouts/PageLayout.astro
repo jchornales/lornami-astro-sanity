@@ -1,13 +1,27 @@
 ---
 import Footer from "@/components/astro/Footer.astro";
-import Navigation from "../components/astro/Navigation.astro";
+import Navigation from "@/components/react/navigation/Navigation";
+import { useLoadQuery } from "@/sanity/lib/useLoadQuery";
+import { useUrlForImage } from "@/sanity/lib/useUrlForImage";
+import type { SanityDocument } from "@sanity/client";
 import "@styles/PageLayout.css";
+import { getImage } from "astro:assets";
 
 interface Props {
   title: string;
 }
 
 const { title } = Astro.props;
+
+const { data: images } = await useLoadQuery<SanityDocument[]>({
+  query: `*[_type == "images" && slug.current == "menu-overlay"]`,
+});
+
+const optimizedBackground = await getImage({
+  src: useUrlForImage(images[0].image).url(),
+  format: "webp",
+  inferSize: true,
+});
 ---
 
 <html lang="en">
@@ -19,7 +33,7 @@ const { title } = Astro.props;
     <title>{title} || Lornami Studio</title>
   </head>
   <body class="relative w-full">
-    <Navigation />
+    <Navigation client:load cover={optimizedBackground} />
     <slot />
     <Footer />
   </body>
