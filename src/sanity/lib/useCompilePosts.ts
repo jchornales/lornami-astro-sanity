@@ -1,21 +1,24 @@
 import type { SanityDocument } from "@sanity/client";
 import type { SanityAsset } from "@sanity/image-url/lib/types/types";
 
-export interface List {
+export interface CompiledPost {
   href: string;
   alt: string;
   url: SanityAsset;
   createdAt: string;
+  categories: any[];
 }
 
 function useCompilePosts(posts: SanityDocument[], includeAlbum?: boolean) {
-  const list: List[] = [];
+  const list: CompiledPost[] = [];
+
   posts.map((post) => {
     list.push({
       href: post.slug.current,
       alt: post.title,
       url: post.mainImage,
-      createdAt: post._createdAt,
+      createdAt: post.publishedAt,
+      categories: post.categories,
     });
 
     includeAlbum &&
@@ -25,6 +28,7 @@ function useCompilePosts(posts: SanityDocument[], includeAlbum?: boolean) {
           alt: post.title,
           url: image,
           createdAt: post._createdAt,
+          categories: post.categories,
         }),
       );
   });

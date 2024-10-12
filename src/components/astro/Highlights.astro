@@ -1,21 +1,23 @@
 ---
 import type { SanityDocument } from "@sanity/client";
-import ImageLists from "./ImageLists.astro";
 import { useLoadQuery } from "@/sanity/lib/useLoadQuery";
+import ImageLists from "../react/common/ImageLists";
+import useCompilePosts from "@/sanity/lib/useCompilePosts";
 
 const { data: posts } = await useLoadQuery<SanityDocument[]>({
   query: `*[_type == "post"][0..15] | order(publishedAt desc)`,
 });
+
+const compiledPosts = useCompilePosts(posts, false);
 ---
 
 <section class="section bg-white pb-16">
-  <ImageLists posts={posts} displaySeeMore={true}>
-    <p class="section-sub-title">
-      <q class="italic">
-        If you don&#39;t think photos are important, wait until they&#39;re all
-        you have left.
-      </q>
-      <span class="font-semibold"> &#45; Missy Mwac </span>
-    </p>
-  </ImageLists>
+  <p class="section-sub-title">
+    <q class="italic">
+      If you don&#39;t think photos are important, wait until they&#39;re all
+      you have left.
+    </q>
+    <span class="font-semibold"> &#45; Missy Mwac </span>
+  </p>
+  <ImageLists client:load posts={compiledPosts} displaySeeMore />
 </section>

@@ -3,7 +3,7 @@ import { useLoadQuery } from "@/sanity/lib/useLoadQuery";
 import { useUrlForImage } from "@/sanity/lib/useUrlForImage";
 import type { SanityDocument } from "@sanity/client";
 import { getImage } from "astro:assets";
-import SearchPhoto from "@components/react/SearchPhoto";
+import SearchPhoto from "@/components/react/common/SearchPhoto";
 
 interface Props {
   posts: SanityDocument[];

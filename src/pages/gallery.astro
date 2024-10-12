@@ -1,0 +1,43 @@
+---
+import GalleryBanner from "@/components/astro/GalleryBanner.astro";
+import CategoryFilter from "@/components/react/common/CategoryFilter";
+import ImageLists from "@/components/react/common/ImageLists";
+import Sort from "@/components/react/common/Sort";
+import PageLayout from "@/layouts/PageLayout.astro";
+import useCompilePosts from "@/sanity/lib/useCompilePosts";
+import { useLoadQuery } from "@/sanity/lib/useLoadQuery";
+import type { SanityDocument } from "@sanity/client";
+
+const { data: posts } = await useLoadQuery<SanityDocument[]>({
+  query: `*[_type == "post"]{
+  ...,
+  author->{
+    name,
+    slug,
+    image,
+    bio
+  },
+  categories[]-> {
+    title,
+    slug,
+  },
+}`,
+});
+
+const { data: categories } = await useLoadQuery<SanityDocument[]>({
+  query: `*[_type == "category"]`,
+});
+
+const compiledPosts = useCompilePosts(posts, true);
+---
+
+<PageLayout title="Gallery">
+  <GalleryBanner posts={posts} />
+  <section class="section py-16">
+    <div class="m-auto flex w-full max-w-7xl justify-between">
+      <CategoryFilter client:load categories={categories} />
+      <Sort client:load />
+    </div>
+    <ImageLists client:load posts={compiledPosts} displayAlbum />
+  </section>
+</PageLayout>
