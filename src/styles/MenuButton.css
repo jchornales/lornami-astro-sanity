@@ -42,18 +42,18 @@
   @apply flex flex-row bg-transparent !important;
 }
 
-.opened > .--second:before {
+.opened > .line.--second:before {
   @apply -translate-x-full bg-black opacity-0;
 }
 
-.opened > .--second:after {
+.opened > .line.--second:after {
   @apply translate-x-full bg-black opacity-0;
 }
 
-.opened > .--first {
+.opened > .line.--first {
   @apply translate-y-[8px] rotate-[135deg] bg-black;
 }
 
-.opened > .--third {
+.opened > .line.--third {
   @apply translate-y-[-8px] rotate-[45deg] bg-black;
 }

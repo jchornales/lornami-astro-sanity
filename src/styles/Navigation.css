@@ -10,6 +10,10 @@
   @apply font-montserrat text-base font-semibold leading-4 tracking-wider transition-all delay-200 duration-700 ease-out;
 }
 
+.nav .book-now.opened {
+  @apply text-black !important;
+}
+
 .nav .book-now.light {
   @apply text-white;
 }

@@ -16,7 +16,11 @@ const banner = await getImage({
 });
 ---
 
-<div class="banner-wrapper" style={{ backgroundImage: `url(${banner.src})` }}>
+<div
+  class="banner-wrapper"
+  data-attribute="dark"
+  style={{ backgroundImage: `url(${banner.src})` }}
+>
   <p class="text --small">Need a photographer?</p>
   <a href="#" class="text --large">Let's work together</a>
   <div class="banner-overlay"></div>

@@ -8,11 +8,18 @@ import { useStore } from "@nanostores/react";
 import { isBackgroundDark, isMenuOpen } from "@/lib/utils/useStateStore";
 import clsx from "clsx";
 import type { GetImageResult } from "astro";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import _ from "lodash";
 
 interface NavigationProps {
   cover: GetImageResult;
 }
+
+const observerOptions = {
+  root: null, // Use the viewport as the root
+  rootMargin: "0px",
+  threshold: 0, // Trigger callback when any part of the target is visible
+};
 
 function Navigation({ cover }: NavigationProps) {
   const isOpen = useStore(isMenuOpen);
@@ -20,19 +27,19 @@ function Navigation({ cover }: NavigationProps) {
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
-      const entry = entries[0];
-      isBackgroundDark.set(entry.isIntersecting);
+      const isInView = _.some(entries, { isIntersecting: true });
+      isBackgroundDark.set(isInView);
+    }, observerOptions);
+
+    const targetElement = document.querySelectorAll("[data-attribute='dark']");
+    targetElement.forEach((element) => {
+      if (element) observer.observe(element);
     });
 
-    const targetElement = document.querySelector(".hero-section");
-    if (targetElement) {
-      observer.observe(targetElement);
-    }
-
     return () => {
-      if (targetElement) {
-        observer.unobserve(targetElement);
-      }
+      targetElement.forEach((element) => {
+        if (element) observer.unobserve(element);
+      });
     };
   }, [shouldTransformNav]);
 
@@ -47,7 +54,7 @@ function Navigation({ cover }: NavigationProps) {
             variant="link"
             className={clsx(
               "nav book-now",
-              isOpen && "open",
+              isOpen && "opened",
               shouldTransformNav ? "light" : "dark",
             )}
           >

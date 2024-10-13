@@ -3,7 +3,7 @@
 }
 
 .brand-label.opened {
-  @apply text-black delay-600 duration-700 hover:text-white hover:delay-0 hover:duration-100;
+  @apply text-black delay-600 duration-700 hover:text-white hover:delay-0 hover:duration-100 !important;
 }
 
 .brand-label.light {

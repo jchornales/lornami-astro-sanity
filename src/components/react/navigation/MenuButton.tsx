@@ -12,9 +12,7 @@ function MenuButton() {
   useEffect(() => {
     if (isOpen) {
       disableBodyScroll(document.body);
-      isBackgroundDark.set(false);
     } else {
-      isBackgroundDark.set(true);
       setTimeout(() => {
         clearAllBodyScrollLocks();
       }, 800);
