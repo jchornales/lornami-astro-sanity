@@ -13,9 +13,9 @@
     "generate:schema": "cd ./src/generated/ && sanity typegen generate"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.3",
+    "@astrojs/check": "^0.9.4",
     "@astrojs/react": "^3.6.2",
-    "@astrojs/tailwind": "^5.1.1",
+    "@astrojs/tailwind": "^5.1.2",
     "@nanostores/react": "^0.7.3",
     "@radix-ui/react-accordion": "^1.2.1",
     "@radix-ui/react-select": "^2.1.2",
@@ -28,7 +28,7 @@
     "@types/lodash": "^4.17.10",
     "@types/react": "^18.3.7",
     "@types/react-dom": "^18.3.0",
-    "astro": "^4.15.7",
+    "astro": "^4.16.2",
     "body-scroll-lock": "^4.0.0-beta.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
