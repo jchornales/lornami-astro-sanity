@@ -26,6 +26,10 @@ function Navigation({ cover }: NavigationProps) {
   const shouldTransformNav = useStore(isBackgroundDark);
 
   useEffect(() => {
+    isBackgroundDark.set(false);
+  }, []);
+
+  useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       const isInView = _.some(entries, { isIntersecting: true });
       isBackgroundDark.set(isInView);
