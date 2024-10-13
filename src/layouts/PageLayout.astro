@@ -9,9 +9,10 @@ import { getImage } from "astro:assets";
 
 interface Props {
   title: string;
+  disableTransform: boolean;
 }
 
-const { title } = Astro.props;
+const { title, disableTransform } = Astro.props;
 
 const { data: images } = await useLoadQuery<SanityDocument[]>({
   query: `*[_type == "images" && slug.current == "menu-overlay"]`,
@@ -33,7 +34,11 @@ const optimizedBackground = await getImage({
     <title>{title} || Lornami Studio</title>
   </head>
   <body class="relative w-full">
-    <Navigation client:load cover={optimizedBackground} />
+    <Navigation
+      client:load
+      cover={optimizedBackground}
+      disableTransform={disableTransform}
+    />
     <slot />
     <Footer />
   </body>

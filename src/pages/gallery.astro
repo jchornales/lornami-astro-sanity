@@ -31,7 +31,7 @@ const { data: categories } = await useLoadQuery<SanityDocument[]>({
 const compiledPosts = useCompilePosts(posts, true);
 ---
 
-<PageLayout title="Gallery">
+<PageLayout title="Gallery" disableTransform={false}>
   <GalleryBanner posts={posts} />
   <section class="section py-16">
     <div class="m-auto flex w-full max-w-7xl justify-between">

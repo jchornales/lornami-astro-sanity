@@ -13,6 +13,7 @@ import _ from "lodash";
 
 interface NavigationProps {
   cover: GetImageResult;
+  disableTransform: boolean;
 }
 
 const observerOptions = {
@@ -21,7 +22,7 @@ const observerOptions = {
   threshold: 0, // Trigger callback when any part of the target is visible
 };
 
-function Navigation({ cover }: NavigationProps) {
+function Navigation({ cover, disableTransform }: NavigationProps) {
   const isOpen = useStore(isMenuOpen);
   const shouldTransformNav = useStore(isBackgroundDark);
 
@@ -53,6 +54,7 @@ function Navigation({ cover }: NavigationProps) {
         className={clsx(
           "navigation-bar",
           shouldTransformNav ? "bg-transparent" : "bg-primary bg-opacity-85",
+          disableTransform && "bg-transparent",
         )}
       >
         <div className="z-40 w-1/2">
@@ -64,7 +66,7 @@ function Navigation({ cover }: NavigationProps) {
             className={clsx(
               "nav book-now",
               isOpen && "opened",
-              shouldTransformNav ? "light" : "dark",
+              shouldTransformNav && !disableTransform ? "light" : "dark",
             )}
           >
             <a className="mix-blend-difference" href="/">
