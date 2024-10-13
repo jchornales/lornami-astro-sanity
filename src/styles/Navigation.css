@@ -1,5 +1,5 @@
 .navigation-bar {
-  @apply fixed left-0 top-0 z-40 flex w-full justify-between p-4 align-middle md:p-8;
+  @apply fixed left-0 top-0 z-40 flex w-full justify-between p-4 align-middle transition-all delay-0 duration-100 md:p-8;
 }
 
 .nav.right-column {

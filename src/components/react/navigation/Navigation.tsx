@@ -45,7 +45,12 @@ function Navigation({ cover }: NavigationProps) {
 
   return (
     <>
-      <div className="navigation-bar">
+      <div
+        className={clsx(
+          "navigation-bar",
+          shouldTransformNav ? "bg-transparent" : "bg-primary bg-opacity-85",
+        )}
+      >
         <div className="z-40 w-1/2">
           <BrandLogo />
         </div>
