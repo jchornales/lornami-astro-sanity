@@ -9,9 +9,11 @@ import Hero from "@/components/astro/Hero.astro";
 
 <PageLayout title="Home Page" disableTransform={false}>
   <Hero />
-  <Highlights />
-  <Banner />
-  <Questions />
+  <div class="relative z-30 bg-white">
+    <Highlights />
+    <Banner />
+    <Questions />
+  </div>
 </PageLayout>
 
 <script></script>

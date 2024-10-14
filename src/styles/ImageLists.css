@@ -1,5 +1,5 @@
 .gallery-wrapper {
-  @apply relative mx-auto max-w-7xl overflow-hidden;
+  @apply relative mx-auto h-full max-w-7xl overflow-hidden;
 }
 
 .image-lists {

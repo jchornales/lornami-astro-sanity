@@ -19,7 +19,7 @@ interface NavigationProps {
 const observerOptions = {
   root: null, // Use the viewport as the root
   rootMargin: "0px",
-  threshold: 0, // Trigger callback when any part of the target is visible
+  threshold: 0.3, // Trigger callback when any part of the target is visible
 };
 
 function Navigation({ cover, disableTransform }: NavigationProps) {
@@ -54,10 +54,10 @@ function Navigation({ cover, disableTransform }: NavigationProps) {
         className={clsx(
           "navigation-bar",
           shouldTransformNav ? "bg-transparent" : "bg-primary bg-opacity-85",
-          disableTransform && "bg-transparent",
+          disableTransform && "bg-primary bg-opacity-85 lg:bg-transparent",
         )}
       >
-        <div className="z-40 w-1/2">
+        <div className="z-40 flex w-1/2 items-center">
           <BrandLogo />
         </div>
         <div className="nav right-column">

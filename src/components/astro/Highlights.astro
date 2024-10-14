@@ -11,7 +11,7 @@ const { data: posts } = await useLoadQuery<SanityDocument[]>({
 const compiledPosts = useCompilePosts(posts, false);
 ---
 
-<section class="section highlight-section bg-white pb-16">
+<section id="highlight-section" class="section h-screen">
   <p class="section-sub-title">
     <q class="italic">
       If you don&#39;t think photos are important, wait until they&#39;re all
@@ -23,34 +23,17 @@ const compiledPosts = useCompilePosts(posts, false);
 </section>
 
 <script>
-  const element = document.querySelector(".gallery-wrapper");
-
-  function disableScroll() {
-    window.addEventListener("wheel", preventScroll, { passive: false });
-  }
-
-  function enableScroll() {
-    window.removeEventListener("wheel", preventScroll);
-  }
-
-  function preventScroll(e: Event) {
-    e.preventDefault();
-  }
+  const element = document.getElementById("highlight-section");
 
   const observerCallback = (entries: IntersectionObserverEntry[]) => {
     entries.forEach((entry) => {
       if (entry.intersectionRatio >= 0.5) {
-        disableScroll();
         const elementPosition = entry.boundingClientRect.top;
         window.scrollTo({
           top: elementPosition + window.scrollY,
           left: 100,
           behavior: "smooth",
         });
-
-        setTimeout(() => {
-          enableScroll();
-        }, 1000);
       }
     });
   };

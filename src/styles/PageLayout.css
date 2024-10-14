@@ -36,7 +36,7 @@
 }
 
 .section {
-  @apply relative z-30 min-h-screen w-full p-12 text-center;
+  @apply relative z-30 my-16 flex min-h-screen w-full flex-col bg-white p-12 text-center;
 }
 
 .section-title {

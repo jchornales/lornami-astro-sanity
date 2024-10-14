@@ -1,13 +1,18 @@
 import { shouldSeeMore } from "@/lib/utils/useStateStore";
-import React from "react";
+import React, { useEffect } from "react";
 
 function SeeMore() {
+  const handleClick = () => {
+    const highlightSection = document.getElementById("highlight-section");
+    shouldSeeMore.set(true);
+    if (highlightSection) {
+      highlightSection.style.height = "unset";
+    }
+  };
+
   return (
     <div className="gallery-see-more">
-      <button
-        className="group flex gap-2"
-        onClick={() => shouldSeeMore.set(true)}
-      >
+      <button className="group flex gap-2" onClick={handleClick}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"

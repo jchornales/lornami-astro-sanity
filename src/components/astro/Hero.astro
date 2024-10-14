@@ -37,7 +37,7 @@ const cover = await getImage({
 
 <script>
   const nextSection = document.querySelector("[data-button='next-section']");
-  const highlightSection = document.querySelector(".gallery-wrapper");
+  const highlightSection = document.getElementById("highlight-section");
 
   nextSection?.addEventListener("click", () => {
     highlightSection?.scrollIntoView({ block: "start", behavior: "smooth" });
