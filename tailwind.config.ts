@@ -39,6 +39,12 @@ export default {
         widest: "0.2em",
         banner: "0.8em",
       },
+      minHeight: {
+        highlight: "120vh",
+      },
+      maxHeight: {
+        highlight: "120vh",
+      },
       maxWidth: {
         unset: "unset",
       },

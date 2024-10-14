@@ -50,7 +50,7 @@ function ImageLists({ posts, displaySeeMore }: Props) {
     <div
       className={clsx([
         "gallery-wrapper",
-        displaySeeMore && !displayMore ? "max-h-screen" : "h-auto",
+        displaySeeMore && !displayMore ? "max-h-highlight" : "h-auto",
       ])}
     >
       <div className="image-lists">

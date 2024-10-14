@@ -11,7 +11,7 @@ const { data: posts } = await useLoadQuery<SanityDocument[]>({
 const compiledPosts = useCompilePosts(posts, false);
 ---
 
-<section id="highlight-section" class="section h-screen">
+<section id="highlight-section" class="section min-h-highlight">
   <p class="section-sub-title">
     <q class="italic">
       If you don&#39;t think photos are important, wait until they&#39;re all

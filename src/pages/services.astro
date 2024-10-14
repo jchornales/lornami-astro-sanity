@@ -16,7 +16,8 @@ const { data: images } = await useLoadQuery<SanityDocument[]>({
   <section class="services-header">
     <div class="content-wrapper">
       <div class="column --left">
-        <span class="tracking-widest text-zinc-700">— PRIVATE CONSULTATION</span
+        <span class="text-xs tracking-widest text-zinc-700 lg:text-base">
+          — PRIVATE CONSULTATION</span
         >
         <PortableText value={images[0].body} />
       </div>

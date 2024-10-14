@@ -19,7 +19,7 @@ interface NavigationProps {
 const observerOptions = {
   root: null, // Use the viewport as the root
   rootMargin: "0px",
-  threshold: 0.3, // Trigger callback when any part of the target is visible
+  threshold: 0, // Trigger callback when any part of the target is visible
 };
 
 function Navigation({ cover, disableTransform }: NavigationProps) {
@@ -33,6 +33,7 @@ function Navigation({ cover, disableTransform }: NavigationProps) {
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       const isInView = _.some(entries, { isIntersecting: true });
+      console.log(isInView);
       isBackgroundDark.set(isInView);
     }, observerOptions);
 

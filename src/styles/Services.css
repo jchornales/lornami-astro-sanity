@@ -22,10 +22,10 @@
 }
 
 .services-header .column.--left p {
-  @apply font-montserrat text-lg text-zinc-700 lg:text-4xl;
+  @apply font-montserrat text-xl text-zinc-700 lg:text-4xl;
 }
 .services-header .column.--left p strong {
-  @apply font-serif;
+  @apply mr-1 font-serif text-2xl lg:text-4xl;
 }
 
 .services-header .column.--right {
