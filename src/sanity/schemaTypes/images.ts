@@ -22,9 +22,9 @@ export default defineType({
       },
     }),
     defineField({
-      name: "description",
-      title: "Description",
-      type: "text",
+      name: "body",
+      title: "Body",
+      type: "blockContent",
     }),
     defineField({
       name: "image",

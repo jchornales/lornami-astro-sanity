@@ -4,7 +4,10 @@ import { structureTool } from "sanity/structure";
 import { visionTool } from "@sanity/vision";
 import { schema } from "./src/sanity/schemaTypes";
 import { media, mediaAssetSource } from "sanity-plugin-media";
-import { unsplashImageAsset, unsplashAssetSource } from "sanity-plugin-asset-source-unsplash";
+import {
+  unsplashImageAsset,
+  unsplashAssetSource,
+} from "sanity-plugin-asset-source-unsplash";
 
 export default defineConfig({
   projectId: import.meta.env.PUBLIC_SANITY_PROJECT_ID,
@@ -28,14 +31,18 @@ export default defineConfig({
     // Don't use this plugin when selecting files only (but allow all other enabled asset sources)
     file: {
       assetSources: (previousAssetSources) => {
-        return previousAssetSources.filter((assetSource) => assetSource !== mediaAssetSource);
+        return previousAssetSources.filter(
+          (assetSource) => assetSource !== mediaAssetSource,
+        );
       },
     },
     image: {
       assetSources: (previousAssetSources, { schema }) => {
         if (schema.name === "movie-image") {
           // remove unsplash from movie-image types
-          return previousAssetSources.filter((assetSource) => assetSource !== unsplashAssetSource);
+          return previousAssetSources.filter(
+            (assetSource) => assetSource !== unsplashAssetSource,
+          );
         }
         return previousAssetSources;
       },

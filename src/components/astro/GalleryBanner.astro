@@ -3,6 +3,7 @@ import { useLoadQuery } from "@/sanity/lib/useLoadQuery";
 import { useUrlForImage } from "@/sanity/lib/useUrlForImage";
 import type { SanityDocument } from "@sanity/client";
 import { getImage } from "astro:assets";
+import { PortableText } from "astro-portabletext";
 
 interface Props {
   posts: SanityDocument[];
@@ -20,17 +21,13 @@ const cover = await getImage({
 ---
 
 <div
-  class="relative h-[500px] bg-cover"
+  class="gallery-banner relative h-[500px] bg-cover"
   data-attribute="dark"
   style={{ backgroundImage: `url(${cover.src})` }}
 >
   <div
     class="absolute left-0 top-0 flex h-full w-full flex-col items-center justify-center bg-black bg-opacity-75 bg-blend-overlay"
   >
-    <h1
-      class="pointer-events-none max-w-3xl font-montserrat text-4xl font-semibold text-white"
-    >
-      {images[0].description}
-    </h1>
+    <PortableText value={images[0].body} />
   </div>
 </div>

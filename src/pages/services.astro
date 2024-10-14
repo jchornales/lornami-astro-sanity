@@ -1,7 +1,40 @@
 ---
 import PageLayout from "@/layouts/PageLayout.astro";
+import { useLoadQuery } from "@/sanity/lib/useLoadQuery";
+import { useUrlForImage } from "@/sanity/lib/useUrlForImage";
+import type { SanityDocument } from "@sanity/client";
+import { PortableText } from "astro-portabletext";
+import { Image } from "astro:assets";
+import "@styles/Services.css";
+
+const { data: images } = await useLoadQuery<SanityDocument[]>({
+  query: `*[_type == "images" && slug.current == "services-header"]`,
+});
 ---
 
 <PageLayout title="Services" disableTransform>
-  <section class="h-screen"></section>
+  <section class="services-header">
+    <div class="content-wrapper">
+      <div class="column --left">
+        <span class="tracking-widest text-zinc-700">— PRIVATE CONSULTATION</span
+        >
+        <PortableText value={images[0].body} />
+      </div>
+      <div class="column --right">
+        <Image
+          src={useUrlForImage(images[0].image).url()}
+          alt={images[0].title}
+          inferSize
+        />
+      </div>
+    </div>
+    <div class="disclaimer wrapper">
+      <p class="content">
+        We <span class="highlights">offer online consultations </span>
+        to discuss themes and locations, so you can plan your perfect photoshoot
+        from the comfort of your home—making the whole process easier and more convenient
+        for you.
+      </p>
+    </div>
+  </section>
 </PageLayout>

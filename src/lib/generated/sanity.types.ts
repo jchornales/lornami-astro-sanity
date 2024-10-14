@@ -68,14 +68,75 @@ export type Geopoint = {
   alt?: number;
 };
 
-export type CoverPhoto = {
+export type Faqs = {
   _id: string;
-  _type: "coverPhoto";
+  _type: "faqs";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  question?: string;
+  answer?: string;
+  publishedAt?: string;
+};
+
+export type BrandInformation = {
+  _id: string;
+  _type: "brandInformation";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  emailAddress?: string;
+  phoneNumber?: string;
+  address?: string;
+  disclaimer?: string;
+  facebook?: string;
+  instagram?: string;
+  twitter?: string;
+  tiktok?: string;
+  youtube?: string;
+  publishedAt?: string;
+};
+
+export type Images = {
+  _id: string;
+  _type: "images";
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
   title?: string;
-  description?: string;
+  slug?: Slug;
+  body?: Array<
+    | {
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
+        listItem?: "bullet";
+        markDefs?: Array<{
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+      }
+    | {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        _type: "image";
+        _key: string;
+      }
+  >;
   image?: {
     asset?: {
       _ref: string;
@@ -131,6 +192,7 @@ export type Category = {
   _rev: string;
   title?: string;
   description?: string;
+  slug?: Slug;
 };
 
 export type Post = {
@@ -277,6 +339,15 @@ export type SanityImageMetadata = {
   isOpaque?: boolean;
 };
 
+export type MediaTag = {
+  _id: string;
+  _type: "media.tag";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: Slug;
+};
+
 export type Slug = {
   _type: "slug";
   current?: string;
@@ -289,7 +360,9 @@ export type AllSanitySchemaTypes =
   | SanityImageDimensions
   | SanityFileAsset
   | Geopoint
-  | CoverPhoto
+  | Faqs
+  | BrandInformation
+  | Images
   | BlockContent
   | Category
   | Post
@@ -299,5 +372,6 @@ export type AllSanitySchemaTypes =
   | SanityImageAsset
   | SanityAssetSourceData
   | SanityImageMetadata
+  | MediaTag
   | Slug;
 export declare const internalGroqTypeReferenceTo: unique symbol;
