@@ -5,7 +5,11 @@ import clsx from "clsx";
 import { disableBodyScroll, clearAllBodyScrollLocks } from "body-scroll-lock";
 import { isBackgroundDark, isMenuOpen } from "@/lib/utils/useStateStore";
 
-function MenuButton() {
+interface MenuButtonProps {
+  disableTransform: boolean;
+}
+
+function MenuButton({ disableTransform }: MenuButtonProps) {
   const isOpen = useStore(isMenuOpen);
   const shouldTransformNav = useStore(isBackgroundDark);
 
@@ -24,7 +28,7 @@ function MenuButton() {
       className={clsx(
         "menu-button group",
         isOpen ? "opened" : "closed",
-        shouldTransformNav ? "light" : "dark",
+        shouldTransformNav && !disableTransform ? "light" : "dark",
       )}
       onClick={() => isMenuOpen.set(!isOpen)}
     >

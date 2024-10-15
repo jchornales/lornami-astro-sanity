@@ -4,7 +4,11 @@ import "@styles/BrandLogo.css";
 import clsx from "clsx";
 import { isBackgroundDark, isMenuOpen } from "@/lib/utils/useStateStore";
 
-function BrandLogo() {
+interface BrandLogoProps {
+  disableTransform: boolean;
+}
+
+function BrandLogo({ disableTransform }: BrandLogoProps) {
   const isOpen = useStore(isMenuOpen);
   const shouldTransformNav = useStore(isBackgroundDark);
   return (
@@ -13,7 +17,7 @@ function BrandLogo() {
       className={clsx(
         "brand-label",
         isOpen && "opened",
-        shouldTransformNav ? "light" : "dark",
+        shouldTransformNav && !disableTransform ? "light" : "dark",
       )}
     >
       LORNAMI

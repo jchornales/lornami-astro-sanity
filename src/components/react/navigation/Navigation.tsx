@@ -58,7 +58,7 @@ function Navigation({ cover, disableTransform }: NavigationProps) {
         )}
       >
         <div className="z-40 flex w-1/2 items-center">
-          <BrandLogo />
+          <BrandLogo disableTransform={disableTransform} />
         </div>
         <div className="nav right-column">
           <Button
@@ -73,7 +73,7 @@ function Navigation({ cover, disableTransform }: NavigationProps) {
               BOOK NOW
             </a>
           </Button>
-          <MenuButton />
+          <MenuButton disableTransform={disableTransform} />
         </div>
         <Menu cover={cover} />
       </div>
