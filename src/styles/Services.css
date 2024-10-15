@@ -6,17 +6,6 @@
   @apply m-auto flex h-full max-w-7xl flex-col items-center pt-20 lg:h-3/4 lg:flex-row lg:pt-0;
 }
 
-.services-header .disclaimer.wrapper {
-  @apply bg-primaryLight grid h-1/4 w-full place-items-center p-10 lg:p-0;
-}
-
-.services-header .disclaimer > .content > .highlights {
-  @apply font-serif text-lg font-bold lg:text-2xl;
-}
-.services-header .disclaimer > .content {
-  @apply max-w-4xl font-montserrat text-base lg:text-xl;
-}
-
 .services-header .column {
   @apply flex w-full flex-col items-start justify-center gap-3 p-5 lg:w-1/2;
 }
@@ -34,4 +23,15 @@
 
 .services-header .column.--right img {
   @apply md:max-w-lg lg:max-w-full;
+}
+
+.services-header .disclaimer.wrapper {
+  @apply grid h-1/4 w-full place-items-center bg-primaryLight p-10 lg:p-0;
+}
+
+.services-header .disclaimer > p > strong {
+  @apply font-serif text-lg font-bold lg:text-2xl;
+}
+.services-header .disclaimer > p {
+  @apply max-w-4xl font-montserrat text-base lg:text-xl;
 }

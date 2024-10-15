@@ -6,12 +6,12 @@ import type { SanityDocument } from "@sanity/client";
 import { getImage } from "astro:assets";
 import "@styles/Hero.css";
 
-const { data: images } = await useLoadQuery<SanityDocument[]>({
-  query: `*[_type == "images" && slug.current == "hero-section"]`,
+const { data: content } = await useLoadQuery<SanityDocument[]>({
+  query: `*[_type == "webContent" && slug.current == "hero-section"]`,
 });
 
 const cover = await getImage({
-  src: useUrlForImage(images[0].image).url(),
+  src: useUrlForImage(content[0].image).url(),
   format: "webp",
   inferSize: true,
 });

@@ -7,8 +7,8 @@ import { PortableText } from "astro-portabletext";
 import { Image } from "astro:assets";
 import "@styles/Services.css";
 
-const { data: images } = await useLoadQuery<SanityDocument[]>({
-  query: `*[_type == "images" && slug.current == "services-header"]`,
+const { data: content } = await useLoadQuery<SanityDocument[]>({
+  query: `*[_type == "webContent" && slug.current == "services-header"]`,
 });
 ---
 
@@ -19,23 +19,19 @@ const { data: images } = await useLoadQuery<SanityDocument[]>({
         <span class="text-xs tracking-widest text-zinc-700 lg:text-base">
           — PRIVATE CONSULTATION</span
         >
-        <PortableText value={images[0].body} />
+        <PortableText value={content[0].body} />
       </div>
       <div class="column --right">
         <Image
-          src={useUrlForImage(images[0].image).url()}
-          alt={images[0].title}
+          src={useUrlForImage(content[0].image).url()}
+          alt={content[0].title}
           inferSize
         />
       </div>
     </div>
     <div class="disclaimer wrapper">
-      <p class="content">
-        We <span class="highlights">offer online consultations </span>
-        to discuss themes and locations, so you can plan your perfect photoshoot
-        from the comfort of your home—making the whole process easier and more convenient
-        for you.
-      </p>
+      <PortableText value={content[0].body2} />
     </div>
   </section>
+  <section class="pricing h-screen bg-white"></section>
 </PageLayout>

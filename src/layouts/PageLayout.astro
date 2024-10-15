@@ -14,12 +14,12 @@ interface Props {
 
 const { title, disableTransform } = Astro.props;
 
-const { data: images } = await useLoadQuery<SanityDocument[]>({
-  query: `*[_type == "images" && slug.current == "menu-overlay"]`,
+const { data: content } = await useLoadQuery<SanityDocument[]>({
+  query: `*[_type == "webContent" && slug.current == "menu-overlay"]`,
 });
 
 const optimizedBackground = await getImage({
-  src: useUrlForImage(images[0].image).url(),
+  src: useUrlForImage(content[0].image).url(),
   format: "webp",
   inferSize: true,
 });
