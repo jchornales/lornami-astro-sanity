@@ -1,0 +1,67 @@
+.pricing-section {
+  @apply grid min-h-screen w-full place-items-center bg-white p-5;
+}
+
+.pricing-section .wrapper {
+  @apply m-auto flex w-full max-w-7xl flex-wrap gap-5 px-5 py-10 lg:flex-nowrap;
+}
+
+.pricing-card {
+  @apply relative flex h-auto w-full flex-col bg-cream font-montserrat;
+}
+
+.pricing-card.highlight-primary {
+  @apply border-none bg-none;
+}
+
+.pricing-card.highlight-primary::after {
+  content: "";
+  @apply absolute z-10 hidden h-full w-full scale-y-110 rounded-lg border border-neutral-200 bg-primaryLight text-neutral-950 shadow-sm dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-50 lg:flex;
+}
+
+.pricing-card .header {
+  @apply relative z-20 mb-3 flex h-1/6 flex-col gap-2 pb-0;
+}
+.pricing-card .title {
+  @apply relative z-20 font-serif text-xl font-bold tracking-wide;
+}
+
+.pricing-card .card-button {
+  @apply relative z-20 my-5 min-h-10 w-full;
+}
+
+.pricing-card .price {
+  @apply relative z-20 my-2 flex w-full flex-col items-center font-sans text-4xl font-bold text-black;
+}
+
+.pricing-card .content {
+  @apply relative z-20 flex h-4/6 flex-col gap-3 py-5 pt-3;
+}
+
+.pricing-card .content .card-disclaimer {
+  @apply font-sans text-base text-gray-700;
+}
+
+.pricing-card .content li {
+  @apply my-2 ml-7 list-image-checkOutlined font-sans text-base;
+}
+
+.pricing-card .content .inclusion {
+  @apply font-sans text-base font-bold;
+}
+
+.pricing-header {
+  @apply flex flex-col items-center justify-center gap-3;
+}
+
+.pricing-header .label {
+  @apply font-montserrat font-bold tracking-wider;
+}
+
+.pricing-header .quote {
+  @apply font-serif text-3xl font-bold tracking-wide lg:text-5xl;
+}
+
+.pricing-header .sub-quote {
+  @apply max-w-2xl font-montserrat text-sm lg:text-base;
+}

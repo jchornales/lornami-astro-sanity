@@ -22,11 +22,11 @@
 }
 
 .services-header .column.--right img {
-  @apply md:max-w-lg lg:max-w-full;
+  @apply w-full max-w-lg lg:max-w-full;
 }
 
 .services-header .disclaimer.wrapper {
-  @apply grid h-1/4 w-full place-items-center bg-primaryLight p-10 lg:p-0;
+  @apply grid h-1/4 w-full place-items-center bg-primaryLight p-5 md:p-10 lg:p-0;
 }
 
 .services-header .disclaimer > p > strong {

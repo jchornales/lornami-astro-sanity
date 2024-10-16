@@ -39,8 +39,12 @@ export default {
         widest: "0.2em",
         banner: "0.8em",
       },
+      listStyleImage: {
+        checkOutlined: 'url("/check.svg")',
+      },
       minHeight: {
         highlight: "120vh",
+        pricing: "500px",
       },
       maxHeight: {
         highlight: "120vh",
