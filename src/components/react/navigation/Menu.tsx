@@ -12,7 +12,7 @@ interface Props {
 const menuList = [
   {
     label: "About us",
-    href: "/about",
+    href: "/about-us",
   },
   {
     label: "Gallery",

@@ -1,0 +1,40 @@
+---
+import PageLayout from "@/layouts/PageLayout.astro";
+import { useLoadQuery } from "@/sanity/lib/useLoadQuery";
+import { useUrlForImage } from "@/sanity/lib/useUrlForImage";
+import type { SanityDocument } from "@sanity/client";
+import "@styles/AboutUs.css";
+import { Image } from "astro:assets";
+
+const { data: main } = await useLoadQuery<SanityDocument[]>({
+  query: `*[_type == "webContent" && slug.current == "about-us-main-image"]`,
+});
+
+const { data: sub } = await useLoadQuery<SanityDocument[]>({
+  query: `*[_type == "webContent" && slug.current == "about-us-sub-image"]`,
+});
+---
+
+<PageLayout title="About us" disableTransform>
+  <section class="introduction-section">
+    <div class="introduction-wrapper">
+      <div class="column --left"></div>
+      <div class="column --right">
+        <div class="wrapper">
+          <Image
+            src={useUrlForImage(main[0].image).url()}
+            alt={main[0].title}
+            inferSize
+          />
+        </div>
+        <Image
+          src={useUrlForImage(sub[0].image).url()}
+          alt={sub[0].title}
+          inferSize
+          class="absolute top-0"
+        />
+      </div>
+    </div>
+  </section></PageLayout
+>
+0

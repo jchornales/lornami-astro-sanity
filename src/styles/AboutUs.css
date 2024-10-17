@@ -1,0 +1,22 @@
+.introduction-section {
+  @apply h-[200vh] py-24;
+}
+
+.introduction-wrapper {
+  @apply m-auto flex h-full max-w-6xl gap-10;
+}
+.introduction-wrapper .column {
+  @apply h-full w-full;
+}
+
+.introduction-wrapper .column.--right {
+  @apply relative;
+}
+
+.introduction-wrapper .column.--right .wrapper {
+  @apply sticky top-14 overflow-hidden;
+}
+
+/* .introduction-wrapper .column.--left {
+  @apply bg-blue-400;
+} */

@@ -26,6 +26,7 @@ const { data: content } = await useLoadQuery<SanityDocument[]>({
         <Image
           src={useUrlForImage(content[0].image).url()}
           alt={content[0].title}
+          loading="eager"
           inferSize
         />
       </div>
@@ -36,7 +37,7 @@ const { data: content } = await useLoadQuery<SanityDocument[]>({
   </section>
   <section class="pricing-section">
     <div class="pricing-header">
-      <h2 class="label">PRICING</h2>
+      <h2 class="label">— PRICING —</h2>
       <h3 class="quote">A package for every type of shoot</h3>
       <p class="sub-quote">
         Work with us to capture your vision with one of our tailored photography
