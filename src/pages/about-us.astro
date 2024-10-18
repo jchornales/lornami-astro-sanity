@@ -13,12 +13,36 @@ const { data: main } = await useLoadQuery<SanityDocument[]>({
 const { data: sub } = await useLoadQuery<SanityDocument[]>({
   query: `*[_type == "webContent" && slug.current == "about-us-sub-image"]`,
 });
+
+const { data: about } = await useLoadQuery<SanityDocument[]>({
+  query: `*[_type == "aboutUs"] | order(order asc)`,
+});
 ---
 
 <PageLayout title="About us" disableTransform>
   <section class="introduction-section">
     <div class="introduction-wrapper">
-      <div class="column --left"></div>
+      <div class="column --left">
+        <div class="introduction-header">
+          <h3 class="sub-title">A bit about the</h3>
+          <h1 class="title">Eyes Behind the Camera</h1>
+        </div>
+
+        <div class="introduction-list">
+          {
+            about?.map((item) => (
+              <div class="item-wrapper">
+                <h1 class="title">{item.name}</h1>
+                <p class="content">{item.description}</p>
+              </div>
+            ))
+          }
+        </div>
+
+        <div class="introduction-footer">
+          <a href="#">Capture your story—let's find a time!</a>
+        </div>
+      </div>
       <div class="column --right">
         <div class="wrapper">
           <Image
@@ -37,4 +61,3 @@ const { data: sub } = await useLoadQuery<SanityDocument[]>({
     </div>
   </section></PageLayout
 >
-0

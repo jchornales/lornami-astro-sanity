@@ -1,3 +1,4 @@
+import aboutUs from "./aboutUs";
 import author from "./author";
 import blockContent from "./blockContent";
 import brandInformation from "./brandInformation";
@@ -10,6 +11,7 @@ import type { SchemaTypeDefinition } from "sanity";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
+    aboutUs,
     author,
     blockContent,
     brandInformation,

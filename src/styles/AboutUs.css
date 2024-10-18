@@ -1,12 +1,12 @@
 .introduction-section {
-  @apply h-[200vh] py-24;
+  @apply py-24 text-black;
 }
 
 .introduction-wrapper {
-  @apply m-auto flex h-full max-w-6xl gap-10;
+  @apply m-auto flex max-w-6xl gap-24;
 }
 .introduction-wrapper .column {
-  @apply h-full w-full;
+  @apply w-full;
 }
 
 .introduction-wrapper .column.--right {
@@ -14,9 +14,38 @@
 }
 
 .introduction-wrapper .column.--right .wrapper {
-  @apply sticky top-14 overflow-hidden;
+  @apply sticky top-28 overflow-hidden;
 }
 
-/* .introduction-wrapper .column.--left {
-  @apply bg-blue-400;
-} */
+.introduction-header {
+  @apply mb-10 flex w-full flex-col gap-2 font-bold;
+}
+
+.introduction-header .sub-title {
+  @apply font-montserrat text-lg uppercase tracking-wider;
+}
+.introduction-header .title {
+  @apply font-serif text-5xl;
+}
+
+.introduction-list {
+  @apply border-l-2 border-gray-300;
+}
+
+.introduction-list .item-wrapper {
+  @apply relative right-[2px] mb-14 border-l-2 border-l-primary py-3 pl-10;
+}
+.introduction-list .item-wrapper .title {
+  @apply mb-2 font-serif text-3xl font-bold tracking-wide;
+}
+.introduction-list .item-wrapper .content {
+  @apply font-montserrat text-lg;
+}
+
+.introduction-footer {
+  @apply flex w-full items-center justify-center;
+}
+
+.introduction-footer a {
+  @apply font-serif text-3xl font-bold underline-offset-4 hover:underline;
+}
