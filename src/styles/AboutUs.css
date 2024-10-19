@@ -3,10 +3,10 @@
 }
 
 .introduction-wrapper {
-  @apply m-auto flex max-w-6xl gap-24;
+  @apply m-auto flex w-full max-w-6xl flex-col lg:flex-row lg:gap-24;
 }
 .introduction-wrapper .column {
-  @apply w-full;
+  @apply w-full p-10 lg:p-0;
 }
 
 .introduction-wrapper .column.--right {
@@ -17,15 +17,19 @@
   @apply sticky top-28 overflow-hidden;
 }
 
+.introduction-wrapper .column.--right .sub-image {
+  @apply absolute top-0 hidden lg:block;
+}
+
 .introduction-header {
   @apply mb-10 flex w-full flex-col gap-2 font-bold;
 }
 
 .introduction-header .sub-title {
-  @apply font-montserrat text-lg uppercase tracking-wider;
+  @apply font-montserrat text-sm uppercase tracking-wider md:text-base lg:text-lg;
 }
 .introduction-header .title {
-  @apply font-serif text-5xl;
+  @apply font-serif text-3xl md:text-4xl lg:text-5xl;
 }
 
 .introduction-list {
@@ -33,13 +37,15 @@
 }
 
 .introduction-list .item-wrapper {
-  @apply relative right-[2px] mb-14 border-l-2 border-l-primary py-3 pl-10;
+  @apply relative right-[2px] mb-8 border-l-2 border-l-primary py-2 pl-10 lg:mb-14 lg:py-3;
 }
+
 .introduction-list .item-wrapper .title {
-  @apply mb-2 font-serif text-3xl font-bold tracking-wide;
+  @apply mb-1 font-serif text-2xl font-bold tracking-wide lg:text-3xl;
 }
+
 .introduction-list .item-wrapper .content {
-  @apply font-montserrat text-lg;
+  @apply font-montserrat text-base lg:text-lg;
 }
 
 .introduction-footer {
@@ -47,5 +53,5 @@
 }
 
 .introduction-footer a {
-  @apply font-serif text-3xl font-bold underline-offset-4 hover:underline;
+  @apply font-serif text-2xl font-bold underline-offset-4 hover:underline md:text-3xl;
 }
