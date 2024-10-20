@@ -28,6 +28,7 @@
 .introduction-header .sub-title {
   @apply font-montserrat text-sm uppercase tracking-wider md:text-base lg:text-lg;
 }
+
 .introduction-header .title {
   @apply font-serif text-3xl md:text-4xl lg:text-5xl;
 }

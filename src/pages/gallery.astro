@@ -1,12 +1,14 @@
 ---
-import GalleryBanner from "@/components/astro/GalleryBanner.astro";
 import CategoryFilter from "@/components/react/common/CategoryFilter";
 import ImageLists from "@/components/react/common/ImageLists";
 import Sort from "@/components/react/common/Sort";
 import PageLayout from "@/layouts/PageLayout.astro";
 import useCompilePosts from "@/sanity/lib/useCompilePosts";
 import { useLoadQuery } from "@/sanity/lib/useLoadQuery";
+import { useUrlForImage } from "@/sanity/lib/useUrlForImage";
 import type { SanityDocument } from "@sanity/client";
+import { PortableText } from "astro-portabletext";
+import { getImage } from "astro:assets";
 
 const { data: posts } = await useLoadQuery<SanityDocument[]>({
   query: `*[_type == "post"]{
@@ -28,11 +30,31 @@ const { data: categories } = await useLoadQuery<SanityDocument[]>({
   query: `*[_type == "category"]`,
 });
 
+const { data: content } = await useLoadQuery<SanityDocument[]>({
+  query: `*[_type == "webContent" && slug.current == "gallery-banner"]`,
+});
+
 const compiledPosts = useCompilePosts(posts, true);
+
+const cover = await getImage({
+  src: useUrlForImage(content[0].image).url(),
+  format: "webp",
+  inferSize: true,
+});
 ---
 
 <PageLayout title="Gallery" disableTransform={false}>
-  <GalleryBanner posts={posts} />
+  <div
+    class="gallery-banner relative h-[500px] bg-cover"
+    data-attribute="dark"
+    style={{ backgroundImage: `url(${cover.src})` }}
+  >
+    <div
+      class="absolute left-0 top-0 flex h-full w-full flex-col items-center justify-center bg-black bg-opacity-75 bg-blend-overlay"
+    >
+      <PortableText value={content[0].body} />
+    </div>
+  </div>
   <section class="section py-16">
     <div class="m-auto flex w-full max-w-7xl justify-between">
       <CategoryFilter client:load categories={categories} />
