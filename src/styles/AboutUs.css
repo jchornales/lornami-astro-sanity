@@ -56,3 +56,15 @@
 .introduction-footer a {
   @apply font-serif text-2xl font-bold underline-offset-4 hover:underline md:text-3xl;
 }
+
+.experience-section {
+  @apply h-full min-h-screen;
+}
+
+.brands {
+  @apply flex h-full min-h-80 items-center justify-center bg-primaryLight bg-opacity-70 p-10;
+}
+
+.brand-wrapper {
+  @apply flex h-full w-full max-w-7xl flex-wrap items-center justify-center gap-10;
+}

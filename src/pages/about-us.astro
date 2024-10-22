@@ -1,5 +1,16 @@
 ---
 import PageLayout from "@/layouts/PageLayout.astro";
+import FourChan from "@/lib/icons/brands/FourChan.astro";
+import ActivityPub from "@/lib/icons/brands/ActivityPub.astro";
+import AIB from "@/lib/icons/brands/AIB.astro";
+import Pelican from "@/lib/icons/brands/Pelican.astro";
+import AlliedModders from "@/lib/icons/brands/AlliedModders.astro";
+import PetsAtHome from "@/lib/icons/brands/PetsAtHome.astro";
+import Zenodo from "@/lib/icons/brands/Zenodo.astro";
+import Toyota from "@/lib/icons/brands/Toyota.astro";
+import Virgin from "@/lib/icons/brands/Virgin.astro";
+import TheBoringCompany from "@/lib/icons/brands/TheBoringCompany.astro";
+import TietoEVRY from "@/lib/icons/brands/TietoEVRY.astro";
 import { useLoadQuery } from "@/sanity/lib/useLoadQuery";
 import { useUrlForImage } from "@/sanity/lib/useUrlForImage";
 import type { SanityDocument } from "@sanity/client";
@@ -17,6 +28,20 @@ const { data: sub } = await useLoadQuery<SanityDocument[]>({
 const { data: about } = await useLoadQuery<SanityDocument[]>({
   query: `*[_type == "aboutUs"] | order(order asc)`,
 });
+
+const brands = [
+  FourChan,
+  ActivityPub,
+  AIB,
+  AlliedModders,
+  Pelican,
+  Zenodo,
+  PetsAtHome,
+  Toyota,
+  Virgin,
+  TheBoringCompany,
+  TietoEVRY,
+];
 ---
 
 <PageLayout title="About us" disableTransform>
@@ -59,5 +84,17 @@ const { data: about } = await useLoadQuery<SanityDocument[]>({
         />
       </div>
     </div>
-  </section></PageLayout
->
+  </section>
+
+  <section class="experience-section">
+    <div class="brands">
+      <div class="brand-wrapper">
+        {
+          brands.map((BrandIcon) => (
+            <BrandIcon className="fill-slate-700 mx-10" />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</PageLayout>
