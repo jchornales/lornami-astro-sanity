@@ -58,11 +58,11 @@
 }
 
 .experience-section {
-  @apply h-full min-h-screen;
+  @apply flex h-full min-h-screen flex-col items-center justify-center;
 }
 
 .brands {
-  @apply flex h-full min-h-80 items-center justify-center bg-primaryLight bg-opacity-70 p-10;
+  @apply flex h-full min-h-80 w-full items-center justify-center bg-primaryLight bg-opacity-70 p-10;
 }
 
 .brand-wrapper {
