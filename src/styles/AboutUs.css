@@ -61,10 +61,14 @@
   @apply flex h-full min-h-screen flex-col items-center justify-center;
 }
 
-.brands {
+.experience-section .brands {
   @apply flex h-full min-h-80 w-full items-center justify-center bg-primaryLight bg-opacity-70 p-10;
 }
 
-.brand-wrapper {
+.experience-section .brand-wrapper {
   @apply flex h-full w-full max-w-7xl flex-wrap items-center justify-center gap-10;
+}
+
+.experience-section .testimonials {
+  @apply flex h-full w-full grow items-center justify-center;
 }

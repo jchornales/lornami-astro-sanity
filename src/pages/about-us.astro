@@ -16,7 +16,7 @@ import { useUrlForImage } from "@/sanity/lib/useUrlForImage";
 import type { SanityDocument } from "@sanity/client";
 import "@styles/AboutUs.css";
 import { Image } from "astro:assets";
-import CustomCarousel from "@/components/react/common/CustomCarousel";
+import TestimonialCarousel from "@/components/react/about/TestimonialCarousel";
 
 const { data: main } = await useLoadQuery<SanityDocument[]>({
   query: `*[_type == "webContent" && slug.current == "about-us-main-image"]`,
@@ -97,7 +97,8 @@ const brands = [
         }
       </div>
     </div>
-
-    <CustomCarousel client:load />
+    <div class="testimonials">
+      <TestimonialCarousel client:load />
+    </div>
   </section>
 </PageLayout>
