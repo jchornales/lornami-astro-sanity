@@ -30,6 +30,10 @@ const { data: about } = await useLoadQuery<SanityDocument[]>({
   query: `*[_type == "aboutUs"] | order(order asc)`,
 });
 
+const { data: testimonials } = await useLoadQuery<SanityDocument[]>({
+  query: `*[_type == "testimonials"]`,
+});
+
 const brands = [
   FourChan,
   ActivityPub,
@@ -98,7 +102,7 @@ const brands = [
       </div>
     </div>
     <div class="testimonials">
-      <TestimonialCarousel client:load />
+      <TestimonialCarousel client:load testimonials={testimonials} />
     </div>
   </section>
 </PageLayout>

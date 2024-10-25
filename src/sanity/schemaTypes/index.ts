@@ -6,6 +6,7 @@ import category from "./category";
 import faqs from "./faqs";
 import post from "./post";
 import pricing from "./pricing";
+import testimonials from "./testimonials";
 import webContent from "./content";
 import type { SchemaTypeDefinition } from "sanity";
 
@@ -19,6 +20,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     faqs,
     post,
     pricing,
+    testimonials,
     webContent,
   ],
 };
