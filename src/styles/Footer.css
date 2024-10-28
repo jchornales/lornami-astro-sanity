@@ -1,9 +1,9 @@
 .footer {
-  @apply relative z-30 grid auto-rows-auto grid-cols-1 gap-x-24 gap-y-16 bg-cream p-10 font-optitomaso text-sm tracking-wide md:p-16 lg:grid-cols-3 lg:gap-y-0;
+  @apply relative z-30 grid auto-rows-auto grid-cols-1 gap-x-24 gap-y-16 bg-cream p-10 font-montserrat text-sm tracking-wide md:p-16 lg:grid-cols-3 lg:gap-y-0;
 }
 
 .footer h3 {
-  @apply pointer-events-none mb-6 font-optitomaso text-lg font-bold tracking-wider;
+  @apply pointer-events-none mb-6 font-montserrat text-lg font-bold tracking-wider;
 }
 
 .contact-me {

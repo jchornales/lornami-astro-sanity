@@ -34,7 +34,7 @@ const TestimonialCarousel = ({ testimonials }: TestimonialCarouselProps) => {
           {testimonials.map((testimonial, index) => (
             <CarouselItem
               key={index}
-              className="basis-full pl-0 md:basis-1/2 lg:basis-1/3"
+              className="basis-full pl-0 font-montserrat md:basis-1/2 lg:basis-1/3"
             >
               <Card className="border-0 shadow-none">
                 <CardContent className="m-auto flex flex-col items-center justify-center gap-5 p-20 md:p-10">
@@ -64,7 +64,7 @@ const TestimonialCarousel = ({ testimonials }: TestimonialCarouselProps) => {
                       )}
                     </div>
                     <div className="space-y-1 pt-2">
-                      <h3 className="text-base font-medium sm:text-lg">
+                      <h3 className="font-serif text-base font-bold tracking-wider sm:text-xl">
                         {testimonial.firstName}
                         {testimonial.lastName}
                       </h3>
@@ -79,7 +79,7 @@ const TestimonialCarousel = ({ testimonials }: TestimonialCarouselProps) => {
                     </div>
                   </div>
                   <div className="w-full">
-                    <p className="text-sm font-light leading-relaxed text-gray-700 sm:text-base sm:font-normal lg:text-lg">
+                    <p className="text-sm font-light leading-relaxed text-gray-700 sm:text-base sm:font-normal">
                       &ldquo;{testimonial.content}&rdquo;
                     </p>
                   </div>
