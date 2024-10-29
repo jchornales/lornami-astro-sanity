@@ -26,6 +26,7 @@
   @apply mt-8 text-xs text-gray-400 lg:col-span-3;
 }
 
+
 .soc-list {
   @apply flex flex-col gap-2;
 }
