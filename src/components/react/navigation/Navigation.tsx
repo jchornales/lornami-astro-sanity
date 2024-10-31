@@ -8,7 +8,7 @@ import { useStore } from "@nanostores/react";
 import { isBackgroundDark, isMenuOpen } from "@/lib/utils/useStateStore";
 import clsx from "clsx";
 import type { GetImageResult } from "astro";
-import { useEffect } from "react";
+import { useEffect, useInsertionEffect } from "react";
 import _ from "lodash";
 
 interface NavigationProps {
@@ -26,7 +26,7 @@ function Navigation({ cover, disableTransform }: NavigationProps) {
   const isOpen = useStore(isMenuOpen);
   const shouldTransformNav = useStore(isBackgroundDark);
 
-  useEffect(() => {
+  useInsertionEffect(() => {
     isBackgroundDark.set(true);
   }, []);
 

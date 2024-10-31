@@ -1,0 +1,92 @@
+---
+import type { HTMLInputTypeAttribute } from "@/env";
+import { Button } from "@/lib/ui/button";
+import { Input } from "@/lib/ui/input";
+import { Label } from "@/lib/ui/label";
+import { Textarea } from "@/lib/ui/textarea";
+
+interface inputFormFieldType {
+  label: string;
+  name: string;
+  type?: HTMLInputTypeAttribute;
+  className?: string;
+  isTextArea?: boolean;
+  placeholder?: string;
+  inputClass?: string;
+}
+
+const inputFormFields: inputFormFieldType[] = [
+  {
+    label: "First Name",
+    name: "firstName",
+    type: "text",
+    className: "col-span-2",
+    placeholder: "John",
+  },
+  {
+    label: "Last Name",
+    name: "LastName",
+    type: "text",
+    className: "col-span-2",
+    placeholder: "Doe",
+  },
+  {
+    label: "Subject",
+    name: "subject",
+    type: "text",
+    className: "col-span-4",
+    placeholder: "Example: Photoshoot Enquiry",
+  },
+  {
+    label: "Email Address",
+    name: "emailAddress",
+    type: "email",
+    className: "col-span-4",
+    placeholder: "john.doe@email.com",
+  },
+  {
+    label: "Message",
+    name: "message",
+    type: "text",
+    className: "col-span-4 ",
+    inputClass: "resize-none",
+    isTextArea: true,
+    placeholder: "Type your message here..",
+  },
+];
+---
+
+<form class="grid grid-cols-4 gap-5 font-montserrat tracking-wider">
+  {
+    inputFormFields.map(
+      ({
+        label,
+        name,
+        type,
+        className,
+        isTextArea,
+        placeholder,
+        inputClass,
+      }) => (
+        <div class={`form-group ${className}`}>
+          <Label htmlFor={name}>{label}</Label>
+          {isTextArea ? (
+            <Textarea placeholder={placeholder} className={inputClass} />
+          ) : (
+            <Input
+              type={type}
+              id={name}
+              placeholder={placeholder}
+              className={inputClass}
+              required
+            />
+          )}
+        </div>
+      ),
+    )
+  }
+
+  <div class="submit-wrapper col-span-4">
+    <Button className="p-5">Send message</Button>
+  </div>
+</form>

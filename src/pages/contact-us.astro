@@ -1,93 +1,13 @@
 ---
-import type { HTMLInputTypeAttribute } from "@/env";
+import ContactForm from "@/components/astro/ContactForm.astro";
 import PageLayout from "@/layouts/PageLayout.astro";
-import { Button } from "@/lib/ui/button";
-import { Input } from "@/lib/ui/input";
-import { Label } from "@/lib/ui/label";
-import { Textarea } from "@/lib/ui/textarea";
-import { useLoadQuery } from "@/sanity/lib/useLoadQuery";
-import { useUrlForImage } from "@/sanity/lib/useUrlForImage";
-import type { SanityDocument } from "@sanity/client";
-import { getImage } from "astro:assets";
-
-interface inputFormFieldType {
-  label: string;
-  name: string;
-  type?: HTMLInputTypeAttribute;
-  className?: string;
-  isTextArea?: boolean;
-  placeholder?: string;
-}
-
-const inputFormFields: inputFormFieldType[] = [
-  {
-    label: "First Name",
-    name: "firstName",
-    type: "text",
-    className: "col-span-2",
-    placeholder: "John",
-  },
-  {
-    label: "Last Name",
-    name: "LastName",
-    type: "text",
-    className: "col-span-2",
-    placeholder: "Doe",
-  },
-  {
-    label: "Subject",
-    name: "subject",
-    type: "text",
-    className: "col-span-4",
-    placeholder: "Example: Photoshoot Enquiry",
-  },
-  {
-    label: "Email Address",
-    name: "emailAddress",
-    type: "email",
-    className: "col-span-4",
-    placeholder: "john.doe@email.com",
-  },
-  {
-    label: "Message",
-    name: "message",
-    type: "text",
-    className: "col-span-4 resize-none",
-    isTextArea: true,
-    placeholder: "Type your message here..",
-  },
-];
 ---
 
 <PageLayout title="Contact us" disableTransform>
   <section class="flex h-screen w-full bg-cover">
     <div class="m-auto flex w-full max-w-7xl">
       <div class="w-full p-5">
-        <form class="grid grid-cols-4 gap-5 font-montserrat tracking-wider">
-          {
-            inputFormFields.map(
-              ({ label, name, type, className, isTextArea, placeholder }) => (
-                <div class={`form-group ${className}`}>
-                  <Label htmlFor={name}>{label}</Label>
-                  {isTextArea ? (
-                    <Textarea placeholder={placeholder} />
-                  ) : (
-                    <Input
-                      type={type}
-                      id={name}
-                      placeholder={placeholder}
-                      required
-                    />
-                  )}
-                </div>
-              ),
-            )
-          }
-
-          <div class="submit-wrapper col-span-4">
-            <Button className="p-5">Send message</Button>
-          </div>
-        </form>
+        <ContactForm />
       </div>
 
       <div class="w-full bg-white">a</div>
