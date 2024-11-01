@@ -23,11 +23,11 @@ const TestimonialCarousel = ({ testimonials }: TestimonialCarouselProps) => {
           align: "center",
           loop: true,
         }}
-        // plugins={[
-        //   Autoplay({
-        //     delay: 2000,
-        //   }),
-        // ]}
+        plugins={[
+          Autoplay({
+            delay: 2000,
+          }),
+        ]}
         className="static m-auto w-full max-w-7xl border-0"
       >
         <CarouselContent>

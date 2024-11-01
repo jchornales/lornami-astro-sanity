@@ -1,7 +1,9 @@
 ---
 import type { SanityDocument } from "@sanity/client";
 import { useLoadQuery } from "@/sanity/lib/useLoadQuery";
-import { useUrlForImage } from "@/sanity/lib/useUrlForImage";
+import useCompileImages from "@/sanity/lib/useCompileImages";
+import PageLayout from "@/layouts/PageLayout.astro";
+import ImagesCarousel from "@/components/react/about/ImagesCarousel";
 
 export async function getStaticPaths() {
   const { data: posts } = await useLoadQuery<SanityDocument[]>({
@@ -23,11 +25,15 @@ const { data: post } = await useLoadQuery<SanityDocument>({
   query: `*[_type == "post" && slug.current == $slug][0]`,
   params,
 });
+
+const compileImages = useCompileImages(post);
 ---
 
-<h1>A post about {post.title}</h1>
-{
-  post.mainImage && (
-    <img src={useUrlForImage(post.mainImage).width(400).url()} />
-  )
-}
+<PageLayout title={post.title} disableTransform>
+  <main class="flex w-full p-20">
+    <article class="w-2/3">
+      <ImagesCarousel client:load images={compileImages} />
+    </article>
+    <aside class="w-1/3">a</aside>
+  </main>
+</PageLayout>
