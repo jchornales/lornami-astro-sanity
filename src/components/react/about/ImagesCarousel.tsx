@@ -34,6 +34,8 @@ function ImagesCarousel({ images }: ImagesCarouselProps) {
           </CarouselItem>
         ))}
       </CarouselContent>
+
+      
       <CarouselPrevious />
       <CarouselNext />
     </Carousel>
