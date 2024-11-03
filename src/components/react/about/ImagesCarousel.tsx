@@ -1,44 +1,93 @@
-import { Card, CardContent } from "@/lib/ui/card";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/lib/ui/carousel";
+import { Card } from "@/lib/ui/card";
+import { Carousel, CarouselContent, CarouselItem } from "@/lib/ui/carousel";
 import type { CompiledImages } from "@/sanity/lib/useCompileImages";
 import { useUrlForImage } from "@/sanity/lib/useUrlForImage";
-import React from "react";
+import clsx from "clsx";
+import React, { useEffect, useState } from "react";
+import Autoplay from "embla-carousel-autoplay";
+
+interface Image {
+  src: string;
+  alt: string;
+}
 
 interface ImagesCarouselProps {
   images: CompiledImages[];
+  className?: string;
 }
 
-function ImagesCarousel({ images }: ImagesCarouselProps) {
-  return (
-    <Carousel className="w-full">
-      <CarouselContent>
-        {images.map((image, index) => (
-          <CarouselItem key={index} className="basis-full pl-0">
-            <div className="p-1">
-              <Card>
-                <CardContent className="flex aspect-square items-center justify-center p-6">
-                  <img
-                    className="max-w-lg"
-                    width={1000}
-                    src={useUrlForImage(image.url).url()}
-                  />
-                </CardContent>
-              </Card>
-            </div>
-          </CarouselItem>
-        ))}
-      </CarouselContent>
+function ImagesCarousel({ images, className }: ImagesCarouselProps) {
+  const [api, setApi] = useState<any>();
+  const [current, setCurrent] = useState(0);
 
-      
-      <CarouselPrevious />
-      <CarouselNext />
-    </Carousel>
+  useEffect(() => {
+    if (!api) return;
+
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap());
+    });
+  }, [api]);
+
+  const goToSlide = (index: number) => {
+    api?.scrollTo(index);
+  };
+
+  return (
+    <Card
+      className={clsx(
+        "mx-auto w-full max-w-5xl border-none p-4 shadow-none",
+        className,
+      )}
+    >
+      <Carousel
+        setApi={setApi}
+        className="w-full"
+        opts={{
+          loop: true,
+        }}
+        plugins={[
+          Autoplay({
+            delay: 5000,
+          }),
+        ]}
+      >
+        <CarouselContent>
+          {images.map((image, index) => (
+            <CarouselItem key={index}>
+              <div className="relative flex h-full w-full items-center justify-center overflow-hidden rounded-lg">
+                <img
+                  src={useUrlForImage(image.url).url()}
+                  alt={image.alt}
+                  className="h-auto max-h-[500px] w-auto"
+                />
+              </div>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+      </Carousel>
+
+      {/* Thumbnail Navigation */}
+      <div className="mt-4 flex justify-center gap-2">
+        {images.map((image, index) => (
+          <button
+            key={index}
+            onClick={() => goToSlide(index)}
+            className={clsx(
+              "relative h-16 w-16 overflow-hidden rounded-md transition-all",
+              current === index
+                ? "ring-2 ring-primary ring-offset-2"
+                : "opacity-70 hover:opacity-100",
+            )}
+          >
+            <img
+              src={useUrlForImage(image.url).url()}
+              alt={`Thumbnail ${index + 1}`}
+              className="h-full w-full object-cover"
+            />
+          </button>
+        ))}
+      </div>
+    </Card>
   );
 }
 

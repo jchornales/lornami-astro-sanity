@@ -4,6 +4,8 @@ import { useLoadQuery } from "@/sanity/lib/useLoadQuery";
 import useCompileImages from "@/sanity/lib/useCompileImages";
 import PageLayout from "@/layouts/PageLayout.astro";
 import ImagesCarousel from "@/components/react/about/ImagesCarousel";
+import { PortableText } from "astro-portabletext";
+import { Separator } from "@/lib/ui/separator";
 
 export async function getStaticPaths() {
   const { data: posts } = await useLoadQuery<SanityDocument[]>({
@@ -22,7 +24,18 @@ export async function getStaticPaths() {
 const { params } = Astro;
 
 const { data: post } = await useLoadQuery<SanityDocument>({
-  query: `*[_type == "post" && slug.current == $slug][0]`,
+  query: `*[_type == "post" && slug.current == $slug][0]{
+  ...,
+    author -> {
+      name,
+      image,
+      bio,
+    },
+    categories[] -> {
+      title,
+      description
+    }
+}`,
   params,
 });
 
@@ -30,10 +43,31 @@ const compileImages = useCompileImages(post);
 ---
 
 <PageLayout title={post.title} disableTransform>
-  <main class="flex w-full p-20">
-    <article class="w-2/3">
+  <main class="flex w-full px-5 py-20 lg:p-20">
+    <article class="flex w-full flex-col items-center justify-center lg:w-3/4">
       <ImagesCarousel client:load images={compileImages} />
+
+      <div class="m-auto flex w-full max-w-5xl flex-col gap-8">
+        <div>
+          <h1 class="font-serif text-3xl font-bold">{post.title}</h1>
+          <h1 class="flex gap-2 font-montserrat text-lg text-gray-400">
+            {
+              post.categories.map((category: any, index: number) => (
+                <>
+                  <span>{category.title}</span>
+                  {index < post.categories.length && (
+                    <Separator orientation="vertical" className="h-full" />
+                  )}
+                </>
+              ))
+            }
+          </h1>
+        </div>
+        <div class="flex flex-col gap-5">
+          <PortableText value={post.body} />
+        </div>
+      </div>
     </article>
-    <aside class="w-1/3">a</aside>
+    <aside class="hidden lg:flex lg:w-1/4">a</aside>
   </main>
 </PageLayout>
