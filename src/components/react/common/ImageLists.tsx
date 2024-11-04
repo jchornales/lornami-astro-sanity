@@ -1,13 +1,19 @@
 import { useUrlForImage } from "@/sanity/lib/useUrlForImage";
 import clsx from "clsx";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "@styles/ImageLists.css";
 import { useStore } from "@nanostores/react";
-import { filterPost, shouldSeeMore, sortPost } from "@/lib/utils/useStateStore";
+import {
+  filterPost,
+  isBackgroundDark,
+  shouldSeeMore,
+  sortPost,
+} from "@/lib/hooks/useStateStore";
 import _ from "lodash";
 import type { CompiledPost } from "@/sanity/lib/useCompilePosts";
 import { SORT_VALUE } from "@/lib/enums/sortValue";
 import SeeMore from "./SeeMore";
+import useIsAtViewportTop from "@/lib/hooks/useIsAtViewPortTop";
 
 interface Props {
   posts: CompiledPost[];
@@ -17,9 +23,17 @@ interface Props {
 
 function ImageLists({ posts, displaySeeMore }: Props) {
   const [postList, setPostList] = useState(posts);
+  const elementRef = useRef<HTMLDivElement>(null);
+  const isAtTop = useIsAtViewportTop(elementRef, { offset: 0 });
   const filter = useStore(filterPost);
   const sort = useStore(sortPost);
   const displayMore = useStore(shouldSeeMore);
+
+  useEffect(() => {
+    if (isAtTop) {
+      isBackgroundDark.set(false);
+    }
+  }, [isAtTop]);
 
   useEffect(() => {
     if (filter) {
@@ -48,6 +62,7 @@ function ImageLists({ posts, displaySeeMore }: Props) {
 
   return (
     <div
+      ref={elementRef}
       className={clsx([
         "gallery-wrapper",
         displaySeeMore && !displayMore ? "max-h-highlight" : "h-auto",

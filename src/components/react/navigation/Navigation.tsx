@@ -5,7 +5,7 @@ import { Button } from "@/lib/ui/button";
 import MenuButton from "./MenuButton";
 import Menu from "./Menu";
 import { useStore } from "@nanostores/react";
-import { isBackgroundDark, isMenuOpen } from "@/lib/utils/useStateStore";
+import { isBackgroundDark, isMenuOpen } from "@/lib/hooks/useStateStore";
 import clsx from "clsx";
 import type { GetImageResult } from "astro";
 import { useEffect, useInsertionEffect } from "react";
@@ -16,37 +16,24 @@ interface NavigationProps {
   disableTransform: boolean;
 }
 
-const observerOptions = {
-  root: null, // Use the viewport as the root
-  rootMargin: "0px",
-  threshold: 0, // Trigger callback when any part of the target is visible
-};
-
 function Navigation({ cover, disableTransform }: NavigationProps) {
   const isOpen = useStore(isMenuOpen);
   const shouldTransformNav = useStore(isBackgroundDark);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY === 0) {
+        isBackgroundDark.set(true);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   useInsertionEffect(() => {
     isBackgroundDark.set(true);
   }, []);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      const isInView = _.some(entries, { isIntersecting: true });
-      isBackgroundDark.set(isInView);
-    }, observerOptions);
-
-    const targetElement = document.querySelectorAll("[data-attribute='dark']");
-    targetElement.forEach((element) => {
-      if (element) observer.observe(element);
-    });
-
-    return () => {
-      targetElement.forEach((element) => {
-        if (element) observer.unobserve(element);
-      });
-    };
-  }, [shouldTransformNav]);
 
   return (
     <>

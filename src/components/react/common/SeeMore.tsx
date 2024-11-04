@@ -1,4 +1,4 @@
-import { shouldSeeMore } from "@/lib/utils/useStateStore";
+import { shouldSeeMore } from "@/lib/hooks/useStateStore";
 import React, { useEffect } from "react";
 
 function SeeMore() {

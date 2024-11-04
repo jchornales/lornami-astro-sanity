@@ -1,7 +1,7 @@
 import React from "react";
 import { useStore } from "@nanostores/react";
 import "@styles/Menu.css";
-import { isMenuOpen } from "@/lib/utils/useStateStore";
+import { isMenuOpen } from "@/lib/hooks/useStateStore";
 import { clsx } from "clsx";
 import type { GetImageResult } from "astro";
 

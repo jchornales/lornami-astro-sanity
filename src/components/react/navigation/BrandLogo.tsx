@@ -2,7 +2,7 @@ import { useStore } from "@nanostores/react";
 import React from "react";
 import "@styles/BrandLogo.css";
 import clsx from "clsx";
-import { isBackgroundDark, isMenuOpen } from "@/lib/utils/useStateStore";
+import { isBackgroundDark, isMenuOpen } from "@/lib/hooks/useStateStore";
 
 interface BrandLogoProps {
   disableTransform: boolean;

@@ -21,30 +21,3 @@ const compiledPosts = useCompilePosts(posts, false);
   </p>
   <ImageLists client:load posts={compiledPosts} displaySeeMore />
 </section>
-
-<script>
-  const element = document.getElementById("highlight-section");
-
-  const observerCallback = (entries: IntersectionObserverEntry[]) => {
-    entries.forEach((entry) => {
-      if (entry.intersectionRatio >= 0.5) {
-        const elementPosition = entry.boundingClientRect.top;
-        window.scrollTo({
-          top: elementPosition + window.scrollY,
-          left: 100,
-          behavior: "smooth",
-        });
-      }
-    });
-  };
-
-  const observerOptions = {
-    threshold: 0.5,
-  };
-
-  const observer = new IntersectionObserver(observerCallback, observerOptions);
-
-  if (element) {
-    observer.observe(element);
-  }
-</script>

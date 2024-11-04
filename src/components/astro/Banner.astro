@@ -22,50 +22,6 @@ const banner = await getImage({
   style={{ backgroundImage: `url(${banner.src})` }}
 >
   <p class="text --small">Need a photographer?</p>
-  <a href="#" class="text --large">Let's work together</a>
+  <a href="/services" class="text --large">Let's work together</a>
   <div class="banner-overlay"></div>
 </div>
-
-<script>
-  const element = document.querySelector(".banner-wrapper");
-
-  function disableScroll() {
-    window.addEventListener("wheel", preventScroll, { passive: false });
-  }
-
-  function enableScroll() {
-    window.removeEventListener("wheel", preventScroll);
-  }
-
-  function preventScroll(e: Event) {
-    e.preventDefault();
-  }
-
-  const observerCallback = (entries: IntersectionObserverEntry[]) => {
-    entries.forEach((entry) => {
-      if (entry.intersectionRatio >= 0.5) {
-        disableScroll();
-        const elementPosition = entry.boundingClientRect.top;
-        window.scrollTo({
-          top: elementPosition + window.scrollY,
-          left: 100,
-          behavior: "smooth",
-        });
-
-        setTimeout(() => {
-          enableScroll();
-        }, 1000);
-      }
-    });
-  };
-
-  const observerOptions = {
-    threshold: 0.5,
-  };
-
-  const observer = new IntersectionObserver(observerCallback, observerOptions);
-
-  if (element) {
-    observer.observe(element);
-  }
-</script>

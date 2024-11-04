@@ -5,7 +5,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/lib/ui/select";
-import { sortPost } from "@/lib/utils/useStateStore";
+import { sortPost } from "@/lib/hooks/useStateStore";
 
 function Sort() {
   return (

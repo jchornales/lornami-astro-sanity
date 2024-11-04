@@ -3,7 +3,7 @@ import { useStore } from "@nanostores/react";
 import "@styles/MenuButton.css";
 import clsx from "clsx";
 import { disableBodyScroll, clearAllBodyScrollLocks } from "body-scroll-lock";
-import { isBackgroundDark, isMenuOpen } from "@/lib/utils/useStateStore";
+import { isBackgroundDark, isMenuOpen } from "@/lib/hooks/useStateStore";
 
 interface MenuButtonProps {
   disableTransform: boolean;

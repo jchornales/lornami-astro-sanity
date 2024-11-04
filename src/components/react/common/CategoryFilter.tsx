@@ -1,5 +1,5 @@
 import { Button } from "@/lib/ui/button";
-import { filterPost } from "@/lib/utils/useStateStore";
+import { filterPost } from "@/lib/hooks/useStateStore";
 import { useStore } from "@nanostores/react";
 import type { SanityDocument } from "@sanity/client";
 
