@@ -67,26 +67,28 @@ function ImagesCarousel({ images, className }: ImagesCarouselProps) {
       </Carousel>
 
       {/* Thumbnail Navigation */}
-      <div className="mt-4 flex justify-center gap-2">
-        {images.map((image, index) => (
-          <button
-            key={index}
-            onClick={() => goToSlide(index)}
-            className={clsx(
-              "relative h-16 w-16 overflow-hidden rounded-md transition-all",
-              current === index
-                ? "ring-2 ring-primary ring-offset-2"
-                : "opacity-70 hover:opacity-100",
-            )}
-          >
-            <img
-              src={useUrlForImage(image.url).url()}
-              alt={`Thumbnail ${index + 1}`}
-              className="h-full w-full object-cover"
-            />
-          </button>
-        ))}
-      </div>
+      {images.length > 1 && (
+        <div className="mt-4 flex justify-center gap-2">
+          {images.map((image, index) => (
+            <button
+              key={index}
+              onClick={() => goToSlide(index)}
+              className={clsx(
+                "relative h-16 w-16 overflow-hidden rounded-md transition-all",
+                current === index
+                  ? "ring-2 ring-primary ring-offset-2"
+                  : "opacity-70 hover:opacity-100",
+              )}
+            >
+              <img
+                src={useUrlForImage(image.url).url()}
+                alt={`Thumbnail ${index + 1}`}
+                className="h-full w-full object-cover"
+              />
+            </button>
+          ))}
+        </div>
+      )}
     </Card>
   );
 }

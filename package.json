@@ -47,6 +47,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.53.1",
+    "react-responsive": "^10.0.0",
     "react-stagger-text": "^1.1.0",
     "react-stickynode": "^4.1.1",
     "sanity": "^3.57.4",
