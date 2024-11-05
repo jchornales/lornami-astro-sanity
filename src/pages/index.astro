@@ -2,17 +2,17 @@
 import PageLayout from "../layouts/PageLayout.astro";
 import "@styles/index.css";
 import Highlights from "components/astro/Highlights.astro";
-import Questions from "components/astro/Questions.astro";
-import Banner from "@/components/astro/Banner.astro";
 import Hero from "@/components/astro/Hero.astro";
+import Banner from "@/components/react/home/Banner";
+import Questions from "@/components/react/home/Questions";
 ---
 
 <PageLayout title="Home Page" disableTransform={false}>
   <Hero />
   <div class="relative z-30 bg-white">
     <Highlights />
-    <Banner />
-    <Questions />
+    <Banner client:visible />
+    <Questions client:visible />
   </div>
 </PageLayout>
 

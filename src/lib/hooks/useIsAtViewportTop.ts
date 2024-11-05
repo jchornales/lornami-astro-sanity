@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState, type RefObject } from "react";
+import { useCallback, useEffect, useState, type RefObject } from "react";
 
 interface UseIsAtViewportTopOptions {
   offset?: number;
@@ -16,7 +16,7 @@ function useIsAtViewportTop<T extends HTMLElement>(
 
     const element = ref.current;
     const rect = element.getBoundingClientRect();
-    const isElementAtTop = rect.top <= (offset ? offset : 100);
+    const isElementAtTop = rect.top <= (offset ? offset : 0);
 
     setIsAtTop(isElementAtTop);
   }, [ref, offset]);

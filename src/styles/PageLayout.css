@@ -62,5 +62,5 @@ html body[data-scroll-locked] {
 }
 
 .gallery-banner h1 {
-  @apply pointer-events-none max-w-3xl font-montserrat text-4xl font-semibold text-white;
+  @apply pointer-events-none max-w-3xl font-montserrat text-2xl font-semibold text-white lg:text-4xl;
 }

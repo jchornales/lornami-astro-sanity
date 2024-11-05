@@ -13,7 +13,7 @@ import _ from "lodash";
 import type { CompiledPost } from "@/sanity/lib/useCompilePosts";
 import { SORT_VALUE } from "@/lib/enums/sortValue";
 import SeeMore from "./SeeMore";
-import useIsAtViewportTop from "@/lib/hooks/useIsAtViewPortTop";
+import useIsAtViewportTop from "@/lib/hooks/useIsAtViewportTop";
 
 interface Props {
   posts: CompiledPost[];
@@ -24,7 +24,7 @@ interface Props {
 function ImageLists({ posts, displaySeeMore }: Props) {
   const [postList, setPostList] = useState(posts);
   const elementRef = useRef<HTMLDivElement>(null);
-  const isAtTop = useIsAtViewportTop(elementRef, { offset: 0 });
+  const isAtTop = useIsAtViewportTop(elementRef, { offset: 100 });
   const filter = useStore(filterPost);
   const sort = useStore(sortPost);
   const displayMore = useStore(shouldSeeMore);
@@ -32,6 +32,8 @@ function ImageLists({ posts, displaySeeMore }: Props) {
   useEffect(() => {
     if (isAtTop) {
       isBackgroundDark.set(false);
+    } else {
+      isBackgroundDark.set(true);
     }
   }, [isAtTop]);
 
