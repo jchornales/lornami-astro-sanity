@@ -8,7 +8,7 @@ function useIsAtViewportTop<T extends HTMLElement>(
   ref: RefObject<T>,
   options: UseIsAtViewportTopOptions = {},
 ): boolean {
-  const { offset = 0 } = options;
+  const { offset } = options;
   const [isAtTop, setIsAtTop] = useState<boolean>(false);
 
   const checkPosition = useCallback(() => {
@@ -16,7 +16,7 @@ function useIsAtViewportTop<T extends HTMLElement>(
 
     const element = ref.current;
     const rect = element.getBoundingClientRect();
-    const isElementAtTop = rect.top <= offset;
+    const isElementAtTop = rect.top <= (offset ? offset : 100);
 
     setIsAtTop(isElementAtTop);
   }, [ref, offset]);
