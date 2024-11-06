@@ -1,5 +1,5 @@
 .faqs {
-  @apply relative z-30 grid w-full place-items-center bg-white p-16 font-montserrat text-sm font-normal text-gray-600 md:text-base;
+  @apply relative z-30 grid w-full place-items-center bg-white pb-20 pt-24 font-montserrat text-sm font-normal text-gray-600 md:text-base;
 }
 
 .questions-wrapper {

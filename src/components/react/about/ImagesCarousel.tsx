@@ -85,6 +85,7 @@ function ImagesCarousel({ images, className }: ImagesCarouselProps) {
                 alt={`Thumbnail ${index + 1}`}
                 className="h-full w-full object-cover"
               />
+              
             </button>
           ))}
         </div>
