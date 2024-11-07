@@ -1,6 +1,7 @@
 ---
 import type { HTMLInputTypeAttribute } from "@/env";
 import { Button } from "@/lib/ui/button";
+import { Card, CardContent } from "@/lib/ui/card";
 import { Input } from "@/lib/ui/input";
 import { Label } from "@/lib/ui/label";
 import { Textarea } from "@/lib/ui/textarea";
@@ -20,14 +21,14 @@ const inputFormFields: inputFormFieldType[] = [
     label: "First Name",
     name: "firstName",
     type: "text",
-    className: "col-span-2",
+    className: "col-span-4 sm:col-span-2",
     placeholder: "John",
   },
   {
     label: "Last Name",
     name: "LastName",
     type: "text",
-    className: "col-span-2",
+    className: "col-span-4 sm:col-span-2",
     placeholder: "Doe",
   },
   {
@@ -56,37 +57,41 @@ const inputFormFields: inputFormFieldType[] = [
 ];
 ---
 
-<form class="grid grid-cols-4 gap-5 font-montserrat tracking-wider">
-  {
-    inputFormFields.map(
-      ({
-        label,
-        name,
-        type,
-        className,
-        isTextArea,
-        placeholder,
-        inputClass,
-      }) => (
-        <div class={`form-group ${className}`}>
-          <Label htmlFor={name}>{label}</Label>
-          {isTextArea ? (
-            <Textarea placeholder={placeholder} className={inputClass} />
-          ) : (
-            <Input
-              type={type}
-              id={name}
-              placeholder={placeholder}
-              className={inputClass}
-              required
-            />
-          )}
-        </div>
-      ),
-    )
-  }
+<Card className="w-full max-w-lg shadow-lg">
+  <CardContent className="p-10">
+    <form class="grid grid-cols-4 gap-5 font-montserrat tracking-wider">
+      {
+        inputFormFields.map(
+          ({
+            label,
+            name,
+            type,
+            className,
+            isTextArea,
+            placeholder,
+            inputClass,
+          }) => (
+            <div class={`form-group ${className}`}>
+              <Label htmlFor={name}>{label}</Label>
+              {isTextArea ? (
+                <Textarea placeholder={placeholder} className={inputClass} />
+              ) : (
+                <Input
+                  type={type}
+                  id={name}
+                  placeholder={placeholder}
+                  className={inputClass}
+                  required
+                />
+              )}
+            </div>
+          ),
+        )
+      }
 
-  <div class="submit-wrapper col-span-4">
-    <Button className="p-5">Send message</Button>
-  </div>
-</form>
+      <div class="submit-wrapper col-span-4">
+        <Button className="w-full p-6">Send message</Button>
+      </div>
+    </form>
+  </CardContent>
+</Card>

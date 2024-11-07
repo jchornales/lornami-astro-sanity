@@ -1,16 +1,72 @@
 ---
 import ContactForm from "@/components/astro/ContactForm.astro";
+import EmbeddedMap from "@/components/react/common/EmbeddedMap";
+import Questions from "@/components/react/home/Questions";
 import PageLayout from "@/layouts/PageLayout.astro";
+import Envelope from "@/lib/icons/Envelope.astro";
+import MapPin from "@/lib/icons/MapPin.astro";
+import Phone from "@/lib/icons/Phone.astro";
+import { useLoadQuery } from "@/sanity/lib/useLoadQuery";
+import { useUrlForImage } from "@/sanity/lib/useUrlForImage";
+import type { SanityDocument } from "@sanity/client";
+import { getImage } from "astro:assets";
+
+const { data: content } = await useLoadQuery<SanityDocument[]>({
+  query: `*[_type == "webContent" && slug.current == "contact-us-background"]`,
+});
+
+const { data: brandInformation } = await useLoadQuery<SanityDocument[]>({
+  query: `*[_type == "brandInformation"]`,
+});
+
+const { emailAddress, phoneNumber, address, facebook } = brandInformation[0];
+
+const cover = await getImage({
+  src: useUrlForImage(content[0].image).url(),
+  format: "webp",
+  inferSize: true,
+});
 ---
 
 <PageLayout title="Contact us" disableTransform>
-  <section class="flex h-screen w-full bg-cover">
-    <div class="m-auto flex w-full max-w-7xl">
-      <div class="w-full p-5">
+  <section
+    style={{ backgroundImage: `url(${cover.src})` }}
+    class="relative flex min-h-screen w-full bg-opacity-10"
+  >
+    <div class="absolute z-0 h-full w-full bg-primaryLight opacity-35"></div>
+    <div
+      class="relative z-10 m-auto flex w-full max-w-7xl flex-col-reverse gap-10 py-28 lg:flex-row lg:gap-10"
+    >
+      <div class="flex w-full flex-col items-center justify-center gap-10 p-5">
+        <div class="flex flex-col gap-3">
+          <h1 class="font-serif text-4xl font-bold">Connect with Us</h1>
+          <p class="base max-w-lg font-montserrat">
+            Whether it's to discuss your next project or just to say hi, feel
+            free to reach out to us. We're excited to hear from you.
+          </p>
+        </div>
+        <div class="flex flex-col gap-2">
+          <div class="flex items-center gap-2">
+            <Phone className="size-5" />{phoneNumber}
+          </div>
+          <div class="flex items-center gap-3">
+            <Envelope className="size-5" />{emailAddress}
+          </div>
+          <div class="flex items-center gap-3">
+            <MapPin className="size-5" />{address}
+          </div>
+        </div>
+        <div class="w-full shadow-lg md:max-w-lg">
+          <EmbeddedMap
+            locationUrl="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3237.204654879644!2d120.63554681759325!3d15.229203113467062!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3396eebbba8ef85b%3A0xd53741eb91c3809a!2sSan%20Isidro%20Resettlement!5e0!3m2!1sfil!2sph!4v1730980793356!5m2!1sfil!2sph"
+            height="280px"
+            client:load
+          />
+        </div>
+      </div>
+      <div class="grid w-full place-items-center p-5">
         <ContactForm />
       </div>
-
-      <div class="w-full bg-white">a</div>
     </div>
   </section>
 </PageLayout>
