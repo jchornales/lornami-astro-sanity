@@ -16,11 +16,11 @@ const OtherPostsCarousel = ({ posts }: OtherPostsCarouselProps) => {
           align: "center",
           loop: true,
         }}
-        // plugins={[
-        //   Autoplay({
-        //     delay: 2000,
-        //   }),
-        // ]}
+        plugins={[
+          Autoplay({
+            delay: 2000,
+          }),
+        ]}
         className="relative m-auto w-full max-w-7xl border-0"
       >
         <CarouselContent>

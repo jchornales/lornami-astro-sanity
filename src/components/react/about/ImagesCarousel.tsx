@@ -6,11 +6,6 @@ import clsx from "clsx";
 import React, { useEffect, useState } from "react";
 import Autoplay from "embla-carousel-autoplay";
 
-interface Image {
-  src: string;
-  alt: string;
-}
-
 interface ImagesCarouselProps {
   images: CompiledImages[];
   className?: string;

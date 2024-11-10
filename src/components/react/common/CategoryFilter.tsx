@@ -3,11 +3,11 @@ import { filterPost } from "@/lib/hooks/useStateStore";
 import { useStore } from "@nanostores/react";
 import type { SanityDocument } from "@sanity/client";
 
-interface Props {
+interface CategoryFilterProps {
   categories: SanityDocument[];
 }
 
-function CategoryFilter({ categories }: Props) {
+function CategoryFilter({ categories }: CategoryFilterProps) {
   const activeFilter = useStore(filterPost);
 
   const handleOnClick = (filter: string) => {

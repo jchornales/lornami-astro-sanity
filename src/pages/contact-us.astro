@@ -1,7 +1,6 @@
 ---
-import ContactForm from "@/components/astro/ContactForm.astro";
 import EmbeddedMap from "@/components/react/common/EmbeddedMap";
-import Questions from "@/components/react/home/Questions";
+import ContactForm from "@/components/react/contact/ContactForm";
 import PageLayout from "@/layouts/PageLayout.astro";
 import Envelope from "@/lib/icons/Envelope.astro";
 import MapPin from "@/lib/icons/MapPin.astro";
@@ -65,7 +64,7 @@ const cover = await getImage({
         </div>
       </div>
       <div class="grid w-full place-items-center p-5">
-        <ContactForm />
+        <ContactForm client:load />
       </div>
     </div>
   </section>
