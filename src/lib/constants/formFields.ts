@@ -1,8 +1,16 @@
 import type { HTMLInputTypeAttribute } from "@/env";
 
-interface inputFormFieldType {
+type fieldsName =
+  | "firstName"
+  | "lastName"
+  | "subject"
+  | "emailAddress"
+  | "message"
+  | "lastName";
+
+export interface InputFormFieldType {
   label: string;
-  name: string;
+  name: fieldsName;
   type?: HTMLInputTypeAttribute;
   className?: string;
   isTextArea?: boolean;
@@ -10,7 +18,7 @@ interface inputFormFieldType {
   inputClass?: string;
 }
 
-export const inputFormFields: inputFormFieldType[] = [
+export const InputFormFields: InputFormFieldType[] = [
   {
     label: "First Name",
     name: "firstName",
@@ -20,7 +28,7 @@ export const inputFormFields: inputFormFieldType[] = [
   },
   {
     label: "Last Name",
-    name: "LastName",
+    name: "lastName",
     type: "text",
     className: "col-span-4 sm:col-span-2",
     placeholder: "Doe",
@@ -42,7 +50,6 @@ export const inputFormFields: inputFormFieldType[] = [
   {
     label: "Message",
     name: "message",
-    type: "text",
     className: "col-span-4 ",
     inputClass: "resize-none",
     isTextArea: true,
