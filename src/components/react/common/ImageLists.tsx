@@ -74,7 +74,7 @@ function ImageLists({ posts, displaySeeMore }: Props) {
         {postList?.map((post, index) => (
           <a href={`post/${post.href}`} className="gallery-item" key={index}>
             <img
-              src={useUrlForImage(post.url).url()}
+              src={post.url}
               alt={post.alt}
               className="gallery-image"
               decoding="async"
