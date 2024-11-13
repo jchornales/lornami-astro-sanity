@@ -12,12 +12,12 @@ const compiledPosts = useCompilePosts(posts, false);
 ---
 
 <section id="highlight-section" class="section min-h-highlight">
-  <p class="section-sub-title" data-aos="fade-left">
-    <q class="italic">
+  <p class="section-sub-title">
+    <q class="italic" data-aos="fade-left">
       If you don&#39;t think photos are important, wait until they&#39;re all
       you have left.
     </q>
-    <span class="font-semibold"> &#45; Missy Mwac </span>
+    <span class="font-semibold" data-aos="fade-left"> &#45; Missy Mwac </span>
   </p>
   <ImageLists client:load posts={compiledPosts} displaySeeMore />
 </section>
