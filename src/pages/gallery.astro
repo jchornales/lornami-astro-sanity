@@ -52,7 +52,9 @@ const cover = await getImage({
     <div
       class="absolute left-0 top-0 flex h-full w-full flex-col items-center justify-center bg-black bg-opacity-75 bg-blend-overlay"
     >
-      <PortableText value={content[0].body} />
+      <span data-aos="zoom-in">
+        <PortableText value={content[0].body} />
+      </span>
     </div>
   </div>
   <section class="section py-16">

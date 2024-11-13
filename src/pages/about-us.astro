@@ -53,7 +53,12 @@ const brands = [
   <section class="introduction-section">
     <div class="introduction-wrapper">
       <div class="column --left">
-        <div class="introduction-header">
+        <div
+          class="introduction-header"
+          data-aos="fade-down"
+          data-aos-offset="300"
+          data-aos-easing="ease-in-sine"
+        >
           <h3 class="sub-title">A bit about the</h3>
           <h1 class="title">Eyes Behind the Camera</h1>
         </div>
@@ -61,7 +66,12 @@ const brands = [
         <div class="introduction-list">
           {
             about?.map((item) => (
-              <div class="item-wrapper">
+              <div
+                class="item-wrapper"
+                data-aos="fade-right"
+                data-aos-offset="500"
+                data-aos-easing="ease-in-sine"
+              >
                 <h1 class="title">{item.name}</h1>
                 <p class="content">{item.description}</p>
               </div>
@@ -69,11 +79,13 @@ const brands = [
           }
         </div>
 
-        <div class="introduction-footer">
-          <a href="#">Capture your story—let's find a time!</a>
+        <div class="introduction-footer animate-infinite animate-bounce">
+          <a href="#" data-aos="zoom-in" data-aos-offset="300"
+            >Capture your story—let's find a time!</a
+          >
         </div>
       </div>
-      <div class="column --right">
+      <div class="column --right" data-aos="zoom-in-down">
         <div class="wrapper">
           <Image
             src={useUrlForImage(main[0].image).url()}
@@ -95,8 +107,15 @@ const brands = [
     <div class="brands">
       <div class="brand-wrapper">
         {
-          brands.map((BrandIcon) => (
-            <BrandIcon className="fill-slate-700 md:mx-10" />
+          brands.map((BrandIcon, index) => (
+            <div
+              class="md:mx-10"
+              data-aos="zoom-in"
+              data-aos-delay={index * 100}
+              data-aos-offset="300"
+            >
+              <BrandIcon className="fill-slate-700" />
+            </div>
           ))
         }
       </div>

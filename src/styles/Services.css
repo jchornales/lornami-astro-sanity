@@ -29,9 +29,9 @@
   @apply grid h-1/4 w-full place-items-center bg-primaryLight p-5 md:p-10 lg:p-0;
 }
 
-.services-header .disclaimer > p > strong {
+.services-header .disclaimer p > strong {
   @apply font-serif text-lg font-bold lg:text-2xl;
 }
-.services-header .disclaimer > p {
+.services-header .disclaimer p {
   @apply max-w-4xl font-montserrat text-base lg:text-xl;
 }

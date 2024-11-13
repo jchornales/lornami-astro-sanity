@@ -1,5 +1,5 @@
 import { shouldSeeMore } from "@/lib/hooks/useStateStore";
-import React, { useEffect } from "react";
+import React from "react";
 
 function SeeMore() {
   const handleClick = () => {
@@ -12,14 +12,17 @@ function SeeMore() {
 
   return (
     <div className="gallery-see-more">
-      <button className="group flex gap-2" onClick={handleClick}>
+      <button
+        className="animate-infinite group flex animate-bounce gap-2"
+        onClick={handleClick}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="size-6"
+          className="size-10"
         >
           <path
             strokeLinecap="round"

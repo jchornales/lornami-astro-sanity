@@ -38,13 +38,23 @@ const cover = await getImage({
     >
       <div class="flex w-full flex-col items-center justify-center gap-10 p-5">
         <div class="flex flex-col gap-3">
-          <h1 class="font-serif text-4xl font-bold">Connect with Us</h1>
-          <p class="base max-w-lg font-montserrat">
+          <h1 class="font-serif text-4xl font-bold" data-aos="fade-left">
+            Connect with Us
+          </h1>
+          <p
+            class="base max-w-lg font-montserrat"
+            data-aos="fade-left"
+            data-aos-delay="200"
+          >
             Whether it's to discuss your next project or just to say hi, feel
             free to reach out to us. We're excited to hear from you.
           </p>
         </div>
-        <div class="flex flex-col gap-2">
+        <div
+          class="flex flex-col gap-2"
+          data-aos="fade-left"
+          data-aos-delay="400"
+        >
           <div class="flex items-center gap-2">
             <Phone className="size-5" />{phoneNumber}
           </div>
@@ -55,7 +65,11 @@ const cover = await getImage({
             <MapPin className="size-5" />{address}
           </div>
         </div>
-        <div class="w-full shadow-lg md:max-w-lg">
+        <div
+          class="w-full shadow-lg md:max-w-lg"
+          data-aos="fade-left"
+          data-aos-delay="600"
+        >
           <EmbeddedMap
             locationUrl="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3237.204654879644!2d120.63554681759325!3d15.229203113467062!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3396eebbba8ef85b%3A0xd53741eb91c3809a!2sSan%20Isidro%20Resettlement!5e0!3m2!1sfil!2sph!4v1730980793356!5m2!1sfil!2sph"
             height="280px"
@@ -63,7 +77,11 @@ const cover = await getImage({
           />
         </div>
       </div>
-      <div class="grid w-full place-items-center p-5">
+      <div
+        class="grid w-full place-items-center p-5"
+        data-aos="zoom-in-left"
+        data-aos-delay="400"
+      >
         <ContactForm client:load />
       </div>
     </div>

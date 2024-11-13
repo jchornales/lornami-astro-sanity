@@ -5,8 +5,8 @@ import { Toaster } from "@/lib/ui/sonner";
 import { useLoadQuery } from "@/sanity/lib/useLoadQuery";
 import { useUrlForImage } from "@/sanity/lib/useUrlForImage";
 import type { SanityDocument } from "@sanity/client";
-import "@styles/PageLayout.css";
 import { getImage } from "astro:assets";
+import "@styles/PageLayout.css";
 
 interface Props {
   title: string;
@@ -32,6 +32,7 @@ const optimizedBackground = await getImage({
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <title>{title} || Lornami Studio</title>
   </head>
   <body class="relative w-full">
@@ -43,5 +44,9 @@ const optimizedBackground = await getImage({
     <slot />
     <Toaster client:load />
     <Footer />
+    <script is:inline src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script is:inline>
+      AOS.init();
+    </script>
   </body>
 </html>

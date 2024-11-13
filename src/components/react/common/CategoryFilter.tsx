@@ -26,6 +26,7 @@ function CategoryFilter({ categories }: CategoryFilterProps) {
           className="font-montserrat font-bold"
           onClick={() => handleOnClick(category.title)}
           key={category.slug.current}
+          data-aos="fade-right"
         >
           {category.title}
         </Button>

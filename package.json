@@ -33,6 +33,7 @@
     "@types/lodash": "^4.17.10",
     "@types/react": "^18.3.7",
     "@types/react-dom": "^18.3.0",
+    "aos": "^2.3.4",
     "astro": "^4.16.2",
     "astro-portabletext": "^0.10.0",
     "body-scroll-lock": "^4.0.0-beta.0",
@@ -64,11 +65,13 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@types/aos": "^3.0.7",
     "@types/body-scroll-lock": "^3.1.2",
     "prettier": "^3.3.3",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.6.6",
     "tailwind-scrollbar": "^3.1.0",
+    "tailwindcss-animated": "^1.1.2",
     "vite": "^5.4.6"
   }
 }

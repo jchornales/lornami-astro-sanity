@@ -31,8 +31,10 @@ function Questions() {
     <section ref={elementRef} className="faqs">
       <div className="questions-wrapper">
         <div className="faqs-header">
-          <h3 className="title">Frequently asked questions</h3>
-          <p className="max-w-2xl">
+          <h3 className="title" data-aos="fade-left">
+            Frequently asked questions
+          </h3>
+          <p className="max-w-2xl" data-aos="fade-left">
             <span>
               Have a different question and can&apos;t find the answer
               you&apos;re looking for? Reach out to our support team by
@@ -46,7 +48,13 @@ function Questions() {
 
         <Accordion type="single" className="questions" collapsible>
           {questions.map((item, index) => (
-            <AccordionItem key={index} value={`item-${index}`} className="item">
+            <AccordionItem
+              key={index}
+              value={`item-${index}`}
+              className="item"
+              data-aos="fade-up"
+              data-aos-offset="300"
+            >
               <AccordionTrigger className="trigger">
                 {item.question}
               </AccordionTrigger>

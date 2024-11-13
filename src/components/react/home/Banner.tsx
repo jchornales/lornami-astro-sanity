@@ -36,8 +36,15 @@ function Banner() {
       data-attribute="dark"
       style={{ backgroundImage: `url(${banner.src})` }}
     >
-      <p className="text --small">Need a photographer?</p>
-      <a href="/services" className="text --large">
+      <p className="text --small" data-aos="fade-zoom-in">
+        Need a photographer?
+      </p>
+      <a
+        href="/services"
+        className="text --large"
+        data-aos="fade-left"
+        data-aos-delay="200"
+      >
         Let's work together
       </a>
       <div className="banner-overlay"></div>

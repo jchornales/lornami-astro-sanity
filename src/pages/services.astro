@@ -17,29 +17,41 @@ const { data: content } = await useLoadQuery<SanityDocument[]>({
   <section class="services-header">
     <div class="content-wrapper">
       <div class="column --left">
-        <span class="text-xs tracking-widest text-zinc-700 lg:text-base">
+        <span
+          class="text-xs tracking-widest text-zinc-700 lg:text-base"
+          data-aos="fade-down"
+        >
           — PRIVATE CONSULTATION</span
         >
-        <PortableText value={content[0].body} />
+        <span data-aos="fade-left">
+          <PortableText value={content[0].body} />
+        </span>
       </div>
       <div class="column --right">
         <Image
           src={useUrlForImage(content[0].image).url()}
           alt={content[0].title}
           loading="eager"
+          data-aos="zoom-in-left"
           inferSize
         />
       </div>
     </div>
     <div class="disclaimer wrapper">
-      <PortableText value={content[0].body2} />
+      <span data-aos="fade-up" data-aos-delay="300">
+        <PortableText value={content[0].body2} />
+      </span>
     </div>
   </section>
   <section class="pricing-section">
     <div class="pricing-header">
-      <h2 class="label">— PRICING —</h2>
-      <h3 class="quote">A package for every type of shoot</h3>
-      <p class="sub-quote">
+      <h2 class="label" data-aos="fade-up" data-aos-offset="300">
+        — PRICING —
+      </h2>
+      <h3 class="quote" data-aos="fade-up" data-aos-offset="300">
+        A package for every type of shoot
+      </h3>
+      <p class="sub-quote" data-aos="fade-up" data-aos-offset="300">
         Work with us to capture your vision with one of our tailored photography
         packages. From portraits to full-scale events, we have something for
         everyone.

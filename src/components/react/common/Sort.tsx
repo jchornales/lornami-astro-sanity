@@ -10,7 +10,10 @@ import { sortPost } from "@/lib/hooks/useStateStore";
 function Sort() {
   return (
     <Select onValueChange={(value) => sortPost.set(value)}>
-      <SelectTrigger className="w-[150px] font-montserrat font-semibold text-gray-500">
+      <SelectTrigger
+        data-aos="fade-left"
+        className="w-[150px] font-montserrat font-semibold text-gray-500"
+      >
         <SelectValue placeholder="Sort by" />
       </SelectTrigger>
       <SelectContent>

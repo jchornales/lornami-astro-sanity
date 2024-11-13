@@ -26,8 +26,15 @@ const formatter = new Intl.NumberFormat("en-PH", {
 
 <div class="wrapper">
   {
-    prices.map((price) => (
-      <Card className={`pricing-card highlight-${price.highlight}`}>
+    prices.map((price, index) => (
+      <Card
+        key={index}
+        data-aos="fade-up"
+        data-aos-delay={index * 500}
+        data-aos-duration="1000"
+        data-aos-offset="300"
+        className={`pricing-card highlight-${price.highlight}`}
+      >
         <CardHeader className="header">
           <CardTitle className="title">{price.title}</CardTitle>
           <CardTitle className="price">
@@ -56,30 +63,3 @@ const formatter = new Intl.NumberFormat("en-PH", {
     ))
   }
 </div>
-
-<script>
-  const element = document.querySelector(".pricing-section");
-
-  const observerCallback = (entries: IntersectionObserverEntry[]) => {
-    entries.forEach((entry) => {
-      if (entry.intersectionRatio >= 0.5) {
-        const elementPosition = entry.boundingClientRect.top;
-        window.scrollTo({
-          top: elementPosition + window.scrollY,
-          left: 100,
-          behavior: "smooth",
-        });
-      }
-    });
-  };
-
-  const observerOptions = {
-    threshold: 0.5,
-  };
-
-  const observer = new IntersectionObserver(observerCallback, observerOptions);
-
-  if (element) {
-    observer.observe(element);
-  }
-</script>
