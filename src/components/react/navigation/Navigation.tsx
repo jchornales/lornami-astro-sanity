@@ -10,6 +10,7 @@ import clsx from "clsx";
 import type { GetImageResult } from "astro";
 import { useEffect, useInsertionEffect } from "react";
 import _ from "lodash";
+import BookingForm from "../common/BookingForm";
 
 interface NavigationProps {
   cover: GetImageResult;
@@ -48,18 +49,18 @@ function Navigation({ cover, disableTransform }: NavigationProps) {
           <BrandLogo disableTransform={disableTransform} />
         </div>
         <div className="nav right-column">
-          <Button
-            variant="link"
-            className={clsx(
-              "nav book-now",
-              isOpen && "opened",
-              shouldTransformNav && !disableTransform ? "light" : "dark",
-            )}
-          >
-            <a className="mix-blend-difference" href="/">
+          <BookingForm>
+            <Button
+              variant="link"
+              className={clsx(
+                "nav book-now",
+                isOpen && "opened",
+                shouldTransformNav && !disableTransform ? "light" : "dark",
+              )}
+            >
               BOOK NOW
-            </a>
-          </Button>
+            </Button>
+          </BookingForm>
           <MenuButton disableTransform={disableTransform} />
         </div>
         <Menu cover={cover} />

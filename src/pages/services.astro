@@ -6,7 +6,7 @@ import type { SanityDocument } from "@sanity/client";
 import { PortableText } from "astro-portabletext";
 import { Image } from "astro:assets";
 import "@styles/Services.css";
-import Pricing from "@/components/astro/Pricing.astro";
+import Pricing from "@/components/react/services/Pricing";
 
 const { data: content } = await useLoadQuery<SanityDocument[]>({
   query: `*[_type == "webContent" && slug.current == "services-header"]`,
@@ -57,6 +57,6 @@ const { data: content } = await useLoadQuery<SanityDocument[]>({
         everyone.
       </p>
     </div>
-    <Pricing />
+    <Pricing client:load />
   </section>
 </PageLayout>
