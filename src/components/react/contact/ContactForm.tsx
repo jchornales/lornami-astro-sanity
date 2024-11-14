@@ -70,6 +70,7 @@ function ContactForm() {
                   <Textarea
                     placeholder={placeholder}
                     className={inputClass}
+                    error={errors[name]?.message}
                     {...register(name)}
                   />
                 ) : (
@@ -78,11 +79,9 @@ function ContactForm() {
                     id={name}
                     placeholder={placeholder}
                     className={inputClass}
+                    error={errors[name]?.message}
                     {...register(name)}
                   />
-                )}
-                {errors[name] && (
-                  <p className="text-xs text-red-500">{errors[name].message}</p>
                 )}
               </div>
             ),
