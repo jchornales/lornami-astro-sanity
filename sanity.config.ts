@@ -24,7 +24,7 @@ export default defineConfig({
         excludeSources: ["unsplash"],
       },
       maximumUploadSize: 10000000,
-    }),
+    }) as any,
     unsplashImageAsset(),
   ],
   form: {

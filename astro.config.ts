@@ -5,6 +5,8 @@ import sanity from "@sanity/astro";
 import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
 
+import netlify from "@astrojs/netlify";
+
 // https://astro.build/config
 export default defineConfig({
   integrations: [
@@ -20,9 +22,13 @@ export default defineConfig({
       applyBaseStyles: false,
     }),
   ],
+
   vite: {
     ssr: {
       noExternal: ["astro", "@astrojs/image", "react-effect-typewriter"],
     },
   },
+
+  output: "server",
+  adapter: netlify(),
 });

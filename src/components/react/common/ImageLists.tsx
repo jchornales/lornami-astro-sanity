@@ -1,4 +1,3 @@
-import { useUrlForImage } from "@/sanity/lib/useUrlForImage";
 import clsx from "clsx";
 import React, { useEffect, useRef, useState } from "react";
 import "@styles/ImageLists.css";
@@ -77,7 +76,7 @@ function ImageLists({ posts, displaySeeMore }: Props) {
             className="gallery-item"
             key={index}
             data-aos="fade-up"
-            data-aos-offset="300"
+            data-aos-offset="100"
           >
             <img
               src={post.url}

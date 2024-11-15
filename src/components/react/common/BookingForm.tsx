@@ -1,5 +1,4 @@
 import { BookingFormFields } from "@/lib/constants/bookingFormFields";
-import { InputFormFields } from "@/lib/constants/formFields";
 import {
   BookingFormSchema,
   type BookingFormData,
@@ -14,7 +13,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/lib/ui/dialog";
-import { Form, FormField, FormItem, FormLabel } from "@/lib/ui/form";
+import { Form, FormField, FormItem } from "@/lib/ui/form";
 import { Input } from "@/lib/ui/input";
 import { Label } from "@/lib/ui/label";
 import { Popover, PopoverContent, PopoverTrigger } from "@/lib/ui/popover";
