@@ -13,7 +13,7 @@ export default defineConfig({
     sanity({
       projectId: import.meta.env.VITE_PUBLIC_SANITY_PROJECT_ID,
       dataset: import.meta.env.VITE_PUBLIC_SANITY_DATASET,
-      useCdn: true,
+      useCdn: false,
       apiVersion: "2024-09-19",
       studioBasePath: "/studio",
     }),
