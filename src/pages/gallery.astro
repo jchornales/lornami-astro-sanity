@@ -8,7 +8,6 @@ import { useLoadQuery } from "@/sanity/lib/useLoadQuery";
 import { useUrlForImage } from "@/sanity/lib/useUrlForImage";
 import type { SanityDocument } from "@sanity/client";
 import { PortableText } from "astro-portabletext";
-import { getImage } from "astro:assets";
 
 const { data: posts } = await useLoadQuery<SanityDocument[]>({
   query: `*[_type == "post"]{
@@ -35,19 +34,15 @@ const { data: content } = await useLoadQuery<SanityDocument[]>({
 });
 
 const compiledPosts = useCompilePosts(posts, true);
-
-const cover = await getImage({
-  src: useUrlForImage(content[0].image).url(),
-  format: "webp",
-  inferSize: true,
-});
 ---
 
 <PageLayout title="Gallery" disableTransform={false}>
   <div
     class="gallery-banner relative h-[500px] bg-cover"
     data-attribute="dark"
-    style={{ backgroundImage: `url(${cover.src})` }}
+    style={{
+      backgroundImage: `url(${useUrlForImage(content[0].image).url()})`,
+    }}
   >
     <div
       class="absolute left-0 top-0 flex h-full w-full flex-col items-center justify-center bg-black bg-opacity-75 bg-blend-overlay"

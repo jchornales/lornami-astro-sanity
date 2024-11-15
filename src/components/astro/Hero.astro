@@ -3,17 +3,10 @@ import ChevronDoubleDown from "@/lib/icons/ChevronDoubleDown.astro";
 import { useLoadQuery } from "@/sanity/lib/useLoadQuery";
 import { useUrlForImage } from "@/sanity/lib/useUrlForImage";
 import type { SanityDocument } from "@sanity/client";
-import { getImage } from "astro:assets";
 import "@styles/Hero.css";
 
 const { data: content } = await useLoadQuery<SanityDocument[]>({
   query: `*[_type == "webContent" && slug.current == "hero-section"]`,
-});
-
-const cover = await getImage({
-  src: useUrlForImage(content[0].image).url(),
-  format: "webp",
-  inferSize: true,
 });
 ---
 
@@ -25,7 +18,13 @@ const cover = await getImage({
     </p>
   </div>
   <div class="overlay"></div>
-  <div class="photo" style={{ backgroundImage: `url(${cover.src})` }}></div>
+  <div
+    class="photo"
+    style={{
+      backgroundImage: `url(${useUrlForImage(content[0].image).url()})`,
+    }}
+  >
+  </div>
   <div class="next-section">
     <button class="group" data-button="next-section">
       <ChevronDoubleDown
