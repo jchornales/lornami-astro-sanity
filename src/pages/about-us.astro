@@ -15,7 +15,6 @@ import { useLoadQuery } from "@/sanity/lib/useLoadQuery";
 import { useUrlForImage } from "@/sanity/lib/useUrlForImage";
 import type { SanityDocument } from "@sanity/client";
 import "@styles/AboutUs.css";
-import { Image } from "astro:assets";
 import TestimonialCarousel from "@/components/react/about/TestimonialCarousel";
 
 const { data: main } = await useLoadQuery<SanityDocument[]>({
@@ -79,7 +78,7 @@ const brands = [
           }
         </div>
 
-        <div class="introduction-footer animate-infinite animate-bounce">
+        <div class="introduction-footer animate-bounce animate-infinite">
           <a href="#" data-aos="zoom-in" data-aos-offset="300"
             >Capture your story—let's find a time!</a
           >
@@ -87,16 +86,11 @@ const brands = [
       </div>
       <div class="column --right" data-aos="zoom-in-down">
         <div class="wrapper">
-          <Image
-            src={useUrlForImage(main[0].image).url()}
-            alt={main[0].title}
-            inferSize
-          />
+          <img src={useUrlForImage(main[0].image).url()} alt={main[0].title} />
         </div>
-        <Image
+        <img
           src={useUrlForImage(sub[0].image).url()}
           alt={sub[0].title}
-          inferSize
           class="sub-image"
         />
       </div>

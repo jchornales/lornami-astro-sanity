@@ -4,7 +4,6 @@ import { useLoadQuery } from "@/sanity/lib/useLoadQuery";
 import { useUrlForImage } from "@/sanity/lib/useUrlForImage";
 import type { SanityDocument } from "@sanity/client";
 import { PortableText } from "astro-portabletext";
-import { Image } from "astro:assets";
 import "@styles/Services.css";
 import Pricing from "@/components/react/services/Pricing";
 
@@ -28,12 +27,11 @@ const { data: content } = await useLoadQuery<SanityDocument[]>({
         </span>
       </div>
       <div class="column --right">
-        <Image
+        <img
           src={useUrlForImage(content[0].image).url()}
           alt={content[0].title}
           loading="eager"
           data-aos="zoom-in-left"
-          inferSize
         />
       </div>
     </div>
