@@ -1,5 +1,5 @@
 .menu-wrapper {
-  @apply font-optitomaso absolute left-0 top-0 z-0 h-screen min-w-full overflow-hidden;
+  @apply absolute left-0 top-0 z-0 h-screen min-w-full overflow-hidden font-optitomaso;
 }
 
 .menu-overlay {
