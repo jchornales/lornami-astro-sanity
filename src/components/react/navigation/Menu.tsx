@@ -6,7 +6,7 @@ import { clsx } from "clsx";
 import type { GetImageResult } from "astro";
 
 interface Props {
-  cover: GetImageResult;
+  cover: string;
 }
 
 const menuList = [
@@ -36,7 +36,7 @@ function Menu({ cover }: Props) {
       <div className="menu-overlay --first"></div>
       <div
         className="menu-overlay --second"
-        style={{ backgroundImage: `url(${cover.src})` }}
+        style={{ backgroundImage: `url(${cover})` }}
       ></div>
       <div className="menu-overlay --third">
         <ul className="menu-list">

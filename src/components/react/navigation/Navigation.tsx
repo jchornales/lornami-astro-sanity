@@ -6,14 +6,13 @@ import Menu from "./Menu";
 import { useStore } from "@nanostores/react";
 import { isBackgroundDark, isMenuOpen } from "@/lib/hooks/useStateStore";
 import clsx from "clsx";
-import type { GetImageResult } from "astro";
 import { useEffect, useState } from "react";
 import _ from "lodash";
 import BookingForm from "../common/BookingForm";
 import TypewriterComponent from "typewriter-effect";
 
 interface NavigationProps {
-  cover: GetImageResult;
+  cover: string;
   disableTransform: boolean;
   title?: string;
 }
