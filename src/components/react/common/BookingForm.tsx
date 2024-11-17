@@ -39,9 +39,11 @@ function BookingForm({ children }: BookingFormProps) {
     register,
     handleSubmit,
     control,
+    reset,
     formState: { errors, isSubmitSuccessful },
   } = form;
   const [isSending, setIsSending] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const onSubmit: SubmitHandler<BookingFormData> = (data) => {
     if (data) {
@@ -51,14 +53,11 @@ function BookingForm({ children }: BookingFormProps) {
         setIsSending(false);
         toast.success("The appointment has been successfully scheduled.", {
           className: "!bg-green-200",
-          description: "Redirecting to home page...",
           duration: 5000,
         });
+        setIsOpen(false);
+        reset();
       }, 4000);
-
-      setTimeout(() => {
-        window.location.href = window.location.origin;
-      }, 8000);
     }
     if (errors) {
       console.log(errors);
@@ -66,7 +65,12 @@ function BookingForm({ children }: BookingFormProps) {
   };
 
   return (
-    <Dialog>
+    <Dialog
+      open={isOpen}
+      onOpenChange={() => {
+        setIsOpen((prevState) => !prevState);
+      }}
+    >
       <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent className="sm:max-w-lg">
         <DialogHeader>
