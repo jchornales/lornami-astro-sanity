@@ -72,7 +72,7 @@ function ImageLists({ posts, displaySeeMore }: Props) {
       <div className="image-lists">
         {postList?.map((post, index) => (
           <a
-            href={`post/${post.href}`}
+            href={`gallery/${post.href}`}
             className="gallery-item"
             key={index}
             data-aos="fade-up"

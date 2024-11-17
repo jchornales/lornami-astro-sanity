@@ -8,6 +8,14 @@ import { PortableText } from "astro-portabletext";
 import OtherPostsCarousel from "@/components/react/common/OtherPostsCarousel";
 import PostCard from "@/components/react/common/PostCard";
 import { Separator } from "@/lib/ui/separator";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/lib/ui/breadcrumb";
 
 export async function getStaticPaths() {
   const { data: posts } = await useLoadQuery<SanityDocument[]>({
@@ -62,11 +70,26 @@ const compileImages = useCompileImages(post);
 
 <PageLayout title={post.title} disableTransform>
   <main
-    class="flex w-full flex-col gap-10 px-5 py-20 lg:flex-row lg:p-10 xl:p-20"
+    class="flex w-full flex-col gap-10 px-5 py-24 lg:flex-row lg:p-10 xl:p-20"
   >
-    <article
-      class="flex w-full flex-col items-center justify-center gap-5 lg:w-2/3 xl:w-3/4"
-    >
+    <article class="flex w-full flex-col gap-5 lg:w-2/3 xl:w-3/4">
+      <div>
+        <Breadcrumb>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/">Home</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/gallery">Gallery</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbPage>{post.title}</BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+      </div>
       <ImagesCarousel client:load images={compileImages} />
 
       <div class="mx-auto flex w-full max-w-5xl flex-col gap-8">

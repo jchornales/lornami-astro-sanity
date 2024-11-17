@@ -19,14 +19,16 @@ function CategoryFilter({ categories }: CategoryFilterProps) {
   };
 
   return (
-    <div className="justify-left flex w-full items-center gap-5">
+    <div
+      className="justify-left flex w-full items-center gap-5"
+      data-aos="fade-right"
+    >
       {categories.map((category) => (
         <Button
           variant={activeFilter === category.title ? "default" : "outline"}
           className="font-montserrat font-bold"
           onClick={() => handleOnClick(category.title)}
           key={category.slug.current}
-          data-aos="fade-right"
         >
           {category.title}
         </Button>
