@@ -69,13 +69,11 @@ function ImageLists({ posts, displaySeeMore }: Readonly<Props>) {
       ])}
     >
       <div className="image-lists">
-        {postList?.map((post, index) => (
+        {postList?.map((post) => (
           <a
             href={`gallery/${post.href}`}
             className="gallery-item"
             key={post.alt}
-            data-aos="fade-up"
-            data-aos-offset="100"
           >
             <img
               src={post.url}
