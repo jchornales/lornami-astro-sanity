@@ -8,4 +8,4 @@ export const sortPost = atom("");
 
 export const shouldSeeMore = atom(false);
 
-export const isBackgroundDark = atom(false);
+export const isNavigationBackgroundTransparent = atom(true);

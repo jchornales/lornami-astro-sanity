@@ -4,7 +4,7 @@ import "@styles/ImageLists.css";
 import { useStore } from "@nanostores/react";
 import {
   filterPost,
-  isBackgroundDark,
+  isNavigationBackgroundTransparent,
   shouldSeeMore,
   sortPost,
 } from "@/lib/hooks/useStateStore";
@@ -16,11 +16,10 @@ import useIsAtViewportTop from "@/lib/hooks/useIsAtViewportTop";
 
 interface Props {
   posts: CompiledPost[];
-  displayAlbum?: boolean;
   displaySeeMore?: boolean;
 }
 
-function ImageLists({ posts, displaySeeMore }: Props) {
+function ImageLists({ posts, displaySeeMore }: Readonly<Props>) {
   const [postList, setPostList] = useState(posts);
   const elementRef = useRef<HTMLDivElement>(null);
   const isAtTop = useIsAtViewportTop(elementRef, { offset: 100 });
@@ -30,9 +29,9 @@ function ImageLists({ posts, displaySeeMore }: Props) {
 
   useEffect(() => {
     if (isAtTop) {
-      isBackgroundDark.set(false);
+      isNavigationBackgroundTransparent.set(false);
     } else {
-      isBackgroundDark.set(true);
+      isNavigationBackgroundTransparent.set(true);
     }
   }, [isAtTop]);
 
@@ -74,7 +73,7 @@ function ImageLists({ posts, displaySeeMore }: Props) {
           <a
             href={`gallery/${post.href}`}
             className="gallery-item"
-            key={index}
+            key={post.alt}
             data-aos="fade-up"
             data-aos-offset="100"
           >

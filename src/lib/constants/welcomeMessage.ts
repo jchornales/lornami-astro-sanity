@@ -1,0 +1,3 @@
+export enum WELCOME_MESSAGE {
+  MESSAGE_INTERVAL = 18000000,
+}

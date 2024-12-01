@@ -3,15 +3,18 @@ import { useStore } from "@nanostores/react";
 import "@styles/MenuButton.css";
 import clsx from "clsx";
 import { disableBodyScroll, clearAllBodyScrollLocks } from "body-scroll-lock";
-import { isBackgroundDark, isMenuOpen } from "@/lib/hooks/useStateStore";
+import {
+  isNavigationBackgroundTransparent,
+  isMenuOpen,
+} from "@/lib/hooks/useStateStore";
 
 interface MenuButtonProps {
   disableTransform: boolean;
 }
 
-function MenuButton({ disableTransform }: MenuButtonProps) {
+function MenuButton({ disableTransform }: Readonly<MenuButtonProps>) {
   const isOpen = useStore(isMenuOpen);
-  const shouldTransformNav = useStore(isBackgroundDark);
+  const shouldTransformNav = useStore(isNavigationBackgroundTransparent);
 
   useEffect(() => {
     if (isOpen) {

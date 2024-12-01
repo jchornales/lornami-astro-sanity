@@ -8,7 +8,7 @@ interface PostCardProps {
   post: SanityDocument;
 }
 
-function PostCard({ post }: PostCardProps) {
+function PostCard({ post }: Readonly<PostCardProps>) {
   return (
     <a className="transition-all hover:scale-110" href={post.slug.current}>
       <Card className="w-full gap-2 rounded-none border-none bg-primaryLight bg-opacity-25 p-5 shadow-none lg:bg-opacity-0">
@@ -22,16 +22,15 @@ function PostCard({ post }: PostCardProps) {
             </h3>
             <div className="flex">
               {post.categories?.map((category: any, index: number) => (
-                <>
-                  <span
-                    className={clsx(
-                      "border-gray-500 p-2 text-sm leading-4 text-gray-500",
-                      index < post.categories.length - 1 && "border-r-[1px]",
-                    )}
-                  >
-                    {category.title}
-                  </span>
-                </>
+                <span
+                  key={category.title}
+                  className={clsx(
+                    "border-gray-500 p-2 text-sm leading-4 text-gray-500",
+                    index < post.categories.length - 1 && "border-r-[1px]",
+                  )}
+                >
+                  {category.title}
+                </span>
               ))}
             </div>
           </div>

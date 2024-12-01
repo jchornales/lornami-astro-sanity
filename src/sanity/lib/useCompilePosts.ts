@@ -13,7 +13,7 @@ export interface CompiledPost {
 function useCompilePosts(posts: SanityDocument[], includeAlbum?: boolean) {
   const list: CompiledPost[] = [];
 
-  posts.map((post) => {
+  posts.forEach((post) => {
     list.push({
       href: post.slug.current,
       alt: post.title,

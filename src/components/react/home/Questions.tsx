@@ -5,7 +5,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/lib/ui/accordion";
-import { isBackgroundDark } from "@/lib/hooks/useStateStore";
+import { isNavigationBackgroundTransparent } from "@/lib/hooks/useStateStore";
 import useIsAtViewportTop from "@/lib/hooks/useIsAtViewportTop";
 import { useLoadQuery } from "@/sanity/lib/useLoadQuery";
 import type { SanityDocument } from "@sanity/client";
@@ -21,9 +21,9 @@ function Questions() {
 
   useEffect(() => {
     if (isAtTop) {
-      isBackgroundDark.set(false);
+      isNavigationBackgroundTransparent.set(false);
     } else {
-      isBackgroundDark.set(true);
+      isNavigationBackgroundTransparent.set(true);
     }
   }, [isAtTop]);
 
@@ -49,7 +49,7 @@ function Questions() {
         <Accordion type="single" className="questions" collapsible>
           {questions.map((item, index) => (
             <AccordionItem
-              key={index}
+              key={item._id}
               value={`item-${index}`}
               className="item"
               data-aos="fade-up"

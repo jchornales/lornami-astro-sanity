@@ -3,7 +3,7 @@ import { useUrlForImage } from "@/sanity/lib/useUrlForImage";
 import type { SanityDocument } from "@sanity/client";
 import { useEffect, useRef } from "react";
 import useIsAtViewportTop from "@/lib/hooks/useIsAtViewportTop";
-import { isBackgroundDark } from "@/lib/hooks/useStateStore";
+import { isNavigationBackgroundTransparent } from "@/lib/hooks/useStateStore";
 import "@styles/Banner.css";
 
 const { data: content } = await useLoadQuery<SanityDocument[]>({
@@ -16,9 +16,9 @@ function Banner() {
 
   useEffect(() => {
     if (isAtTop) {
-      isBackgroundDark.set(true);
+      isNavigationBackgroundTransparent.set(true);
     } else {
-      isBackgroundDark.set(false);
+      isNavigationBackgroundTransparent.set(false);
     }
   }, [isAtTop]);
 
