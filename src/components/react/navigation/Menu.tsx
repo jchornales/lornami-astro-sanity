@@ -27,7 +27,7 @@ const menuList = [
   },
 ];
 
-function Menu({ cover }: Props) {
+function Menu({ cover }: Readonly<Props>) {
   const isOpen = useStore(isMenuOpen);
 
   return (

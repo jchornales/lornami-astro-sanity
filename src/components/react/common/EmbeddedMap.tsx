@@ -12,6 +12,7 @@ const EmbeddedMap: React.FC<EmbeddedMapProps> = ({
   width = "100%",
 }) => (
   <iframe
+    title="Studio Location"
     src={locationUrl}
     width={width}
     height={height}

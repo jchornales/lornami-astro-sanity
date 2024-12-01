@@ -37,9 +37,10 @@ function ImageLists({ posts, displaySeeMore }: Readonly<Props>) {
 
   useEffect(() => {
     if (filter) {
-      setPostList(
-        posts.filter((post) => _.some(post.categories, { title: filter })),
+      const filteredPost = posts.filter((post) =>
+        _.some(post.categories, { title: filter }),
       );
+      setPostList(filteredPost);
     } else {
       setPostList(posts);
     }

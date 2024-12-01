@@ -30,7 +30,7 @@ interface BookingFormProps {
   children: ReactNode;
 }
 
-function BookingForm({ children }: BookingFormProps) {
+function BookingForm({ children }: Readonly<BookingFormProps>) {
   const form = useForm<BookingFormData>({
     mode: "all",
     resolver: zodResolver(BookingFormSchema),

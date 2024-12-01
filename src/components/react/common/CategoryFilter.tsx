@@ -7,7 +7,7 @@ interface CategoryFilterProps {
   categories: SanityDocument[];
 }
 
-function CategoryFilter({ categories }: CategoryFilterProps) {
+function CategoryFilter({ categories }: Readonly<CategoryFilterProps>) {
   const activeFilter = useStore(filterPost);
 
   const handleOnClick = (filter: string) => {
@@ -19,10 +19,7 @@ function CategoryFilter({ categories }: CategoryFilterProps) {
   };
 
   return (
-    <div
-      className="justify-left flex w-full items-center gap-5"
-      data-aos="fade-right"
-    >
+    <div className="justify-left flex w-full items-center gap-5">
       {categories.map((category) => (
         <Button
           variant={activeFilter === category.title ? "default" : "outline"}

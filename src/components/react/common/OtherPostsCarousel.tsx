@@ -8,7 +8,7 @@ interface OtherPostsCarouselProps {
   posts: SanityDocument[];
 }
 
-const OtherPostsCarousel = ({ posts }: OtherPostsCarouselProps) => {
+const OtherPostsCarousel = ({ posts }: Readonly<OtherPostsCarouselProps>) => {
   return (
     <div className="w-full border-0 lg:hidden">
       <Carousel

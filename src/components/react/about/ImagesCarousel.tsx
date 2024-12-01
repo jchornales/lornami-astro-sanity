@@ -11,7 +11,7 @@ interface ImagesCarouselProps {
   className?: string;
 }
 
-function ImagesCarousel({ images, className }: ImagesCarouselProps) {
+function ImagesCarousel({ images, className }: Readonly<ImagesCarouselProps>) {
   const [api, setApi] = useState<any>();
   const [current, setCurrent] = useState(0);
 
@@ -48,7 +48,7 @@ function ImagesCarousel({ images, className }: ImagesCarouselProps) {
       >
         <CarouselContent>
           {images.map((image, index) => (
-            <CarouselItem key={index}>
+            <CarouselItem key={image.alt}>
               <div className="relative flex h-full w-full items-center justify-center overflow-hidden rounded-lg">
                 <img
                   src={useUrlForImage(image.url).url()}
@@ -66,7 +66,7 @@ function ImagesCarousel({ images, className }: ImagesCarouselProps) {
         <div className="mt-4 flex justify-center gap-2">
           {images.map((image, index) => (
             <button
-              key={index}
+              key={image.alt}
               onClick={() => goToSlide(index)}
               className={clsx(
                 "relative h-16 w-16 overflow-hidden rounded-md transition-all",

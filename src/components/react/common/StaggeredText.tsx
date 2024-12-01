@@ -22,7 +22,7 @@ function StaggeredText({
   staggerDelay,
   className,
   shouldStart,
-}: StaggeredTextProps) {
+}: Readonly<StaggeredTextProps>) {
   return (
     <span className={clsx(className, "text-white")}>
       <StaggerText

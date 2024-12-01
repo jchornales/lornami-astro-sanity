@@ -57,6 +57,6 @@ const compiledPosts = useCompilePosts(posts, true);
       <CategoryFilter client:load categories={categories} />
       <Sort client:load />
     </div>
-    <ImageLists client:load posts={compiledPosts} displayAlbum />
+    <ImageLists client:load posts={compiledPosts} />
   </section>
 </PageLayout>

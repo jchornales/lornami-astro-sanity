@@ -28,7 +28,7 @@ function Pricing() {
     <div className="wrapper">
       {prices.map((price, index) => (
         <Card
-          key={index}
+          key={price._id}
           data-aos="fade-up"
           data-aos-delay={index * 500}
           data-aos-duration="1000"

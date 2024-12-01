@@ -23,10 +23,10 @@ function useCompilePosts(posts: SanityDocument[], includeAlbum?: boolean) {
     });
 
     includeAlbum &&
-      post.album?.map((image: SanityAsset) =>
+      post.album?.map((image: SanityAsset, index: number) =>
         list.push({
           href: post.slug.current,
-          alt: post.title,
+          alt: `${post.title} || sub image number ${index + 1}`,
           url: useUrlForImage(image).url(),
           createdAt: post._createdAt,
           categories: post.categories,

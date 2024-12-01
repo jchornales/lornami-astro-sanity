@@ -5,7 +5,7 @@ interface TypeWriterTextProps {
   text: string;
 }
 
-function TypeWriterText({ text }: TypeWriterTextProps) {
+function TypeWriterText({ text }: Readonly<TypeWriterTextProps>) {
   return (
     <Typewriter
       onInit={(typewriter) => {
