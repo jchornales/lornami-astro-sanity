@@ -26,11 +26,11 @@ function StaggeredText({
   return (
     <span className={clsx(className, "text-white")}>
       <StaggerText
-        staggerDuration={duration || 100}
-        staggerType={type || "letter"}
-        startDelay={delay || 0}
-        staggerDelay={staggerDelay || 0.04}
-        staggerEasing={easing || "ease-in"}
+        staggerDuration={duration ?? 100}
+        staggerType={type ?? "letter"}
+        startDelay={delay ?? 0}
+        staggerDelay={staggerDelay ?? 0.04}
+        staggerEasing={easing ?? "ease-in"}
         shouldStart={shouldStart || true}
       >
         {text}
